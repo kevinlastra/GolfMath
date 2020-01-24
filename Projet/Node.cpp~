@@ -1,0 +1,27 @@
+#include "Vector.h"
+#include "Node.h"
+
+Node::Node(const Vector &v, Type t):pos(v), type(t){}
+Node::Node(const Node &n):pos(n.pos),type(n.type){}
+void Node::operator=(const Node &n)
+{
+  pos = n.pos;
+  type = n.type;
+}
+
+Type Node::getType()
+{
+  return type;
+}
+Vector Node::Pos()
+{
+  return pos;
+}
+void Node::setType(Type t)
+{
+  type = t;
+}
+void Node::setPos(const Vector &v)
+{
+  pos = v;
+}
