@@ -1,6 +1,0 @@
-
-Vector():x(0),y(0){}
-Vector(int,int);
-Vector(const Vector);
-~Vector();
-void operator=(const Vector);
