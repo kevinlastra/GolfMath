@@ -84,7 +84,7 @@ Terrain::Terrain(std::string &s)
 	i++;
 	x++;
 	if(l[i+1]==NULL)
-	  imax = i+1;
+	  imax = i;
       }
       y++;
       i = 0;
