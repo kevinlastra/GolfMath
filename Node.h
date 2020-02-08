@@ -6,7 +6,7 @@
 class Node
 {
  public:
-  enum Type {eau, sable, herbe, NONE};
+  enum Type {eau, sable, herbe, start,end,NONE};
  private:
   Type type;
   Vector pos;

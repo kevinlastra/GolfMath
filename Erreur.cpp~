@@ -1,0 +1,12 @@
+#include "Erreur.h"
+
+Erreur::Erreur(EType et)
+{
+  switch(et)
+  {
+  case EType::movement:
+    break;
+  default:
+    break;
+  }
+}

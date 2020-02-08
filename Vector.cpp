@@ -8,3 +8,10 @@ void Vector::operator=(const Vector &v)
   x = v.x;
   y = v.y;
 }
+bool Vector::operator==(const Vector &v)
+{
+  if(x == v.x && y == v.y)
+    return true;
+  else
+    return false;
+}

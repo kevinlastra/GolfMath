@@ -1,0 +1,10 @@
+
+class Erreur
+{
+ public:
+  enum EType{movement,NONE};
+ private:
+  EType type;
+ public:
+  Erreur(EType);
+};

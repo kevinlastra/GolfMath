@@ -1,0 +1,206 @@
+#include "GameMaster.h"
+#include "Vector.h"
+#include <string>
+#include <iostream>
+#include <unistd.h>
+#include "Erreur.h"
+
+GameMaster::GameMaster(){}
+void GameMaster::GenerateTerrain(std::string &s)
+{
+  T = new Terrain(s);
+}
+void GameMaster::AddPlayer()
+{
+  char ctr;
+  std::cout << "start position?"<<std::endl;
+  std::cin >> ctr;
+  Vector v;
+  switch(ctr)
+  {
+  case '1':
+    v = Vector(T->getStartPos().x-1,T->getStartPos().y+1);
+    break;
+  case '2':
+    v = Vector(T->getStartPos().x,T->getStartPos().y+1);
+    break;
+  case '3':
+    v = Vector(T->getStartPos().x+1,T->getStartPos().y+1);
+    break;
+  case '4':
+    v = Vector(T->getStartPos().x-1,T->getStartPos().y);
+    break;
+  case '5':
+    v = Vector(T->getStartPos().x,T->getStartPos().y);
+    break;
+  case '6':
+    v = Vector(T->getStartPos().x+1,T->getStartPos().y);
+    break;
+  case '7':
+    v = Vector(T->getStartPos().x-1,T->getStartPos().y-1);
+    break;
+  case '8':
+    v = Vector(T->getStartPos().x,T->getStartPos().y-1);
+    break;
+  case '9':
+    v = Vector(T->getStartPos().x+1,T->getStartPos().y-1);
+    break;
+  }
+  PlayerController p(v);
+  Players[nbplayers] = p;
+  nbplayers++;
+}
+void GameMaster::PrintMap()
+{
+  std::cout <<"\033[2J";
+  Erreur::print();
+  for(int j = 0; j < T->getLar();j++)
+  {
+    for(int i = 0; i < T->getLon();i++)
+    {
+      Vector v(i,j);
+      if(playerAtPos(v))
+      {
+	std::cout << "\033[1;42m\033[1;35m[P]\033[0m";
+      }
+      else
+      {
+	switch(T->getNode(v).getType())
+	{
+        case Node::herbe:
+	  std::cout << "\033[1;42m\033[1;32m["<<T->getNode(v).getPorter()<<"]\033[0m";
+	  break;
+        case Node::start:
+	  std::cout << "\033[1;43m\033[1;33m["<<T->getNode(v).getPorter()<<"]\033[0m";
+	  break;
+	case Node::end:
+	  std::cout << "\033[1;42m\033[1;34m[T]\033[0m";
+	  break;
+	case Node::sable:
+	  std::cout << "\033[1;43m\033[1;33m["<<T->getNode(v).getPorter()<<"]\033[0m";
+	  break;
+	default:
+	  std::cout << "\033[1;44m\033[1;34m  ~\033[0m";
+	  break;
+	}
+      }
+    }
+    std::cout << std::endl;
+  }
+}
+void GameMaster::Start()
+{
+  std::string mapPath = "testmap.txt";
+  GenerateTerrain(mapPath);
+  AddPlayer();
+  Interactuer();
+}
+void GameMaster::Interactuer()
+{
+  bool stop = false;
+  int nbcoup = 0;
+  while(!stop)
+  {
+    PrintMap();
+    char ctr;
+    std::cin >> ctr;
+    Vector npos(Players[0].GetPos());
+    int porter;
+    switch(ctr)
+    {
+    case '8':
+      porter = T->getNode(Vector(npos.x,npos.y-1)).getPorter();
+      if(T->getNode(Vector(npos.x,npos.y-porter)).getPorter())
+      {
+	npos.y -= porter;
+      }
+      else
+	Erreur(Erreur::MOVEMENT);
+      break;
+    case '2':
+      porter = T->getNode(Vector(npos.x,npos.y+1)).getPorter();
+      if(T->getNode(Vector(npos.x,npos.y+porter)).getPorter())
+      {
+	npos.y += porter;
+      }
+      else
+	Erreur(Erreur::MOVEMENT);
+      break;
+    case '6':
+      porter = T->getNode(Vector(npos.x+1,npos.y)).getPorter();
+      if(T->getNode(Vector(npos.x+porter,npos.y)).getPorter())
+      {
+	npos.x += porter;
+      }
+      else
+	Erreur(Erreur::MOVEMENT);
+      break;
+    case '4':
+      porter = T->getNode(Vector(npos.x-1,npos.y)).getPorter();
+      if(T->getNode(Vector(npos.x-porter,npos.y)).getPorter())
+      {
+	npos.x -= porter;
+      }
+      else
+	Erreur(Erreur::MOVEMENT);
+      break;
+    case '7':
+      porter = T->getNode(Vector(npos.x-1,npos.y-1)).getPorter();
+      if(T->getNode(Vector(npos.x-porter,npos.y-porter)).getPorter())
+      {
+	npos.x -= porter;
+	npos.y -= porter;
+      }
+      else
+	Erreur(Erreur::MOVEMENT);
+      break;
+    case '9':
+      porter = T->getNode(Vector(npos.x+1,npos.y-1)).getPorter();
+      if(T->getNode(Vector(npos.x+porter,npos.y-porter)).getPorter())
+      {
+	npos.x += porter;
+	npos.y -= porter;
+      }
+      break;
+    case '1':
+      porter = T->getNode(Vector(npos.x-1,npos.y+1)).getPorter();
+      if(T->getNode(Vector(npos.x-porter,npos.y+porter)).getPorter())
+      {
+	npos.x -= porter;
+	npos.y += porter;
+      }
+      else
+	Erreur(Erreur::MOVEMENT);
+      break;
+    case '3':
+      porter = T->getNode(Vector(npos.x+1,npos.y+1)).getPorter();
+      if(T->getNode(Vector(npos.x+porter,npos.y+porter)).getPorter())
+      {
+	npos.x += porter;
+	npos.y += porter;
+      }
+      else
+	Erreur(Erreur::MOVEMENT);
+      break;
+    }
+    Players[0].SetPos(npos);
+    nbcoup++;
+    if(Players[0].GetPos() == T->getTargetPos())
+    {
+      std::cout << "GAGNER           nbcoup:"<<nbcoup << std::endl;
+      stop = true;
+    }
+  }
+}
+bool GameMaster::playerAtPos(Vector &v)
+{
+  for(int i = 0;i < nbplayers;i++)
+  {
+    if(Players[i].GetPos() == v)
+    {
+      return true;
+    } 
+  }
+  return false;
+}
+int GameMaster::getNbPlayers(){return nbplayers;}

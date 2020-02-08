@@ -1,5 +1,5 @@
-#ifndef TERRAIN_
-#define TERRAIN_
+#ifndef TERRAIN_H
+#define TERRAIN_H
 
 #include "Vector.h"
 #include "Node.h"
@@ -11,8 +11,8 @@ class Terrain
   Node nodes[256][256];
   int longueur;//x
   int largeur;//y
-  Vector Spos;
-  
+  Vector Spos;//start position
+  Vector Tpos;//target position
  public:
   Terrain();
   Terrain(Node**,int,int,const Vector&);
@@ -24,7 +24,8 @@ class Terrain
   int getLon();
   int getLar();
   Vector& getStartPos();
-
+  Vector& getTargetPos();
+  
   void setLon(int);
   void setLar(int);
   void setStartPos(const Vector&);
