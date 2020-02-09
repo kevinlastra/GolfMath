@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <unistd.h>
+#include <stdlib.h>
 #include "Erreur.h"
 
 GameMaster::GameMaster(){}
@@ -12,41 +13,10 @@ void GameMaster::GenerateTerrain(std::string &s)
 }
 void GameMaster::AddPlayer()
 {
-  char ctr;
+  PrintMap();
   std::cout << "start position?"<<std::endl;
-  std::cin >> ctr;
-  Vector v;
-  switch(ctr)
-  {
-  case '1':
-    v = Vector(T->getStartPos().x-1,T->getStartPos().y+1);
-    break;
-  case '2':
-    v = Vector(T->getStartPos().x,T->getStartPos().y+1);
-    break;
-  case '3':
-    v = Vector(T->getStartPos().x+1,T->getStartPos().y+1);
-    break;
-  case '4':
-    v = Vector(T->getStartPos().x-1,T->getStartPos().y);
-    break;
-  case '5':
-    v = Vector(T->getStartPos().x,T->getStartPos().y);
-    break;
-  case '6':
-    v = Vector(T->getStartPos().x+1,T->getStartPos().y);
-    break;
-  case '7':
-    v = Vector(T->getStartPos().x-1,T->getStartPos().y-1);
-    break;
-  case '8':
-    v = Vector(T->getStartPos().x,T->getStartPos().y-1);
-    break;
-  case '9':
-    v = Vector(T->getStartPos().x+1,T->getStartPos().y-1);
-    break;
-  }
-  PlayerController p(v);
+  PlayerController p;
+  p.SetPosAtTerrain(T->getStartPos());
   Players[nbplayers] = p;
   nbplayers++;
 }
@@ -92,86 +62,103 @@ void GameMaster::Start()
 {
   std::string mapPath = "testmap.txt";
   GenerateTerrain(mapPath);
-  AddPlayer();
+  RequeteNBJouers();
   Interactuer();
 }
 void GameMaster::Interactuer()
 {
   bool stop = false;
   int nbcoup = 0;
+  int Player = 0;
   while(!stop)
   {
     PrintMap();
-    char ctr;
-    std::cin >> ctr;
-    Vector npos(Players[0].GetPos());
-    int porter;
-    switch(ctr)
+    RequeteMovement(Player);
+    
+    if(Players[Player].GetPos() == T->getTargetPos())
     {
-    case '8':
-      porter = T->getNode(Vector(npos.x,npos.y-1)).getPorter();
-      if(T->getNode(Vector(npos.x,npos.y-porter)).getPorter())
-      {
-	npos.y -= porter;
-      }
-      else
-	Erreur(Erreur::MOVEMENT);
-      break;
-    case '2':
-      porter = T->getNode(Vector(npos.x,npos.y+1)).getPorter();
-      if(T->getNode(Vector(npos.x,npos.y+porter)).getPorter())
-      {
-	npos.y += porter;
-      }
-      else
-	Erreur(Erreur::MOVEMENT);
-      break;
-    case '6':
-      porter = T->getNode(Vector(npos.x+1,npos.y)).getPorter();
-      if(T->getNode(Vector(npos.x+porter,npos.y)).getPorter())
-      {
-	npos.x += porter;
-      }
-      else
-	Erreur(Erreur::MOVEMENT);
-      break;
-    case '4':
-      porter = T->getNode(Vector(npos.x-1,npos.y)).getPorter();
-      if(T->getNode(Vector(npos.x-porter,npos.y)).getPorter())
-      {
-	npos.x -= porter;
-      }
-      else
-	Erreur(Erreur::MOVEMENT);
-      break;
-    case '7':
-      porter = T->getNode(Vector(npos.x-1,npos.y-1)).getPorter();
-      if(T->getNode(Vector(npos.x-porter,npos.y-porter)).getPorter())
-      {
-	npos.x -= porter;
-	npos.y -= porter;
-      }
-      else
-	Erreur(Erreur::MOVEMENT);
-      break;
-    case '9':
-      porter = T->getNode(Vector(npos.x+1,npos.y-1)).getPorter();
-      if(T->getNode(Vector(npos.x+porter,npos.y-porter)).getPorter())
-      {
-	npos.x += porter;
-	npos.y -= porter;
-      }
-      break;
-    case '1':
-      porter = T->getNode(Vector(npos.x-1,npos.y+1)).getPorter();
-      if(T->getNode(Vector(npos.x-porter,npos.y+porter)).getPorter())
-      {
-	npos.x -= porter;
-	npos.y += porter;
-      }
-      else
-	Erreur(Erreur::MOVEMENT);
-      break;
+      PrintMap();
+      std::cout << "YOU WIN           nbcoup:"<<Players[Player].GetPCoup() << std::endl;
+      stop = true;
+    }
+    
+    Player++;
+    if(Player == nbplayers)
+      Player = 0;
+  }
+}
+void GameMaster::RequeteMovement(int i)
+{
+  char ctr;
+  std::cin >> ctr;
+  Vector npos(Players[i].GetPos());
+  int porter;
+  switch(ctr)
+  {
+  case '8':
+    porter = T->getNode(Vector(npos.x,npos.y-1)).getPorter();
+    if(T->getNode(Vector(npos.x,npos.y-porter)).getPorter())
+    {
+      npos.y -= porter;
+    }
+    else
+      Erreur(Erreur::MOVEMENT);
+    break;
+  case '2':
+    porter = T->getNode(Vector(npos.x,npos.y+1)).getPorter();
+    if(T->getNode(Vector(npos.x,npos.y+porter)).getPorter())
+    {
+      npos.y += porter;
+    }
+    else
+      Erreur(Erreur::MOVEMENT);
+    break;
+  case '6':
+    porter = T->getNode(Vector(npos.x+1,npos.y)).getPorter();
+    if(T->getNode(Vector(npos.x+porter,npos.y)).getPorter())
+    {
+      npos.x += porter;
+    }
+    else
+      Erreur(Erreur::MOVEMENT);
+    break;
+  case '4':
+    porter = T->getNode(Vector(npos.x-1,npos.y)).getPorter();
+    if(T->getNode(Vector(npos.x-porter,npos.y)).getPorter())
+    {
+      npos.x -= porter;
+    }
+    else
+      Erreur(Erreur::MOVEMENT);
+    break;
+  case '7':
+    porter = T->getNode(Vector(npos.x-1,npos.y-1)).getPorter();
+    if(T->getNode(Vector(npos.x-porter,npos.y-porter)).getPorter())
+    {
+      npos.x -= porter;
+      npos.y -= porter;
+    }
+    else
+      Erreur(Erreur::MOVEMENT);
+    break;
+  case '9':
+    porter = T->getNode(Vector(npos.x+1,npos.y-1)).getPorter();
+    if(T->getNode(Vector(npos.x+porter,npos.y-porter)).getPorter())
+    {
+      npos.x += porter;
+      npos.y -= porter;
+    }
+    break;
+  case '1':
+    porter = T->getNode(Vector(npos.x-1,npos.y+1)).getPorter();
+    if(T->getNode(Vector(npos.x-porter,npos.y+porter)).getPorter())
+    {
+      npos.x -= porter;
+      npos.y += porter;
+    }
+    else
+      Erreur(Erreur::MOVEMENT);
+    break;
     case '3':
       porter = T->getNode(Vector(npos.x+1,npos.y+1)).getPorter();
       if(T->getNode(Vector(npos.x+porter,npos.y+porter)).getPorter())
@@ -182,16 +169,29 @@ void GameMaster::Interactuer()
       else
 	Erreur(Erreur::MOVEMENT);
       break;
-    }
-    Players[0].SetPos(npos);
-    nbcoup++;
-    if(Players[0].GetPos() == T->getTargetPos())
-    {
-      std::cout << "GAGNER           nbcoup:"<<nbcoup << std::endl;
-      stop = true;
-    }
+  }
+  Players[i].SetPos(npos);
+  Players[i].PCoup();
+}
+void GameMaster::RequeteNBJouers()
+{
+  int n = -1;
+  while(true)
+  {
+    std::cout << "combien de jouers[0-4]?" << std::endl;
+    std::cin >> n;
+    if(n >= 0 && n <= 4)
+      break;
+    Erreur(Erreur::ARGUMENT);
+    Erreur::print();
+  }
+
+  for(int i = 0;i < n;i++)
+  {
+    AddPlayer();
   }
 }
+
 bool GameMaster::playerAtPos(Vector &v)
 {
   for(int i = 0;i < nbplayers;i++)

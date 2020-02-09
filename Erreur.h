@@ -5,7 +5,7 @@
 class Erreur
 {
  public:
-  enum EType{MOVEMENT,NONE};
+  enum EType{MOVEMENT,ARGUMENT,NONE};
   static char str[100];
  private:
   EType type;

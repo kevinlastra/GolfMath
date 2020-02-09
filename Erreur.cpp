@@ -10,8 +10,14 @@ Erreur::Erreur(EType et)
   case MOVEMENT:
     strcpy(str,"Movement impossible");
     break;
+  case ARGUMENT:
+    strcpy(str,"Erreur d'argument");
+    break;
   case NONE:
     strcpy(str,"");
+    break;
+  default:
+    strcpy(str,"default erreur");
     break;
   }
 }

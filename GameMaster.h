@@ -16,8 +16,12 @@ class GameMaster
   void AddPlayer();
   void PrintMap();
   void Start();
+  
   void Interactuer();
-
+  void RequeteMovement(int);
+  
+  void RequeteNBJouers();
+  
   bool playerAtPos(Vector&);
   int getNbPlayers();
 };
