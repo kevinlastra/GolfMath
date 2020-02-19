@@ -1,0 +1,15 @@
+#include <QApplication>
+#include <QApplicationStateChangeEvent>
+#include <QPushButton>
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+    QApplication app(argc, argv);
+
+    QPushButton b("hello");
+
+    b.show();
+
+    return app.exec();
+}
