@@ -1,5 +1,5 @@
 
-Main = premier_test.cpp
+Main = test_terrain.cpp
 exec = test_sdl
 flags = `sdl-config --libs --cflags`
 
