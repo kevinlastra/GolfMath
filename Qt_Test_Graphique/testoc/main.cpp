@@ -1,23 +1,15 @@
 #include <QApplication>
 #include <QApplicationStateChangeEvent>
 #include <QPushButton>
-#include <string.h>
+#include "mafenetre.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
+    MaFenetre fenetre(500, 250);
 
-    for (int i = 0; i < 50; i++)
-    {
-        for (int j = 0; j < 50; j++)
-        {
-            QString text = QString(i+j);
-            QPushButton b(text);
-            b.show();
-        }
-    }
-
+    fenetre.show();
 
     return app.exec();
 }
