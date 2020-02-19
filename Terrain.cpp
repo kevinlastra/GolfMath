@@ -125,13 +125,12 @@ void Terrain::setLon(int l){ longueur = l;}
 void Terrain::setLar(int l){ largeur = l;}
 void Terrain::setStartPos(const Vector &v){ Spos = v;}
 
-Node& Terrain::getNode(const Vector &v)
+Node* Terrain::getNode(const Vector &v)
 {
-  if(v.x < longueur && v.y < largeur)
-    return nodes[v.x][v.y];
+  if(v.x < longueur && v.y < largeur && v.x >= 0 && v.y >= 0)
+    return &nodes[v.x][v.y];
   else
   {
-    Node n;
-    return n;
+    return NULL;
   }
 }

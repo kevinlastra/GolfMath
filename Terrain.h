@@ -30,7 +30,7 @@ class Terrain
   void setLar(int);
   void setStartPos(const Vector&);
 
-  Node& getNode(const Vector&);
+  Node* getNode(const Vector&);
   
 };
 #endif
