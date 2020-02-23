@@ -5,7 +5,7 @@ class GameMaster
 {
  private:
   Terrain *T;
-  PlayerController Players[4];
+  PlayerController Players[5];
   int nbplayers = 0;
 
   std::string entete;
@@ -13,7 +13,7 @@ class GameMaster
  public:
   GameMaster();
   void GenerateTerrain(std::string&);
-  void AddPlayer();
+  void AddPlayer(PlayerController::TypeJ t);
   void PrintMap();
   void Start();
   

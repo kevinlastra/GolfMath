@@ -11,6 +11,7 @@ class Vector
   Vector(const Vector&);
   void operator=(const Vector&);
   bool operator==(const Vector&);
+  float distance(Vector &v);
 };
 
 #endif
