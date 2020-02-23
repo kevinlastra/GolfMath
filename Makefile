@@ -6,3 +6,5 @@ flags = -Wall -ansi -pedantic
 
 all: 
 	g++ $(flags) $(Files) $(Main) -o $(exec)
+mm:
+	g++ testNoise.cpp -o MapMaker	
