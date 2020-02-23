@@ -22,7 +22,7 @@ void GameMaster::AddPlayer(PlayerController::TypeJ t)
 }
 void GameMaster::PrintMap()
 {
-  //std::cout <<"\033[2J";
+  std::cout <<"\033[2J";
   Erreur::print();
   for(int j = 0; j < T->getLar();j++)
   {
