@@ -1,4 +1,5 @@
 #include "Vector.h"
+#include <cmath>
 
 Vector::Vector():x(0),y(0){}
 Vector::Vector(const int x_, const int y_):x(x_),y(y_){}
@@ -14,4 +15,9 @@ bool Vector::operator==(const Vector &v)
     return true;
   else
     return false;
+}
+
+float Vector::distance(Vector &v)
+{
+	return sqrt(pow(v.x-x,2)+pow(v.y-y,2));
 }

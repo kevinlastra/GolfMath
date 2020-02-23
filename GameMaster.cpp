@@ -11,11 +11,11 @@ void GameMaster::GenerateTerrain(std::string &s)
 {
   T = new Terrain(s);
 }
-void GameMaster::AddPlayer()
+void GameMaster::AddPlayer(PlayerController::TypeJ t)
 {
   PrintMap();
-  std::cout << "start position?"<<std::endl;
-  PlayerController p;
+  if(t==PlayerController::H){std::cout << "start position?"<<std::endl;}
+  PlayerController p = PlayerController(t);
   p.SetPosAtTerrain(T->getStartPos());
   Players[nbplayers] = p;
   nbplayers++;
@@ -31,7 +31,7 @@ void GameMaster::PrintMap()
       Vector v(i,j);
       if(playerAtPos(v))
       {
-	std::cout << "\033[1;42m\033[1;35m[P]\033[0m";
+	       std::cout << "\033[1;42m\033[1;35m[P]\033[0m";
       }
       else
       {
@@ -90,7 +90,14 @@ void GameMaster::Interactuer()
 void GameMaster::RequeteMovement(int i)
 {
   char ctr;
+  if (Players[i].GetTypeJ()==PlayerController::H)
+  {
   std::cin >> ctr;
+  }
+  else if (Players[i].GetTypeJ()==PlayerController::IA)
+  {
+    ctr = Players[i].iaJouer(T,T->getTargetPos());
+  }
   Vector npos(Players[i].GetPos());
   int porter = T->getNode(Vector(npos.x,npos.y))->getPorter();
   switch(ctr)
@@ -170,20 +177,28 @@ void GameMaster::RequeteMovement(int i)
 void GameMaster::RequeteNBJouers()
 {
   int n = -1;
+  char c;
   while(true)
   {
-    std::cout << "combien de jouers[0-4]?" << std::endl;
+    std::cout << "combien de joueurs[0-4]?" << std::endl;
     std::cin >> n;
     if(n >= 0 && n <= 4)
       break;
     Erreur(Erreur::ARGUMENT);
     Erreur::print();
   }
-
   for(int i = 0;i < n;i++)
   {
-    AddPlayer();
+    AddPlayer(PlayerController::H);
   }
+  std::cout << "voulez-vous une IA ? \n y/n" <<std::endl ;
+  std::cin >> c;
+  if (c == 'y'){
+    AddPlayer(PlayerController::IA);
+  }
+  for(int i=0;i<nbplayers;i++){
+  std::cout<<"oui : "<<Players[i].GetTypeJ()<<std::endl;
+}
 }
 
 bool GameMaster::playerAtPos(Vector &v)
