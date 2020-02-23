@@ -22,7 +22,7 @@ void GameMaster::AddPlayer(PlayerController::TypeJ t)
 }
 void GameMaster::PrintMap()
 {
-  std::cout <<"\033[2J";
+  //std::cout <<"\033[2J";
   Erreur::print();
   for(int j = 0; j < T->getLar();j++)
   {
@@ -100,10 +100,12 @@ void GameMaster::RequeteMovement(int i)
   }
   Vector npos(Players[i].GetPos());
   int porter = T->getNode(Vector(npos.x,npos.y))->getPorter();
+  Node* node;
   switch(ctr)
   {
   case '8':
-    if(T->getNode(Vector(npos.x,npos.y-porter)) != NULL)
+    node = T->getNode(Vector(npos.x,npos.y-porter));
+    if(node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
     {
       npos.y -= porter;
     }
@@ -111,7 +113,8 @@ void GameMaster::RequeteMovement(int i)
       Erreur(Erreur::MOVEMENT);
     break;
   case '2':
-    if(T->getNode(Vector(npos.x,npos.y+porter)) != NULL)
+    node = T->getNode(Vector(npos.x,npos.y+porter));
+    if(node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
     {
       npos.y += porter;
     }
@@ -119,7 +122,9 @@ void GameMaster::RequeteMovement(int i)
       Erreur(Erreur::MOVEMENT);
     break;
   case '6':
-    if(T->getNode(Vector(npos.x+porter,npos.y)) != NULL)
+    node = T->getNode(Vector(npos.x+porter,npos.y));
+    std::cout <<"type:"<< node->getType() <<std::endl;
+    if(node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
     {
       npos.x += porter;
     }
@@ -127,7 +132,8 @@ void GameMaster::RequeteMovement(int i)
       Erreur(Erreur::MOVEMENT);
     break;
   case '4':
-    if(T->getNode(Vector(npos.x-porter,npos.y)) != NULL)
+    node = T->getNode(Vector(npos.x-porter,npos.y));
+    if(node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
     {
       npos.x -= porter;
     }
@@ -135,7 +141,8 @@ void GameMaster::RequeteMovement(int i)
       Erreur(Erreur::MOVEMENT);
     break;
   case '7':
-    if(T->getNode(Vector(npos.x-porter,npos.y-porter)) != NULL)
+    node = T->getNode(Vector(npos.x-porter,npos.y-porter));
+    if(node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
     {
       npos.x -= porter;
       npos.y -= porter;
@@ -144,7 +151,8 @@ void GameMaster::RequeteMovement(int i)
       Erreur(Erreur::MOVEMENT);
     break;
   case '9':
-    if(T->getNode(Vector(npos.x+porter,npos.y-porter)) != NULL)
+    node = T->getNode(Vector(npos.x+porter,npos.y-porter));
+    if(node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
     {
       npos.x += porter;
       npos.y -= porter;
@@ -153,7 +161,8 @@ void GameMaster::RequeteMovement(int i)
       Erreur(Erreur::MOVEMENT);
     break;
   case '1':
-    if(T->getNode(Vector(npos.x-porter,npos.y+porter)) != NULL)
+    node = T->getNode(Vector(npos.x-porter,npos.y+porter));
+    if(node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
     {
       npos.x -= porter;
       npos.y += porter;
@@ -161,15 +170,16 @@ void GameMaster::RequeteMovement(int i)
     else
       Erreur(Erreur::MOVEMENT);
     break;
-    case '3':
-      if(T->getNode(Vector(npos.x+porter,npos.y+porter)) != NULL)
-      {
-	npos.x += porter;
-	npos.y += porter;
-      }
-      else
-	Erreur(Erreur::MOVEMENT);
-      break;
+  case '3':
+    node = T->getNode(Vector(npos.x+porter,npos.y+porter));
+    if(node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
+    {
+      npos.x += porter;
+      npos.y += porter;
+    }
+    else
+      Erreur(Erreur::MOVEMENT);
+    break;
   }
   Players[i].SetPos(npos);
   Players[i].PCoup();

@@ -67,11 +67,11 @@ void PlayerController::SetPosAtTerrain(Vector &v)
       break;
     }
   }
-  else{ if (typeJ == IA)
+  else if (typeJ == IA)
   {
     npos = Vector(v.x,v.y);
   }
-  }
+  
   pos = npos;
 }
 void PlayerController::ResetPos()

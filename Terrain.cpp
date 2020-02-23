@@ -81,14 +81,14 @@ Terrain::Terrain(std::string &s)
 	  i++;
 	  switch(c)
 	  {
-	  case 'e':
-	    t = Node::eau;
-	    break;
 	  case 's':
 	    t = Node::sable;
 	    break;
 	  case 'h':
 	    t = Node::herbe;
+	    break;
+	  default:
+	    t = Node::eau;
 	    break;
 	  }
 	  Vector v(x,y);
