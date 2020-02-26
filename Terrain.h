@@ -14,10 +14,10 @@ class Terrain
   Vector Spos;//start position
   Vector Tpos;//target position
  public:
-  Terrain();
   Terrain(Node**,int,int,const Vector&);
   Terrain(const Terrain&);
   Terrain(std::string&);
+  Terrain(int,Vector,int,int);
   ~Terrain();
   void operator=(const Terrain&);
 
@@ -31,6 +31,13 @@ class Terrain
   void setStartPos(const Vector&);
 
   Node* getNode(const Vector&);
-  
+
+  //Generator
+  bool inRadius(int*,int*,int,Vector);
+  float dist(float,float);
+  Vector findextrem(Vector,int*,int*,int);
+  int GetPortee(Vector,Vector,Vector,Vector);
+  void InitTab(Vector);
+  void SetEndandStart();
 };
 #endif

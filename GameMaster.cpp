@@ -11,6 +11,10 @@ void GameMaster::GenerateTerrain(std::string &s)
 {
   T = new Terrain(s);
 }
+void GameMaster::GenerateTerrain(Vector dim,int nbMove,int marge,int seed)
+{
+  T = new Terrain(seed,dim,nbMove,marge);
+}
 void GameMaster::AddPlayer(PlayerController::TypeJ t)
 {
   PrintMap();
@@ -31,7 +35,7 @@ void GameMaster::PrintMap()
       Vector v(i,j);
       if(playerAtPos(v))
       {
-	       std::cout << "\033[1;42m\033[1;35m[P]\033[0m";
+	std::cout << "\033[1;42m\033[1;35m[P]\033[0m";
       }
       else
       {
@@ -60,8 +64,16 @@ void GameMaster::PrintMap()
 }
 void GameMaster::Start()
 {
-  std::string mapPath = "testmap.txt";
-  GenerateTerrain(mapPath);
+  std::cout << "auto gen. map(0) or default map(1)?"<<std::endl;
+  int i;
+  std::cin >>i;
+  if( i == 1)
+  {
+    std::string mapPath = "testmap.txt";
+    GenerateTerrain(mapPath);
+  }
+  else
+    GenerateTerrain(Vector(40,40),10,5,-1);
   RequeteNBJouers();
   Interactuer();
 }

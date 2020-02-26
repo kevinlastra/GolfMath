@@ -5,8 +5,8 @@
 #include <fstream>
 #include <stdlib.h>
 #include <iostream>
+#include <cmath>
 
-Terrain::Terrain():longueur(0),largeur(0){}
 Terrain::Terrain(Node** ns, int lo, int la, const Vector &v):longueur(lo), largeur(la), Spos(v)
 {
   for(int i = 0; i < largeur;i++)
@@ -103,19 +103,147 @@ Terrain::Terrain(std::string &s)
       x = 0;
     }
   }
-  
-  nodes[Spos.x-1][Spos.y-1].setType(Node::start);
-  nodes[Spos.x-1][Spos.y].setType(Node::start);
-  nodes[Spos.x-1][Spos.y+1].setType(Node::start);
-  nodes[Spos.x][Spos.y-1].setType(Node::start);
-  nodes[Spos.x][Spos.y].setType(Node::start);
-  nodes[Spos.x][Spos.y+1].setType(Node::start);
-  nodes[Spos.x+1][Spos.y-1].setType(Node::start);
-  nodes[Spos.x+1][Spos.y].setType(Node::start);
-  nodes[Spos.x+1][Spos.y+1].setType(Node::start);
 
-  nodes[Tpos.x][Tpos.y].setType(Node::end);
-  nodes[Tpos.x][Tpos.y].setPorter(1);
+  SetEndandStart();
+}
+Terrain::Terrain(int seed, Vector dim, int nbMove, int marge)
+{
+  longueur = dim.x;
+  largeur = dim.y;
+  
+  int SX[nbMove];
+  int SY[nbMove];
+  int trynumber = 0;
+
+  if(seed == -1)
+    seed = time(NULL);
+  srand(seed);
+  
+  bool truedraw = true;
+
+  while(truedraw)
+  {
+    trynumber++;
+    int compt = 15;
+
+    //init
+    InitTab(Vector(longueur,largeur));
+    
+    int i = nbMove-1;
+    //start point
+    int tx = rand()%(longueur/2);
+    int ty = rand()%(largeur/2);
+    //last
+    int lastdir = 10;
+    float lastdist = 0;
+    int lastI = 9;
+    SX[i] = tx;
+    SY[i] = ty;
+    i--;
+    while(i >= 0)
+    {
+      if(i == lastI)
+	compt--;
+      if(compt == 0)
+	break;
+      lastI = i;
+      int direction = rand()%8;
+      int dist_ = rand()%10;
+      int px = SX[i+1];
+      int py = SY[i+1];
+      
+      if((9-direction) == lastdir)
+	  continue;
+      switch(direction)
+      {
+      case 1:
+	px -= dist_;
+	py += dist_;
+	break;
+      case 2:
+	py += dist_;
+	break;
+      case 3:
+	px += dist_;
+	py += dist_;
+	break;
+      case 4:
+	px -= dist_;
+	break;
+      case 5:
+	px += dist_;
+	break;
+      case 6:
+	px -= dist_;
+	py -= dist_;
+	break;
+      case 7:
+	py -= dist_;
+	break;
+      case 8:
+	px += dist_;
+	py -= dist_;
+	break;
+      default:
+	continue;
+      }
+      if(px > marge && px < longueur-marge && py > marge
+	 && py < largeur-marge && nodes[px][py].getPorter() == 0
+	 && dist(px-tx,py-ty) > lastdist)
+      {
+	nodes[SX[i+1]][SY[i+1]].setPorter(dist_);
+	nodes[SX[i+1]][SY[i+1]].setType(Node::herbe);
+	SX[i] = px;
+	SY[i] = py;
+	i--;
+	lastdist = dist(px-tx,py-ty);
+	lastdir = direction;
+	if(i == -1)
+	  truedraw = false;
+      }
+    }
+  }
+  Tpos = Vector(SX[0],SY[0]);
+  Spos = Vector(SX[nbMove-1],SY[nbMove-1]);;
+  SetEndandStart();
+  int i = 0;
+
+  nodes[SX[0]-1][SY[0]-1].setPorter(1);
+  nodes[SX[0]][SY[0]-1].setPorter(1);
+  nodes[SX[0]+1][SY[0]-1].setPorter(1);
+  nodes[SX[0]-1][SY[0]].setPorter(1);
+  nodes[SX[0]+1][SY[0]].setPorter(1);
+  nodes[SX[0]-1][SY[0]+1].setPorter(1);
+  nodes[SX[0]][SY[0]+1].setPorter(1);
+  nodes[SX[0]+1][SY[0]+1].setPorter(1);
+
+  nodes[SX[0]-1][SY[0]-1].setType(Node::sable);
+  nodes[SX[0]][SY[0]-1].setType(Node::sable);
+  nodes[SX[0]+1][SY[0]-1].setType(Node::sable);
+  nodes[SX[0]-1][SY[0]].setType(Node::sable);
+  nodes[SX[0]+1][SY[0]].setType(Node::sable);
+  nodes[SX[0]-1][SY[0]+1].setType(Node::sable);
+  nodes[SX[0]][SY[0]+1].setType(Node::sable);
+  nodes[SX[0]+1][SY[0]+1].setType(Node::sable);
+  
+  Vector ext = findextrem(Vector(SX[0],SY[0]),SX,SY,nbMove);
+  
+  for(int x = 0; x < longueur;x++)
+  {
+    for(int y = 0; y < largeur;y++)
+    {
+      if(inRadius(SX,SY,nbMove,Vector(x,y)))
+      {
+	if(nodes[x][y].getPorter() == 0)
+	{
+	  nodes[x][y].setPorter(GetPortee(Vector(SX[0],SY[0]),Vector(x,y),Vector(SX[0],SY[0]),ext));
+	  nodes[x][y].setType(Node::herbe);
+	}
+      }
+      else
+	nodes[x][y].setType(Node::eau);
+    }
+  }
 }
 int Terrain::getLon(){ return longueur;}
 int Terrain::getLar(){ return largeur;}
@@ -133,4 +261,88 @@ Node* Terrain::getNode(const Vector &v)
   {
     return NULL;
   }
+}
+//Generator
+bool Terrain::inRadius(int *SX,int *SY, int nbMove,Vector pos)
+{
+  for(int i = 1; i < nbMove-1;i++)
+  {
+    int max;
+    if(SX[i] == SX[i+1])
+      max = abs(SY[i] - SY[i+1]);
+    else
+      max = abs(SX[i] - SX[i+1]);
+    if(dist(pos.x-SX[i],pos.y-SY[i]) < max)
+    {
+      return true;
+    }
+  }
+  if(dist(pos.x-SX[nbMove-1],pos.y-SY[nbMove-1]) < 9
+     || dist(pos.x-SX[0],pos.y-SY[0]) < 9)
+  {
+    return true;
+  }
+  return false;
+}
+float Terrain::dist(float a, float b)
+{
+  return sqrt(a*a+b*b);
+}
+Vector Terrain::findextrem(Vector pos, int *SX, int *SY, int nbMove)
+{
+  Vector v;
+  float maxdist = 0;
+  for(int x = 0; x < longueur;x++)
+  {
+    for(int y = 0;y < largeur;y++)
+    {
+      float d = dist(x-pos.x,y-pos.y);
+      if(d > maxdist && inRadius(SX,SY,nbMove,Vector(x,y)))
+      {
+	maxdist = d;
+	v.x = x;
+	v.y = y;
+      }
+    }
+  }
+  return v;
+}
+int Terrain::GetPortee(Vector end,Vector pos,Vector epos,Vector extrem)
+{
+  float dist_ = dist(epos.x-pos.x,epos.y-pos.y);
+  
+  float space = dist(end.x-extrem.x,end.y-extrem.y)+1;
+  
+  int portee = (2+(int)((dist_*8)/space)%8) + ((rand()%5)-2)%2;
+  if(portee > 9)
+    return 9;
+  else if(portee < 1)
+    return 1;
+  else
+    return portee;
+}
+void Terrain::InitTab(Vector dim)
+{
+  for(int x = 0; x < dim.x;x++)
+  {
+    for(int y = 0; y < dim.y;y++)
+    {
+      nodes[x][y].setPorter(0);
+    }
+  }
+}
+void Terrain::SetEndandStart()
+{
+  nodes[Spos.x-1][Spos.y-1].setType(Node::start);
+  nodes[Spos.x-1][Spos.y].setType(Node::start);
+  nodes[Spos.x-1][Spos.y+1].setType(Node::start);
+  nodes[Spos.x][Spos.y-1].setType(Node::start);
+  nodes[Spos.x][Spos.y].setType(Node::start);
+  nodes[Spos.x][Spos.y+1].setType(Node::start);
+  nodes[Spos.x+1][Spos.y-1].setType(Node::start);
+  nodes[Spos.x+1][Spos.y].setType(Node::start);
+  nodes[Spos.x+1][Spos.y+1].setType(Node::start);
+
+  nodes[Tpos.x][Tpos.y].setType(Node::end);
+  nodes[Tpos.x][Tpos.y].setPorter(1);
 }

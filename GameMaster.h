@@ -13,6 +13,7 @@ class GameMaster
  public:
   GameMaster();
   void GenerateTerrain(std::string&);
+  void GenerateTerrain(Vector,int,int,int);
   void AddPlayer(PlayerController::TypeJ t);
   void PrintMap();
   void Start();
