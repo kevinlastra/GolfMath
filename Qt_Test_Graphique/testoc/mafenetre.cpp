@@ -1,9 +1,7 @@
 #include "mafenetre.h"
 
-MaFenetre::MaFenetre(int la, int lo) : QWidget()
+MaFenetre::MaFenetre() : QWidget()
 {
-    setFixedSize(la, lo);
-
     m_boutonDialogue = new QPushButton("Ouvrir boite de dialogue", this);
     m_boutonDialogue->move(180, 110);
 
