@@ -14,7 +14,7 @@ class MaFenetre : public QWidget
     Q_OBJECT
 
 public:
-    MaFenetre(int, int);
+    MaFenetre();
 
 public slots:
     void ouvrirDialogue();
