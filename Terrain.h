@@ -13,6 +13,7 @@ class Terrain
   int largeur;//y
   Vector Spos;//start position
   Vector Tpos;//target position
+  int seed;
  public:
   Terrain(Node**,int,int,const Vector&);
   Terrain(const Terrain&);
@@ -23,6 +24,7 @@ class Terrain
 
   int getLon();
   int getLar();
+  int getseed();
   Vector& getStartPos();
   Vector& getTargetPos();
   

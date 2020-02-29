@@ -50,7 +50,7 @@ Terrain::Terrain(std::string &s)
     int x = 0;
     int y = 0;
     getline(f,l);
-    //
+    //---target and spawn
     x = l.find_first_of("_",0);
     Spos.x = atoi(l.substr(0,x).c_str());
     y = l.find_first_of("_",x+1);
@@ -106,15 +106,16 @@ Terrain::Terrain(std::string &s)
 
   SetEndandStart();
 }
-Terrain::Terrain(int seed, Vector dim, int nbMove, int marge)
+Terrain::Terrain(int seed_, Vector dim, int nbMove, int marge)
 {
   longueur = dim.x;
   largeur = dim.y;
-  
+
+  int bone[] = {8,8,7,6,5,4,3,2,2};
   int SX[nbMove];
   int SY[nbMove];
   int trynumber = 0;
-
+  seed = seed_;
   if(seed == -1)
     seed = time(NULL);
   srand(seed);
@@ -148,7 +149,7 @@ Terrain::Terrain(int seed, Vector dim, int nbMove, int marge)
 	break;
       lastI = i;
       int direction = rand()%8;
-      int dist_ = rand()%10;
+      int dist_ = bone[8-i]+(rand()%3)-1;
       int px = SX[i+1];
       int py = SY[i+1];
       
@@ -204,27 +205,7 @@ Terrain::Terrain(int seed, Vector dim, int nbMove, int marge)
     }
   }
   Tpos = Vector(SX[0],SY[0]);
-  Spos = Vector(SX[nbMove-1],SY[nbMove-1]);;
-  SetEndandStart();
-  int i = 0;
-
-  nodes[SX[0]-1][SY[0]-1].setPorter(1);
-  nodes[SX[0]][SY[0]-1].setPorter(1);
-  nodes[SX[0]+1][SY[0]-1].setPorter(1);
-  nodes[SX[0]-1][SY[0]].setPorter(1);
-  nodes[SX[0]+1][SY[0]].setPorter(1);
-  nodes[SX[0]-1][SY[0]+1].setPorter(1);
-  nodes[SX[0]][SY[0]+1].setPorter(1);
-  nodes[SX[0]+1][SY[0]+1].setPorter(1);
-
-  nodes[SX[0]-1][SY[0]-1].setType(Node::sable);
-  nodes[SX[0]][SY[0]-1].setType(Node::sable);
-  nodes[SX[0]+1][SY[0]-1].setType(Node::sable);
-  nodes[SX[0]-1][SY[0]].setType(Node::sable);
-  nodes[SX[0]+1][SY[0]].setType(Node::sable);
-  nodes[SX[0]-1][SY[0]+1].setType(Node::sable);
-  nodes[SX[0]][SY[0]+1].setType(Node::sable);
-  nodes[SX[0]+1][SY[0]+1].setType(Node::sable);
+  Spos = Vector(SX[nbMove-1],SY[nbMove-1]);
   
   Vector ext = findextrem(Vector(SX[0],SY[0]),SX,SY,nbMove);
   
@@ -244,9 +225,11 @@ Terrain::Terrain(int seed, Vector dim, int nbMove, int marge)
 	nodes[x][y].setType(Node::eau);
     }
   }
+  SetEndandStart();
 }
 int Terrain::getLon(){ return longueur;}
 int Terrain::getLar(){ return largeur;}
+int Terrain::getseed(){ return seed;}
 Vector& Terrain::getStartPos(){ return Spos;}
 Vector& Terrain::getTargetPos(){ return Tpos;}
 void Terrain::setLon(int l){ longueur = l;}
@@ -345,4 +328,22 @@ void Terrain::SetEndandStart()
 
   nodes[Tpos.x][Tpos.y].setType(Node::end);
   nodes[Tpos.x][Tpos.y].setPorter(1);
+
+  nodes[Tpos.x-1][Tpos.y-1].setPorter(1);
+  nodes[Tpos.x][Tpos.y-1].setPorter(1);
+  nodes[Tpos.x+1][Tpos.y-1].setPorter(1);
+  nodes[Tpos.x-1][Tpos.y].setPorter(1);
+  nodes[Tpos.x+1][Tpos.y].setPorter(1);
+  nodes[Tpos.x-1][Tpos.y+1].setPorter(1);
+  nodes[Tpos.x][Tpos.y+1].setPorter(1);
+  nodes[Tpos.x+1][Tpos.y+1].setPorter(1);
+
+  nodes[Tpos.x-1][Tpos.y-1].setType(Node::sable);
+  nodes[Tpos.x][Tpos.y-1].setType(Node::sable);
+  nodes[Tpos.x+1][Tpos.y-1].setType(Node::sable);
+  nodes[Tpos.x-1][Tpos.y].setType(Node::sable);
+  nodes[Tpos.x+1][Tpos.y].setType(Node::sable);
+  nodes[Tpos.x-1][Tpos.y+1].setType(Node::sable);
+  nodes[Tpos.x][Tpos.y+1].setType(Node::sable);
+  nodes[Tpos.x+1][Tpos.y+1].setType(Node::sable);
 }
