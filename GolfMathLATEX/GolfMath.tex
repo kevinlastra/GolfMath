@@ -1,0 +1,138 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{multicol}
+\renewcommand{\contentsname}{{\Huge Table de Matières}}
+\usepackage{titlesec}
+\titleformat{\section}{\huge\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\LARGE\bfseries}{\thesubsection}{1em}{}
+\begin{document}
+%first page
+\begin{center}
+\pagenumbering{gobble}
+\linespread{2.0}\selectfont
+
+{\Huge U}{\huge NIVERSITÉ DE }{\Huge M}{\huge ONTPELLIER}\\
+{\huge L2}{\LARGE ~INFORMATIQUE }
+\\~\\~\\~\\~\\
+{\Large\textbf{GOLF MATHÉMATIQUE}}
+\\~\\~\\~\\~\\
+
+\linespread{1}\selectfont
+
+RAPPORT DE PROJET T.E.R\\
+PROJET INFORMATIQUE HLIN405\\
+\vfill
+\end{center}
+\begin{multicols}{2}
+\begin{flushleft}
+\textbf{Etudiants:}\\
+~~M. Mike Germain\\
+~~M. Benjamin Baska\\
+~~M. Kevin Lastra
+\end{flushleft}
+\columnbreak
+\begin{flushright}
+\textbf{Encadrante:}\\
+~~Mm. Annie Chateau
+\end{flushright}
+\end{multicols}
+\newpage
+%bilan
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\tableofcontents
+\newpage
+%introduction
+{\textbf{\Huge Introduction}}\\~\\~\\
+~~Sous la direction de Mm. Annie Chateau, notre groupe composé par Mike Germain, Benjamin Baska et Kevin Lastra à travaillé dans le développement du jeux "Golf Mathématique" comme projet du module HLIN405.
+
+\newpage
+%cahier de charges
+\section{Organisation du projet}
+\subsection{Objectifs et cahier de charges}
+~\\~\\
+wtf
+\\~\\
+\textbf{\large Base et Règles}
+\\~\\
+aucune idée 
+\\~\\
+\textbf{\large Interface Graphique}
+\\~\\
+pire
+\\~\\
+\textbf{\large Génération automatique de la carte}
+\\~\\
+x2
+\\~\\
+\textbf{\large Intelligence Artificielle}
+\\~\\
+au secours
+\\~\\
+\newpage
+\subsection{Division du travaille}
+\newpage
+\subsection{Outils de travaille}
+\textbf{\large Langage de programmation}\\
+Le langage qu'on à choisi pour le développement du jeux, est le C++ pour 2 raisons principales:
+
+\begin{enumerate}
+\item Ce langage est un langage de "programmation orienté aux objets" (POO).
+\item Grace aux modules de HLIN202 et HLIN302 on a une base de connaissance avec la quelle on peut travailler de manière très confortable.
+\end{enumerate}
+\textbf{\large Software de programmation graphique}\\
+insérer les raison pour les quel on a décider d'utiliser QT XD\\~\\
+\textbf{\large Travaille collaboratif}\\
+Nous avons utiliser multiple programme:
+\begin{enumerate}
+\item GitHub. Ce logiciel nous permet partages les avance du travaille réaliser par chaque-un depuis diffèrent ordinateur et aussi sauvegarde des version(???).
+\item Discord. Ce logiciel nous permet le partage d'écran, communication orale et écrit, les quelles sont très utile pour le développement du jeux.
+\end{enumerate}
+\textbf{\large Éditeur de text}\\
+La production du projet est grâce a multiple éditeur de text, différence par:
+\begin{enumerate}
+\item Éditeur de code -
+Emacs, sublime et QTCreator.
+\item Éditeur \LaTeX{} - TexMaker
+\end{enumerate} 
+\newpage
+\section{Conception}
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [block] (OP) {Out Put};
+    \node [block, below of=OP] (GM) {Game Master};
+    \node [block, right of=GM, yshift=0cm, xshift=2cm] (Ter) {Terrain};
+    \node [block, right of=Ter, yshift=0cm, xshift=2cm] (init) {Node};
+    \node [block, below of=GM] (PC) {Player Controller};
+    \node [block, below of=init] (IA) {Intelligence Artificial};
+    \node [cloud, right of=PC, yshift=-0.5cm, xshift=1cm] (A) {if IA};
+    % Draw edges
+    \path [line] (init) -- (Ter);
+    \path [line] (Ter) -- (GM);
+    \path [line] (GM) -- (OP);
+    \path [line] (PC) -- (GM);
+    \path [line,dashed] (PC) -- (A);
+    \draw [line,dashed] (A) -- (IA);
+    \draw [line,dashed] (IA) -- node[above]{send request}(PC);
+    \draw [line,dashed] (A) -- node[near start]{else} ++ (-2,0) --++(0,4) -- (OP);
+    \draw [line,dashed] (OP) --++ (2.5,-1.2) --++ (0,-1.8) --++ (1,-0.5);
+\end{tikzpicture}
+
+
+\newpage
+\section{Bibliographie}
+\section{Annexes}
+\end{document}
