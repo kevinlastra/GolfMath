@@ -99,8 +99,8 @@ Emacs, sublime et QTCreator.
 \end{enumerate} 
 \newpage
 \section{Conception}
-
-
+De la premier réunion, utilisant l'image proportionnée dans le sujet du projet, on à travaillé dans une architecture, pour le quel ce jeux s'adapterait mieux.
+La premier chose qu'on à définit est la structure du terrain de jeux, Terrain de NxM Node, après le Terrain générait on a structuré une classe qui manipulerait tout les entre sortie ("GameMaster") et finalement les joueur avec une classe "PlayerController".
 % Define block styles
 \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -120,7 +120,7 @@ Emacs, sublime et QTCreator.
     \node [block, below of=init] (IA) {Intelligence Artificial};
     \node [cloud, right of=PC, yshift=-0.5cm, xshift=1cm] (A) {if IA};
     % Draw edges
-    \path [line] (init) -- (Ter);
+    \path [line] (init) -- node[near start]{1} node[near end]{[*..,*.]}(Ter);
     \path [line] (Ter) -- (GM);
     \path [line] (GM) -- (OP);
     \path [line] (PC) -- (GM);
