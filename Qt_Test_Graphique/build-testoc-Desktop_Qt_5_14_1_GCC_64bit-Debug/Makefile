@@ -774,14 +774,21 @@ moc_mafenetre.cpp: ../testoc/mafenetre.h \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QPushButton \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qpushbutton.h \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QLCDNumber \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qlcdnumber.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QMessageBox \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qdialog.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QInputDialog \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qinputdialog.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qlineedit.h \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QSlider \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qslider.h \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qabstractslider.h \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QProgressBar \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qprogressbar.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qtextcursor.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qtextformat.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qpen.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qtextoption.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QFileDialog \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qfiledialog.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtCore/qdir.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtCore/qfileinfo.h \
 		moc_predefs.h \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/bin/moc
 	/home/benjamin/Qt5.14.1/5.14.1/gcc_64/bin/moc $(DEFINES) --include /home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/build-testoc-Desktop_Qt_5_14_1_GCC_64bit-Debug/moc_predefs.h -I/home/benjamin/Qt5.14.1/5.14.1/gcc_64/mkspecs/linux-g++ -I/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/testoc -I/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include -I/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets -I/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui -I/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../testoc/mafenetre.h -o moc_mafenetre.cpp
@@ -921,14 +928,21 @@ mafenetre.o: ../testoc/mafenetre.cpp ../testoc/mafenetre.h \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QPushButton \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qpushbutton.h \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QLCDNumber \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qlcdnumber.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QMessageBox \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qdialog.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QInputDialog \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qinputdialog.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qlineedit.h \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QSlider \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qslider.h \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qabstractslider.h \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QProgressBar \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qprogressbar.h
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qtextcursor.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qtextformat.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qpen.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qtextoption.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QFileDialog \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qfiledialog.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtCore/qdir.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtCore/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mafenetre.o ../testoc/mafenetre.cpp
 
 main.o: ../testoc/main.cpp /home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QApplication \
@@ -1046,19 +1060,35 @@ main.o: ../testoc/main.cpp /home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidge
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qpushbutton.h \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qabstractbutton.h \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qicon.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QBoxLayout \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qboxlayout.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qlayout.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qgridlayout.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QLabel \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qlabel.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qframe.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/QImage \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/QPixmap \
 		../testoc/mafenetre.h \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QWidget \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QLCDNumber \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qlcdnumber.h \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QSlider \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qslider.h \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qabstractslider.h \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QProgressBar \
-		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qprogressbar.h
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QMessageBox \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qdialog.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QInputDialog \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qinputdialog.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qlineedit.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qtextcursor.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qtextformat.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qpen.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtGui/qtextoption.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/QFileDialog \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtWidgets/qfiledialog.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtCore/qdir.h \
+		/home/benjamin/Qt5.14.1/5.14.1/gcc_64/include/QtCore/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../testoc/main.cpp
 
 moc_mafenetre.o: moc_mafenetre.cpp 

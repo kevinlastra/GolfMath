@@ -13,46 +13,51 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    QMainWindow fenetre;
-        QPushButton *button = new QPushButton("Play", &fenetre);
-        button->move(25, 20);
+    QWidget fenetre;
+        QVBoxLayout *fenPrinc = new QVBoxLayout;
+        QPushButton *jouer = new QPushButton("Jouer");
+        QPushButton *quitter = new QPushButton("Quitter");
+        fenPrinc->addWidget(jouer);
+        fenPrinc->addWidget(quitter);
 
     QDialog secondeFenetre(&fenetre);
+        secondeFenetre.setModal(true);
         QGridLayout *lay = new QGridLayout;
         lay->setSpacing(0);
-        for (int i = 0; i <= 10; i++){
-            for (int j = 0; j <= 30; j++){
-                if (i == 0 or j == 0 or i == 10 or j == 30){
+        for (int i = 0; i <= 35; i++){
+            for (int j = 0; j <= 64; j++){
+                if ((i >= 12 && i <= 14) && (j >= 10 && j <= 12)){
                     QLabel *image = new QLabel();
-                    image->setPixmap(QPixmap("/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/testoc/water.bmp"));
+                    image->setPixmap(QPixmap("/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/testoc/v2/start_1.jpg"));
                     lay->addWidget(image, i, j);
                 }
-                else if ((i >= 4 && i <= 6) && (j >= 4 && j <= 6)){
+                else if (i == 28 && j == 50){
                     QLabel *image = new QLabel();
-                    image->setPixmap(QPixmap("/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/testoc/start_1.jpg"));
+                    image->setPixmap(QPixmap("/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/testoc/v2/hole.jpg"));
                     lay->addWidget(image, i, j);
                 }
-                else if (i == 5 && j == 25){
+                else if (((i >= 5 && i <= 20) && (j >= 5 && j <= 60)) ||
+                         (((i >= 5) && (i <= 30)) && ((j >= 40) && (j <= 60)))){
                     QLabel *image = new QLabel();
-                    image->setPixmap(QPixmap("/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/testoc/hole.bmp"));
-                    lay->addWidget(image, i, j);
-                }
-                else if ((i == 1 && j >= 10 && j <= 20) || (i == 2 && j >= 12 && j <= 18) || (i == 3 && j >= 14 && j <= 16) ||
-                         (i == 9 && j >= 10 && j <= 20) || (i == 8 && j >= 12 && j <= 18) || (i == 7 && j >= 14 && j <= 16)){
-                    QLabel *image = new QLabel();
-                    image->setPixmap(QPixmap("/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/testoc/sand_pressed_1.jpg"));
+                    image->setPixmap(QPixmap("/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/testoc/v2/green_1.jpg"));
                     lay->addWidget(image, i, j);
                 }
                 else {
                     QLabel *image = new QLabel();
-                    image->setPixmap(QPixmap("/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/testoc/green_pressed_1.jpg"));
+                    image->setPixmap(QPixmap("/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/testoc/v2/water.jpg"));
                     lay->addWidget(image, i, j);
                 }
             }
         }
+        QLabel *player1 = new QLabel();
+        player1->setPixmap(QPixmap("/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/testoc/v2/j1.png"));
+        lay->addWidget(player1, 13, 11);
         secondeFenetre.setLayout(lay);
 
-    QWidget::connect(button, SIGNAL(clicked()), &secondeFenetre, SLOT(exec()));
+    fenetre.setLayout(fenPrinc);
+
+    QWidget::connect(jouer, SIGNAL(clicked()), &secondeFenetre, SLOT(exec()));
+    QWidget::connect(quitter, SIGNAL(clicked()), qApp, SLOT(quit()));
     fenetre.show();
 
     return app.exec();
