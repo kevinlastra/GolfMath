@@ -10,6 +10,7 @@
 #include <QLineEdit>
 #include <QObject>
 #include <QMessageBox>
+#include <QSpinBox>
 
 #include "jeu.h"
 
@@ -19,14 +20,14 @@ class nbJ_et_map : public QWidget
 
 public:
     nbJ_et_map();
+    QSpinBox *nbJoueur;
+    QSpinBox *map;
 
 private slots:
     void lancer();
 
 private:
     QFormLayout *option;
-    QLineEdit *nbJoueur;
-    QLineEdit *map;
     QPushButton *lancerJeu;
 };
 

@@ -4,20 +4,45 @@
 #include <QApplication>
 #include <QWidget>
 #include <QLabel>
+#include <QLayout>
 #include <QBoxLayout>
 #include <QDialog>
 #include <QObject>
+#include <QEvent>
+#include <QKeyEvent>
+
+#include "Node.h"
+#include "Erreur.h"
+#include "Vector.h"
+#include "PlayerController.h"
+#include "Terrain.h"
+#include "nbj_et_map.h"
 
 class Jeu : public QWidget
 {
     Q_OBJECT
 
 public:
-    Jeu();
+    QKeyEvent *event;
+
+    Jeu(int, int);
+
+    void PrintMap(int player);
+    void GenerateTerrain(std::string&);
+    void GenerateTerrain(Vector, int, int, int);
+
+    void AddPlayer(PlayerController::TypeJ t);
+    void Interactuer(int);
+    bool playerAtPos(Vector&);
+
+protected:
+    void keyPressEvent(QKeyEvent *event);
 
 private:
-    QVBoxLayout *layImage;
-    QLabel *image;
+    QGridLayout *grilleDeJeu;
+
+    Terrain *T;
+    PlayerController Players[5];
 };
 
 #endif // JEU_H
