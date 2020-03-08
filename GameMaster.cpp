@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "Erreur.h"
 #include "NoeudA.h"
+//#include "NoeudA2.h"
 
 GameMaster::GameMaster(){}
 void GameMaster::GenerateTerrain(std::string &s)

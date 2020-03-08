@@ -230,6 +230,7 @@ Terrain::Terrain(int seed_, Vector dim, int nbMove, int marge)
     }
   }
   SetEndandStart();
+  std::cout<<"generation correcte"<<std::endl;
 }
 int Terrain::getLon(){ return longueur;}
 int Terrain::getLar(){ return largeur;}

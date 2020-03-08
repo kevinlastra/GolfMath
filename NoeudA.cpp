@@ -7,17 +7,25 @@
 using namespace std;
 
 NoeudA::NoeudA(Node* n, int c, int h, NoeudA* p){
-	node= *n;
-	cout=c;
-	heuristique=h;
-	pere=p;
+	node = n;
+	cout = c;
+	heuristique = h;
+	pere = p;
 }	
 
 NoeudA::NoeudA(){
-	node = Node();
+	Node* n;
+	node = n;
 	cout=0;
 	heuristique=0;
 	pere=NULL;
+}
+
+void NoeudA::operator=(NoeudA n){
+	node = n.node;
+	cout = n.cout;
+	heuristique = n.heuristique;
+	pere = n.pere;
 }
 
 struct Compare { 
@@ -31,7 +39,7 @@ bool appartientOpen(NoeudA noeud, priority_queue<NoeudA, vector<NoeudA>,Compare>
 	bool b=false;
 	while (!list.empty() && !b){
 		NoeudA u=list.top();
-		if(noeud.node.getPos() == u.node.getPos() && noeud.cout > u.cout){
+		if(noeud.node->getPos() == u.node->getPos() && noeud.cout > u.cout){
 			b=true;
 		}
 		list.pop();
@@ -43,7 +51,7 @@ bool appartienClosed(NoeudA noeud, queue<NoeudA> list){
 	bool b=false;
 	while (!list.empty() && !b){
 		NoeudA u=list.front();
-		if(noeud.node.getPos() == u.node.getPos()){
+		if(noeud.node->getPos() == u.node->getPos()){
 			b=true;
 		}
 		list.pop();
@@ -66,9 +74,10 @@ NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
 		cout<<"oui"<<endl;
 		NoeudA u = openList.top();
 		openList.pop();
-		if (u.node.getPos() == objectif.node.getPos()){
-			cout<<"("<<u.node.getPos().x<<" "<<u.node.getPos().y<<")"<<endl;
-			cout<<"("<<objectif.node.getPos().x<<" "<<objectif.node.getPos().y<<")"<<endl;
+		if (u.node->getPos() == objectif.node->getPos()){
+			/*cout<<u.pere<<endl;
+			cout<<u.pere->pere<<endl;
+			cout<<&u<<endl;*/
 			cout<<"ouiIF"<<endl;
 			last = u;
 			stop = true;
@@ -77,96 +86,150 @@ NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
 		for (int i=1;i<=9;i++)
 		{
 			NoeudA v = NoeudA();
-			int porter = T->getNode(Vector(u.node.getPos().x,u.node.getPos().y))->getPorter();
+			int porter = T->getNode(Vector(u.node->getPos().x,u.node->getPos().y))->getPorter();
 			cout<<"ouiFor"<<endl;
+			cout<<"("<<u.node->getPos().x<<" "<<u.node->getPos().y<<")"<<endl;
 			switch(i)
 		  {
 		  case 8:
-		  	v = NoeudA(T->getNode(Vector(u.node.getPos().x,u.node.getPos().y-porter)),u.cout+1,v.cout + v.node.getPos().distance(oPos),&u);
-		    if(T->getNode(Vector(u.node.getPos().x,u.node.getPos().y-porter)) != NULL && T->getNode(Vector(u.node.getPos().x,u.node.getPos().y-porter))->getType() != Node::eau  
+		    if(T->getNode(Vector(u.node->getPos().x,u.node->getPos().y-porter)) != NULL){
+		      NoeudA z = u;
+		      v.node = T->getNode(Vector(u.node->getPos().x,u.node->getPos().y-porter));
+		  	  v.cout = u.cout+1;
+		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
+		  	  v.pere = &z;}
+		    if (T->getNode(Vector(u.node->getPos().x,u.node->getPos().y-porter)) != NULL && T->getNode(Vector(u.node->getPos().x,u.node->getPos().y-porter))->getType() != Node::eau  
 		    	&& !appartienClosed(v,closedList) && !appartientOpen(v,openList))
-		    {	
+		    {
+		      cout<<"case8"<<endl;	
 		      openList.push(v);
 		    }
 		    break;
 		  case 2:
-		 	v = NoeudA(T->getNode(Vector(u.node.getPos().x,u.node.getPos().y+porter)),u.cout+1,v.cout + v.node.getPos().distance(oPos),&u);
-		    if(T->getNode(Vector(u.node.getPos().x,u.node.getPos().y+porter)) != NULL && T->getNode(Vector(u.node.getPos().x,u.node.getPos().y+porter))->getType() != Node::eau  
+		    if(T->getNode(Vector(u.node->getPos().x,u.node->getPos().y+porter)) != NULL){
+		      NoeudA z = u;
+		      v.node = T->getNode(Vector(u.node->getPos().x,u.node->getPos().y+porter));
+		  	  v.cout = u.cout+1;
+		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
+		  	  v.pere = &z;}
+		    if(T->getNode(Vector(u.node->getPos().x,u.node->getPos().y+porter)) != NULL && T->getNode(Vector(u.node->getPos().x,u.node->getPos().y+porter))->getType() != Node::eau  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		    {
+		      cout<<"case2"<<endl;	
 		      openList.push(v);
 		    }
 		    break;
 		  case 6:
-		  	v = NoeudA(T->getNode(Vector(u.node.getPos().x+porter,u.node.getPos().y)),u.cout+1,v.cout + v.node.getPos().distance(oPos),&u);
-		    if(T->getNode(Vector(u.node.getPos().x+porter,u.node.getPos().y)) != NULL && T->getNode(Vector(u.node.getPos().x+porter,u.node.getPos().y))->getType() != Node::eau  
+		    if(T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y)) != NULL){
+		      NoeudA z = u;
+		  	  v.node = T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y));
+		  	  v.cout = u.cout+1;
+		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
+		  	  v.pere = &z;}
+		    if(T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y)) != NULL && T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y))->getType() != Node::eau  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		    {
+		      cout<<"case6"<<endl;	
 		      openList.push(v);
 		    }
 		    break;
 		  case 4:
-		  	v = NoeudA(T->getNode(Vector(u.node.getPos().x-porter,u.node.getPos().y)),u.cout+1,v.cout + v.node.getPos().distance(oPos),&u);
-		    if(T->getNode(Vector(u.node.getPos().x-porter,u.node.getPos().y)) != NULL && T->getNode(Vector(u.node.getPos().x-porter,u.node.getPos().y))->getType() != Node::eau  
+		    if(T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y)) != NULL){
+		      NoeudA z = u;
+		  	  v.node = T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y));
+		  	  v.cout = u.cout+1;
+		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
+		  	  v.pere = &z;}
+		    if(T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y)) != NULL && T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y))->getType() != Node::eau  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		    {
+		      cout<<"case4"<<endl;	
 		      openList.push(v);
 		    }
 		    break;
 		  case 7:
-		  	v = NoeudA(T->getNode(Vector(u.node.getPos().x-porter,u.node.getPos().y-porter)),u.cout+1,v.cout + v.node.getPos().distance(oPos),&u);
-		    if(T->getNode(Vector(u.node.getPos().x-porter,u.node.getPos().y-porter)) != NULL && T->getNode(Vector(u.node.getPos().x-porter,u.node.getPos().y-porter))->getType() != Node::eau  
+		    if(T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y-porter)) != NULL){
+		      NoeudA z = u;
+		  	  v.node = T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y-porter));
+		  	  v.cout = u.cout+1;
+		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
+		  	  v.pere = &z;}
+		    if(T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y-porter)) != NULL && T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y-porter))->getType() != Node::eau  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		    {
+		      cout<<"case7"<<endl;	
 		      openList.push(v);
 		    }
 		    break;
 		  case 9:
-		  	v = NoeudA(T->getNode(Vector(u.node.getPos().x+porter,u.node.getPos().y-porter)),u.cout+1,v.cout + v.node.getPos().distance(oPos),&u);
-		    if(T->getNode(Vector(u.node.getPos().x+porter,u.node.getPos().y-porter)) != NULL && T->getNode(Vector(u.node.getPos().x+porter,u.node.getPos().y-porter))->getType() != Node::eau  
+		    if(T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y-porter)) != NULL){
+		      NoeudA z = u;
+		  	  v.node = T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y-porter));
+		  	  v.cout = u.cout+1;
+		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
+		  	  v.pere = &z;}
+		    if(T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y-porter)) != NULL && T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y-porter))->getType() != Node::eau  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		    {
+		      cout<<"case9"<<endl;	
 		      openList.push(v);
 		    }
 		    break;
 		  case 1:
-		  	v = NoeudA(T->getNode(Vector(u.node.getPos().x-porter,u.node.getPos().y+porter)),u.cout+1,v.cout + v.node.getPos().distance(oPos),&u);
-		    if(T->getNode(Vector(u.node.getPos().x-porter,u.node.getPos().y+porter)) != NULL && T->getNode(Vector(u.node.getPos().x-porter,u.node.getPos().y+porter))->getType() != Node::eau  
+		    if(T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y+porter)) != NULL){
+		      NoeudA z = u;
+		  	  v.node = T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y+porter));
+		  	  v.cout = u.cout+1;
+		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
+		  	  v.pere = &z;}
+		    if(T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y+porter)) != NULL && T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y+porter))->getType() != Node::eau  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		    {
+		      cout<<"case1"<<endl;	
 		      openList.push(v);
 		    }
 		    break;
 		    case 3:
-		  	v = NoeudA(T->getNode(Vector(u.node.getPos().x+porter,u.node.getPos().y+porter)),u.cout+1,v.cout + v.node.getPos().distance(oPos),&u);
-		      if(T->getNode(Vector(u.node.getPos().x+porter,u.node.getPos().y+porter)) != NULL && T->getNode(Vector(u.node.getPos().x+porter,u.node.getPos().y+porter))->getType() != Node::eau  
+		    if(T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y+porter)) != NULL){
+		      NoeudA z = u;
+		  	  v.node = T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y+porter));
+		  	  v.cout = u.cout+1;
+		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
+		  	  v.pere = &z;}
+		      if(T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y+porter)) != NULL && T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y+porter))->getType() != Node::eau  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		      {
+		      cout<<"case3"<<endl;	
 		      openList.push(v);
 		      }      
 		      break;
-		  }
-		  closedList.push(u);
+		  }		  
 		}
-		
+		closedList.push(u);
 	}
 	return last;
 }
 
 void remonter(NoeudA n){
-	while (n.pere->pere != NULL){
-		cout<<"("<<n.node.getPos().x<<","<<n.node.getPos().y<<")"<<endl;
+	while (n.pere != NULL){
+		cout<<"("<<n.node->getPos().x<<","<<n.node->getPos().y<<")"<<endl;
+		cout<<"node"<<endl;
 		n.node=n.pere->node;
+		cout<<"cout"<<endl;
 		n.cout=n.pere->cout;
+		cout<<"heuristique"<<endl;
 		n.heuristique=n.pere->heuristique;
+		cout<<"pere"<<endl;
 		n.pere=n.pere->pere;
+		cout<<"finwhile"<<endl;
 	}
-	cout<<"("<<n.node.getPos().x<<","<<n.node.getPos().y<<")"<<endl;
+	cout<<"("<<n.node->getPos().x<<","<<n.node->getPos().y<<")"<<endl;
+	//cout<<"("<<n.pere->node->getPos().x<<","<<n.pere->node->getPos().y<<")"<<endl;
 }
