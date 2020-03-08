@@ -192,8 +192,10 @@ Terrain::Terrain(int seed_, Vector dim, int nbMove, int marge)
 	 && py < largeur-marge && nodes[px][py].getPorter() == 0
 	 && dist(px-tx,py-ty) > lastdist)
       {
-	nodes[SX[i+1]][SY[i+1]].setPorter(dist_);
-	nodes[SX[i+1]][SY[i+1]].setType(Node::herbe);
+  Vector v(SX[i+1],SY[i+1]);      
+	nodes[v.x][v.y].setPorter(dist_);
+  nodes[v.x][v.y].setPos(v);
+	nodes[v.x][v.y].setType(Node::herbe);
 	SX[i] = px;
 	SY[i] = py;
 	i--;

@@ -1,6 +1,7 @@
 #include "Terrain.h"
 #include "PlayerController.h"
 #include <string>
+#include "NoeudA.h"
 class GameMaster
 {
  private:

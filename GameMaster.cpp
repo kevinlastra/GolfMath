@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "Erreur.h"
+#include "NoeudA.h"
 
 GameMaster::GameMaster(){}
 void GameMaster::GenerateTerrain(std::string &s)
@@ -75,6 +76,13 @@ void GameMaster::Start()
   else
     GenerateTerrain(Vector(40,40),10,5,-1);
   RequeteNBJouers();
+  std::cout<<"("<<T->getStartPos().x<<" "<<T->getStartPos().y<<")"<<std::endl;
+  std::cout<<"("<<T->getNode(T->getStartPos())->getPos().x<<" "<<T->getNode(T->getStartPos())->getPos().y<<")"<<std::endl;
+  std::cout<<"("<<T->getTargetPos().x<<" "<<T->getTargetPos().y<<")"<<std::endl;
+  std::cout<<"("<<T->getNode(T->getTargetPos())->getPos().x<<" "<<T->getNode(T->getTargetPos())->getPos().y<<")"<<std::endl;
+  std::cout<<(T->getNode(T->getStartPos())->getPos().x == T->getStartPos().x)<<std::endl;
+  NoeudA noeud = cheminPlusCourt(T,T->getNode(T->getStartPos()),T->getNode(T->getTargetPos()));
+  remonter(noeud);
   Interactuer();
 }
 void GameMaster::Interactuer()
@@ -218,9 +226,6 @@ void GameMaster::RequeteNBJouers()
   if (c == 'y'){
     AddPlayer(PlayerController::IA);
   }
-  for(int i=0;i<nbplayers;i++){
-  std::cout<<"oui : "<<Players[i].GetTypeJ()<<std::endl;
-}
 }
 
 bool GameMaster::playerAtPos(Vector &v)
