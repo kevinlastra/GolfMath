@@ -38,6 +38,8 @@ void Terrain::operator=(const Terrain &t)
   longueur = t.longueur;
   largeur = t.largeur;
   Spos = t.Spos;
+  std::cout << "T: "<<Tpos.x<<"   "<<Tpos.y<<std::endl;
+  Tpos = t.Tpos;
 }
 Terrain::Terrain(std::string &s)
 {
@@ -192,9 +194,9 @@ Terrain::Terrain(int seed_, Vector dim, int nbMove, int marge)
 	 && py < largeur-marge && nodes[px][py].getPorter() == 0
 	 && dist(px-tx,py-ty) > lastdist)
       {
-  Vector v(SX[i+1],SY[i+1]);      
+	Vector v(SX[i+1],SY[i+1]);      
 	nodes[v.x][v.y].setPorter(dist_);
-  nodes[v.x][v.y].setPos(v);
+	nodes[v.x][v.y].setPos(v);
 	nodes[v.x][v.y].setType(Node::herbe);
 	SX[i] = px;
 	SY[i] = py;
@@ -328,6 +330,7 @@ void Terrain::SetEndandStart()
   nodes[Spos.x+1][Spos.y].setType(Node::start);
   nodes[Spos.x+1][Spos.y+1].setType(Node::start);
 
+  nodes[Tpos.x][Tpos.y].setPos(Tpos);
   nodes[Tpos.x][Tpos.y].setType(Node::end);
   nodes[Tpos.x][Tpos.y].setPorter(1);
 
