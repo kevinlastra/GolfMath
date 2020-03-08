@@ -20,7 +20,7 @@ class nbJ_et_map : public QWidget
 
 public:
     nbJ_et_map();
-    QSpinBox *nbJoueur;
+    QSpinBox *nb;
     QSpinBox *map;
 
 private slots:

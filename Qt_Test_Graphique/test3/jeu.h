@@ -34,12 +34,15 @@ public:
     void AddPlayer(PlayerController::TypeJ t);
     void Interactuer(int);
     bool playerAtPos(Vector&);
+    void requeteMouvement(int);
+    void requeteNBJ();
 
 protected:
-    void keyPressEvent(QKeyEvent *event);
 
 private:
     QGridLayout *grilleDeJeu;
+    QHBoxLayout *principal;
+    QSpinBox *position;
 
     Terrain *T;
     PlayerController Players[5];

@@ -2,15 +2,15 @@
 
 nbJ_et_map::nbJ_et_map()
 {
-    nbJoueur = new QSpinBox;
+    nb = new QSpinBox;
     map = new QSpinBox;
-    nbJoueur->setMaximum(4);
-    nbJoueur->setMinimum(1);
+    nb->setMaximum(4);
+    nb->setMinimum(1);
     map->setMaximum(1);
     map->setMinimum(0);
 
     option = new QFormLayout;
-        option->addRow("Combien de Joueur : ", nbJoueur);
+        option->addRow("Combien de Joueur : ", nb);
         option->addRow("Quel carte : ", map);
 
         lancerJeu = new QPushButton("Lancer jeu");
@@ -23,6 +23,6 @@ nbJ_et_map::nbJ_et_map()
 
 void nbJ_et_map::lancer()
 {
-    Jeu *carte = new Jeu(nbJoueur->value(), map->value());
+    Jeu *carte = new Jeu(nb->value(), map->value());
     carte->show();
 }

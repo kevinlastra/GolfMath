@@ -2,36 +2,36 @@
 #include "Node.h"
 
 Node::Node():type(NONE),porter(0){}
-Node::Node(const Vector &v, Type t,int i) : pos(v), type(t),porter(i){}
-Node::Node(const Node &n) : pos(n.pos),type(n.type),porter(n.porter){}
+Node::Node(const Vector &v, Type t,int i) :  type(t), pos(v), porter(i){}
+Node::Node(const Node &n) : type(n.type), pos(n.pos), porter(n.porter){}
 void Node::operator=(const Node &n)
 {
-  pos = n.pos;
-  type = n.type;
-  porter = n.porter;
+    pos = n.pos;
+    type = n.type;
+    porter = n.porter;
 }
 
 Node::Type Node::getType()
 {
-  return type;
+    return type;
 }
 Vector Node::getPos()
 {
-  return pos;
+    return pos;
 }
 int Node::getPorter()
 {
-  return porter;
+    return porter;
 }
-void Node::setType(Node::Type t)
+void Node::setType(Type t)
 {
-  type = t;
+    type = t;
 }
 void Node::setPos(const Vector &v)
 {
-  pos = v;
+    pos = v;
 }
 void Node::setPorter(int i)
 {
-  porter = i;
+    porter = i;
 }

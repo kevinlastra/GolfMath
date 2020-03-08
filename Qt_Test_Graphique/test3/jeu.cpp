@@ -3,7 +3,18 @@
 
 Jeu::Jeu(int nbJoueur, int map)
 {
-    if (map == 1)
+    principal = new QHBoxLayout;
+        QVBoxLayout *requete = new QVBoxLayout;
+            position = new QSpinBox;
+            position->setMaximum(9);
+            position->setMinimum(1);
+            QPushButton *valide = new QPushButton("Update");
+            requete->addWidget(position);
+            requete->addWidget(valide);
+            grilleDeJeu = new QGridLayout;
+        principal->addLayout(requete);
+
+    if (map == 0)
     {
         std::string mapPath = "testmap.txt";
         GenerateTerrain(mapPath);
@@ -12,14 +23,13 @@ Jeu::Jeu(int nbJoueur, int map)
     {
         GenerateTerrain(Vector(40, 40), 10, 5, -1);
     }
+    requeteNBJ();
     Interactuer(nbJoueur);
 }
 
-int player = 0;
 
 void Jeu::PrintMap(int player)
 {
-    grilleDeJeu = new QGridLayout;
     Erreur::print();
     for (int j = 0; j < T->getLar(); ++j)
     {
@@ -79,15 +89,17 @@ void Jeu::PrintMap(int player)
             }
         }
     }
-    setLayout(grilleDeJeu);
+    principal->addLayout(grilleDeJeu);
 }
 
 void Jeu::Interactuer(int nbJoueur)
 {
+    int player = 0;
     bool stop = false;
     while (!stop)
     {
         PrintMap(player);
+        requeteMouvement(player);
 
         if (Players[player].GetPos() == T->getTargetPos())
         {
@@ -109,16 +121,24 @@ void Jeu::Interactuer(int nbJoueur)
     }
 }
 
-void Jeu::keyPressEvent(QKeyEvent *event)
+void Jeu::requeteNBJ()
+{
+    for (int i = 0; i < nbJ_et_map().nb->value(); i++)
+    {
+        AddPlayer(PlayerController::H);
+    }
+}
+
+void Jeu::requeteMouvement(int i)
 {
     grilleDeJeu->update();
-    Vector npos(Players[player].GetPos());
+    Vector npos(Players[i].GetPos());
     Node* node;
     int portee = T->getNode(Vector(npos.x, npos.y))->getPorter();
-    if (event->key() == Qt::Key_E)
+    if (position->value() == 1)
     {
         node = T->getNode(Vector(npos.x - portee, npos.y + portee));
-        if (node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
+        if ((node != NULL) && (node->getType() != Node::eau) && (node->getType() != Node::NONE))
         {
             npos.x -= portee;
             npos.y += portee;
@@ -129,10 +149,10 @@ void Jeu::keyPressEvent(QKeyEvent *event)
         }
     }
 
-    if (event->key() == Qt::Key_R)
+    if (position->value() == 2)
     {
         node = T->getNode(Vector(npos.x, npos.y + portee));
-        if (node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
+        if ((node != NULL) && (node->getType() != Node::eau) && (node->getType() != Node::NONE))
         {
             npos.y += portee;
         }
@@ -142,10 +162,10 @@ void Jeu::keyPressEvent(QKeyEvent *event)
         }
     }
 
-    if (event->key() == Qt::Key_T)
+    if (position->value() == 3)
     {
         node = T->getNode(Vector(npos.x + portee, npos.y + portee));
-        if (node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
+        if ((node != NULL) && (node->getType() != Node::eau) && (node->getType() != Node::NONE))
         {
             npos.x += portee;
             npos.y += portee;
@@ -156,10 +176,10 @@ void Jeu::keyPressEvent(QKeyEvent *event)
         }
     }
 
-    if (event->key() == Qt::Key_D)
+    if (position->value() == 4)
     {
         node = T->getNode(Vector(npos.x - portee, npos.y));
-        if (node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
+        if ((node != NULL) && (node->getType() != Node::eau) && (node->getType() != Node::NONE))
         {
             npos.x -= portee;
         }
@@ -169,10 +189,10 @@ void Jeu::keyPressEvent(QKeyEvent *event)
         }
     }
 
-    if (event->key() == Qt::Key_G)
+    if (position->value() == 6)
     {
         node = T->getNode(Vector(npos.x - portee, npos.y + portee));
-        if (node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
+        if ((node != NULL) && (node->getType() != Node::eau) && (node->getType() != Node::NONE))
         {
             npos.x -= portee;
             npos.y += portee;
@@ -183,10 +203,10 @@ void Jeu::keyPressEvent(QKeyEvent *event)
         }
     }
 
-    if (event->key() == Qt::Key_C)
+    if (position->value() == 7)
     {
         node = T->getNode(Vector(npos.x - portee, npos.y - portee));
-        if (node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
+        if ((node != NULL) && (node->getType() != Node::eau) && (node->getType() != Node::NONE))
         {
             npos.x -= portee;
             npos.y -= portee;
@@ -197,10 +217,10 @@ void Jeu::keyPressEvent(QKeyEvent *event)
         }
     }
 
-    if (event->key() == Qt::Key_V)
+    if (position->value() == 8)
     {
         node = T->getNode(Vector(npos.x, npos.y - portee));
-        if (node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
+        if ((node != NULL) && (node->getType() != Node::eau) && (node->getType() != Node::NONE))
         {
             npos.y -= portee;
         }
@@ -210,10 +230,10 @@ void Jeu::keyPressEvent(QKeyEvent *event)
         }
     }
 
-    if (event->key() == Qt::Key_B)
+    if (position->value() == 9)
     {
         node = T->getNode(Vector(npos.x + portee, npos.y - portee));
-        if (node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
+        if ((node != NULL) && (node->getType() != Node::eau) && (node->getType() != Node::NONE))
         {
             npos.x += portee;
             npos.y -= portee;
@@ -223,14 +243,14 @@ void Jeu::keyPressEvent(QKeyEvent *event)
             printf("erreur movement");
         }
     }
-    Players[player].SetPos(npos);
-    Players[player].PCoup();
+    Players[i].SetPos(npos);
+    Players[i].PCoup();
 }
 
 
 bool Jeu::playerAtPos(Vector &v)
 {
-    for (int i = 0; i < nbJ_et_map().nbJoueur->value(); ++i)
+    for (int i = 0; i < nbJ_et_map().nb->value(); ++i)
     {
         if (Players[i].GetPos() == v)
         {
