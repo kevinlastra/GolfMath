@@ -3,6 +3,9 @@
 ToutEnUn::ToutEnUn(QWidget *parent) : QMainWindow(parent)
 {
     QWidget *zoneCentral = new QWidget;
+    QPalette fond;
+    fond.setBrush(backgroundRole(),QBrush(QColor(131, 156, 114)));
+    setPalette(fond);
 
     principal = new QHBoxLayout;
     jeu = new QGridLayout;
