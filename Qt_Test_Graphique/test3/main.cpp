@@ -1,12 +1,12 @@
 #include <QApplication>
-#include "gamemaster.h"
+#include "toutenun.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    gameMaster *gm = new gameMaster;
-    gm->show();
+    ToutEnUn fen;
+    fen.show();
 
     return app.exec();
 }

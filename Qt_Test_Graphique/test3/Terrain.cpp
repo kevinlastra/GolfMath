@@ -70,7 +70,7 @@ Terrain::Terrain(std::string &s)
         while(y < largeur)
         {
             getline(f,l);
-            while(l[i] != NULL)
+            while(l[i] != 0)
             {
                 int val = atoi(l.substr(i,1).c_str());
                 if(val != 0)
