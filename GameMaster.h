@@ -8,7 +8,7 @@ class GameMaster
   Terrain *T;
   PlayerController Players[5];
   int nbplayers = 0;
-
+  int nbniveaux = 1;
   std::string entete;
   
  public:

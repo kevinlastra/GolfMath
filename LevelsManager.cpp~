@@ -1,0 +1,22 @@
+#include "LevelsManager.h"
+#include <string>
+
+LevelsManager::LevelsManager()
+{
+  file = std::ifstream("levels.txt");
+}
+void SetHeadDoc(int i)
+{
+  string s;
+  getline(file,s);
+  if(atoi(s.c_str) != i)
+  {
+    getline(file, s);
+    int h = 0;
+    while(h < 4)
+    {
+      s.find_first_of("_");
+      h++;
+    }
+  }
+}

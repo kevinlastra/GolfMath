@@ -1,0 +1,9 @@
+#include <iostream>
+
+class LevelsManager
+{
+ public:
+  std::ifstream file;
+  LevelsManager();
+  SetHeadDoc();
+};

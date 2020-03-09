@@ -20,11 +20,7 @@ Terrain::Terrain(Node** ns, int lo, int la, const Vector &v):longueur(lo), large
 Terrain::Terrain(const Terrain &t):nodes(t.nodes), longueur(t.longueur), largeur(t.largeur), Spos(t.Spos){}
 Terrain::~Terrain()
 {
-  /*for(int i = 0;i < longueur;i++)
-  {
-    delete []nodes[i];
-  }
-  delete []nodes;*/
+  delete []nodes;
 }
 void Terrain::operator=(const Terrain &t)
 {
@@ -38,7 +34,6 @@ void Terrain::operator=(const Terrain &t)
   longueur = t.longueur;
   largeur = t.largeur;
   Spos = t.Spos;
-  std::cout << "T: "<<Tpos.x<<"   "<<Tpos.y<<std::endl;
   Tpos = t.Tpos;
 }
 Terrain::Terrain(std::string &s)
@@ -196,7 +191,6 @@ Terrain::Terrain(int seed_, Vector dim, int nbMove, int marge)
       {
 	Vector v(SX[i+1],SY[i+1]);      
 	nodes[v.x][v.y].setPorter(dist_);
-	nodes[v.x][v.y].setPos(v);
 	nodes[v.x][v.y].setType(Node::herbe);
 	SX[i] = px;
 	SY[i] = py;
@@ -316,6 +310,8 @@ void Terrain::InitTab(Vector dim)
     for(int y = 0; y < dim.y;y++)
     {
       nodes[x][y].setPorter(0);
+      nodes[x][y].setPos(Vector(x,y));
+      nodes[x][y].setType(Node::NONE);
     }
   }
 }
@@ -331,7 +327,6 @@ void Terrain::SetEndandStart()
   nodes[Spos.x+1][Spos.y].setType(Node::start);
   nodes[Spos.x+1][Spos.y+1].setType(Node::start);
 
-  nodes[Tpos.x][Tpos.y].setPos(Tpos);
   nodes[Tpos.x][Tpos.y].setType(Node::end);
   nodes[Tpos.x][Tpos.y].setPorter(1);
 
