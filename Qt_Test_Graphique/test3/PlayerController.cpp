@@ -8,13 +8,13 @@ PlayerController::PlayerController()
     typeJ = H;
     nbcoup = 0;
 }
-PlayerController::PlayerController(TypeJ t):nbcoup(0)
+PlayerController::PlayerController(TypeJ t) : nbcoup(0)
 {
     pos = Vector(0,0);
     typeJ = t;
     nbcoup = 0;
 }
-PlayerController::PlayerController(Vector &v,TypeJ t):nbcoup(0)
+PlayerController::PlayerController(Vector &v,TypeJ t) : nbcoup(0)
 {
     pos = v;
     typeJ = t;

@@ -5,6 +5,7 @@ SOURCES += \
     Vector.cpp \
     Node.cpp \
     Terrain.cpp \
+    mainwindow.cpp \
     toutenun.cpp
 
 QT += widgets
@@ -15,4 +16,7 @@ HEADERS += \
     Vector.h \
     Node.h \
     Terrain.h \
+    mainwindow.h \
     toutenun.h
+
+FORMS +=

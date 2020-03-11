@@ -1,11 +1,12 @@
 #include <QApplication>
 #include "toutenun.h"
+#include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    ToutEnUn fen;
+    MainWindow fen;
     fen.show();
 
     return app.exec();

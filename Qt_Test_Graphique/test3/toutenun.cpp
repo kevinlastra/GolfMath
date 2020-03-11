@@ -1,8 +1,7 @@
 #include "toutenun.h"
 
-ToutEnUn::ToutEnUn(QWidget *parent) : QMainWindow(parent)
+ToutEnUn::ToutEnUn(QWidget *parent) : QWidget(parent)
 {
-    QWidget *zoneCentral = new QWidget;
     QPalette fond;
     fond.setBrush(backgroundRole(),QBrush(QColor(131, 156, 114)));
     setPalette(fond);
@@ -10,29 +9,19 @@ ToutEnUn::ToutEnUn(QWidget *parent) : QMainWindow(parent)
     principal = new QHBoxLayout;
     jeu = new QGridLayout;
     jeu->setSpacing(0);
-
-    option = new QVBoxLayout;
-    choix = new QFormLayout;
-    valeur = new QSpinBox;
-    valeur->setMaximum(9);
-    valeur->setMinimum(1);
-    valide = new QPushButton("  Check!  ");
-    choix->addRow("Valeur : ", valeur);
-    choix->addWidget(valide);
-    option->addLayout(choix);
+    j1 = new QLabel;
+    j1->setPixmap(QPixmap("../image/v2/j1.png"));
 
     std::string chemin = "/home/e20150002138/Bureau/GolfMath/testmap.txt";
-    GenererTerrain(chemin);
-    //GenererTerrain(Vector(50, 50), 10, 5, -1);
+    //GenererTerrain(chemin);
+    GenererTerrain(Vector(40, 40), 10, 5, -1);
     Afficher();
     //NombreJoueur();
     //Interagir();
 
     principal->addLayout(jeu);
-    principal->addLayout(option);
 
-    zoneCentral->setLayout(principal);
-    setCentralWidget(zoneCentral);
+    setLayout(principal);
 }
 
 
@@ -53,8 +42,6 @@ void ToutEnUn::GenererTerrain(Vector dim,int nbMove,int marge,int seed)
 
 void ToutEnUn::AjouterJoueur(PlayerController::TypeJ t)
 {
-    Afficher();
-
     QDialog *d = new QDialog();
     QFormLayout *debut = new QFormLayout;
     QSpinBox *pdebut = new QSpinBox;
@@ -77,10 +64,36 @@ void ToutEnUn::AjouterJoueur(PlayerController::TypeJ t)
 }
 
 
+void ToutEnUn::mousePressEvent(QMouseEvent *event)
+{
+    x = (event->pos().x() - 8)/16;
+    y = (event->pos().y() - 8)/16;
+    Vector w(y, x);
+    if (!(x <= -1 || x >= T->getLar()) &&
+            !(y <= -1 || y >= T->getLon()))
+    {
+        if (T->getNode(w)->getType() != Node::eau &&
+                T->getNode(w)->getType() != Node::NONE)
+        {
+            jeu->addWidget(j1, y, x);
+            j1->update();
+            jeu->update();
+            event->accept();
+        }
+        else
+        {
+            QMessageBox::critical(this, "Erreur", "Case injouable (probablement eau)");
+        }
+    }
+    else
+    {
+        QMessageBox::critical(this, "Erreur", "En dehors de la grille!");
+    }
+}
+
 
 void ToutEnUn::Afficher()
 {
-    jeu->update();
     Erreur::print();
     for(int j = 0; j < T->getLar();j++)
     {
@@ -126,7 +139,7 @@ void ToutEnUn::Afficher()
                 }
                 case Node::sable:
                 {
-                    QString path = "../image/v2/start_";
+                    QString path = "../image/v2/green_";
                     path += QString::number(T->getNode(v)->getPorter());
                     path += ".jpg";
                     QLabel *sable = new QLabel();
@@ -149,6 +162,7 @@ void ToutEnUn::Afficher()
 
 
 
+
 void ToutEnUn::Interagir()
 {
     bool stop = false;
@@ -156,12 +170,10 @@ void ToutEnUn::Interagir()
     int Player = 0;
     while(!stop)
     {
-        Afficher();
         Mouvement(Player);
 
         if(Joueurs[Player].GetPos() == T->getTargetPos())
         {
-            Afficher();
             QMessageBox::information(this, "Victoire", "Tu as gagner!");
             stop = true;
         }
@@ -211,7 +223,7 @@ void ToutEnUn::Mouvement(int i)
             break;
         case 6:
             node = T->getNode(Vector(npos.x+porter,npos.y));
-//            std::cout <<"type:"<< node->getType() <<std::endl;
+            //            std::cout <<"type:"<< node->getType() <<std::endl;
             if(node != NULL && node->getType() != Node::eau && node->getType() != Node::NONE)
             {
                 npos.x += porter;
@@ -328,3 +340,10 @@ bool ToutEnUn::PositionJoueur(Vector &v)
     }
     return false;
 }
+
+
+int ToutEnUn::getValeur()
+{
+    return valeur->value();
+}
+
