@@ -1,6 +1,6 @@
 #include "toutenun.h"
 
-ToutEnUn::ToutEnUn(QWidget *parent) : QWidget(parent)
+ToutEnUn::ToutEnUn(int seed, QWidget *parent) : QWidget(parent)
 {
     QPalette fond;
     fond.setBrush(backgroundRole(),QBrush(QColor(131, 156, 114)));
@@ -12,14 +12,20 @@ ToutEnUn::ToutEnUn(QWidget *parent) : QWidget(parent)
     j1 = new QLabel;
     j1->setPixmap(QPixmap("../image/v2/j1.png"));
 
+    score = new QFormLayout;
+    afficheScore = new QSpinBox;
+    afficheScore->setReadOnly(true);
+    score->addRow("Score :", afficheScore);
+
     std::string chemin = "/home/e20150002138/Bureau/GolfMath/testmap.txt";
     //GenererTerrain(chemin);
-    GenererTerrain(Vector(40, 40), 10, 5, -1);
+    GenererTerrain(Vector(40, 40), 10, 5, seed);
     Afficher();
     //NombreJoueur();
     //Interagir();
 
     principal->addLayout(jeu);
+    principal->addLayout(score);
 
     setLayout(principal);
 }
@@ -66,13 +72,21 @@ void ToutEnUn::AjouterJoueur(PlayerController::TypeJ t)
 
 void ToutEnUn::mousePressEvent(QMouseEvent *event)
 {
+    afficheScore->setValue(++point);
     x = (event->pos().x() - 8)/16;
     y = (event->pos().y() - 8)/16;
     Vector w(y, x);
     if (!(x <= -1 || x >= T->getLar()) &&
             !(y <= -1 || y >= T->getLon()))
     {
-        if (T->getNode(w)->getType() != Node::eau &&
+        if (T->getNode(w)->getType() == Node::end)
+        {
+            QMessageBox::information(this, "GAGNER!!", "Vous avez gagné!\nVous avez mis "+ QString::number(point) +" coups! Bravo!");
+            Niveaux *niv = new Niveaux;
+            niv->show();
+            this->close();
+        }
+        else if (T->getNode(w)->getType() != Node::eau &&
                 T->getNode(w)->getType() != Node::NONE)
         {
             jeu->addWidget(j1, y, x);
@@ -90,6 +104,7 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
         QMessageBox::critical(this, "Erreur", "En dehors de la grille!");
     }
 }
+
 
 
 void ToutEnUn::Afficher()

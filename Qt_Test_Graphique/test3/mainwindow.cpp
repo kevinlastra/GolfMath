@@ -20,6 +20,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 void MainWindow::lancer()
 {
-    ToutEnUn *jeu = new ToutEnUn();
-    jeu->show();
+    Niveaux *niv = new Niveaux;
+    niv->show();
 }

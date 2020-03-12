@@ -15,12 +15,14 @@
 #include <stdlib.h>
 #include <string>
 #include <QMouseEvent>
+#include <QLCDNumber>
 
 #include "Terrain.h"
 #include "Erreur.h"
 #include "Node.h"
 #include "Vector.h"
 #include "PlayerController.h"
+#include "niveaux.h"
 
 
 class ToutEnUn : public QWidget
@@ -28,7 +30,7 @@ class ToutEnUn : public QWidget
     Q_OBJECT
 
 public:
-    explicit ToutEnUn(QWidget *parent = 0);
+    explicit ToutEnUn(int seed, QWidget *parent = 0);
 
     void GenererTerrain(std::string&);
     void GenererTerrain(Vector, int, int, int);
@@ -40,6 +42,7 @@ public:
     bool PositionJoueur(Vector&);
     int getValeur();
 
+
 protected:
     void mousePressEvent(QMouseEvent *event) override;
 
@@ -49,6 +52,7 @@ private:
     int nombreJ = 0;
     int x = 0;
     int y = 0;
+    int point = 0;
 
     QLabel *j1;
     QSpinBox *valeur;
@@ -57,6 +61,8 @@ private:
     QVBoxLayout *option;
     QFormLayout *choix;
     QPushButton *valide;
+    QFormLayout *score;
+    QSpinBox *afficheScore;
 
 };
 

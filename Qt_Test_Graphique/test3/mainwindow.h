@@ -8,7 +8,7 @@
 #include <QPushButton>
 #include <QBoxLayout>
 
-#include "toutenun.h"
+#include "niveaux.h"
 
 class MainWindow : public QMainWindow
 {
