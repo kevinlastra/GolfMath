@@ -21,7 +21,6 @@ public slots:
     void lancer();
 
 private:
-    QVBoxLayout *bouton;
     QPushButton *jouer;
     QPushButton *quitter;
 };

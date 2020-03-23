@@ -33,6 +33,7 @@ public slots:
     void niveau16();
     void niveau17();
     void niveau18();
+    void nivAlea();
 
 
 private:
@@ -61,6 +62,7 @@ private:
     QPushButton *niv16;
     QPushButton *niv17;
     QPushButton *niv18;
+    QPushButton *nivAleatoire;
 };
 
 #endif // NIVEAUX_H

@@ -58,10 +58,15 @@ private:
     int i = 1;
     int nombreJoueur;
     int nombreIA;
+    int tour = 1;
     int pointj1 = 0;
     int pointj2 = 0;
     int pointj3 = 0;
     int pointj4 = 0;
+    bool finij1 = false;
+    bool finij2 = false;
+    bool finij3 = false;
+    bool finij4 = false;
 
     QLabel *j1;
     QLabel *j2;

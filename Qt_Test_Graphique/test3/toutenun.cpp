@@ -123,8 +123,8 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
     if (i > nombreJoueur)
     {
         i = 1;
+        tour++;
     }
-    Score(i);
     x = (event->pos().x() - 8)/16;
     y = (event->pos().y() - 8)/16;
     Vector w(y, x);
@@ -134,57 +134,176 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
     {
         if (T->getNode(w)->getType() == Node::end)
         {
-            QMessageBox::information(this, "GAGNER!!", "Vous avez gagné!\nVous avez mis "+ QString::number(pointj1) +" coups! Bravo!");
+            switch (i)
+            {
+            case 1 :
+            {
+                finij1 = true;
+                QMessageBox::information(this, "Bravo !!", "Joueur 1 a terminé en " + QString::number(pointj1) + " coups.");
+                break;
+            }
+            case 2 :
+            {
+                finij2 = true;
+                QMessageBox::information(this, "Bravo !!", "Joueur 2 a terminé en " + QString::number(pointj2) + " coups.");
+                break;
+            }
+            case 3 :
+            {
+                finij3 = true;
+                QMessageBox::information(this, "Bravo !!", "Joueur 3 a terminé en " + QString::number(pointj3) + " coups.");
+                break;
+            }
+            case 4 :
+            {
+                finij4 = true;
+                QMessageBox::information(this, "Bravo !!", "Joueur 4 a terminé en " + QString::number(pointj4) + " coups.");
+                break;
+            }
+            }
+        }
+        if ((finij1 && nombreJoueur == 1) ||
+                (finij2 && finij1 && nombreJoueur == 2) ||
+                (finij3 && finij2 && finij1 && nombreJoueur == 3) ||
+                (finij4 && finij3 && finij2 && finij1 && nombreJoueur == 4))
+        {
+            QMessageBox::information(this, "FIN", "Belle partie c'était sympa!");
             Niveaux *niv = new Niveaux;
             niv->show();
             this->close();
         }
-        else if (T->getNode(w)->getType() != Node::eau &&
-                 T->getNode(w)->getType() != Node::NONE)
+        if (tour == 1)
         {
-            switch (i)
+            if (T->getNode(w)->getType() == Node::start)
             {
-            case 1:
-            {
-                i++;
-                jeu->addWidget(j1, y, x);
-                j1->update();
-                jeu->update();
-                event->accept();
-                break;
+                Score(i);
+                switch (i)
+                {
+                case 1:
+                {
+                    i++;
+                    if (finij1)
+                    {
+                        break;
+                    }
+                    jeu->addWidget(j1, y, x);
+                    j1->update();
+                    jeu->update();
+                    event->accept();
+                    break;
+                }
+                case 2:
+                {
+                    i++;
+                    if (finij2)
+                    {
+                        break;
+                    }
+                    jeu->addWidget(j2, y, x);
+                    j2->update();
+                    jeu->update();
+                    event->accept();
+                    break;
+                }
+                case 3:
+                {
+                    i++;
+                    if (finij3)
+                    {
+                        break;
+                    }
+                    jeu->addWidget(j3, y, x);
+                    j3->update();
+                    jeu->update();
+                    event->accept();
+                    break;
+                }
+                case 4:
+                {
+                    i++;
+                    if (finij4)
+                    {
+                        break;
+                    }
+                    jeu->addWidget(j4, y, x);
+                    j4->update();
+                    jeu->update();
+                    event->accept();
+                    break;
+                }
+                }
             }
-            case 2:
+            else
             {
-                i++;
-                jeu->addWidget(j2, y, x);
-                j2->update();
-                jeu->update();
-                event->accept();
-                break;
-            }
-            case 3:
-            {
-                i++;
-                jeu->addWidget(j3, y, x);
-                j3->update();
-                jeu->update();
-                event->accept();
-                break;
-            }
-            case 4:
-            {
-                i++;
-                jeu->addWidget(j4, y, x);
-                j4->update();
-                jeu->update();
-                event->accept();
-                break;
-            }
+                QMessageBox::critical(this, "Erreur", "Case injouable (probablement eau)");
             }
         }
         else
         {
-            QMessageBox::critical(this, "Erreur", "Case injouable (probablement eau)");
+            Score(i);
+            if (T->getNode(w)->getType() != Node::eau &&
+                    T->getNode(w)->getType() != Node::NONE)
+            {
+                switch (i)
+                {
+                case 1:
+                {
+                    i++;
+                    if (finij1)
+                    {
+                        break;
+                    }
+                    jeu->addWidget(j1, y, x);
+                    j1->update();
+                    jeu->update();
+                    event->accept();
+                    break;
+                }
+                case 2:
+                {
+                    i++;
+                    if (finij2)
+                    {
+                        break;
+                    }
+                    jeu->addWidget(j2, y, x);
+                    j2->update();
+                    jeu->update();
+                    event->accept();
+                    break;
+                }
+                case 3:
+                {
+                    i++;
+                    if (finij3)
+                    {
+                        break;
+                    }
+                    jeu->addWidget(j3, y, x);
+                    j3->update();
+                    jeu->update();
+                    event->accept();
+                    break;
+                }
+                case 4:
+                {
+                    i++;
+                    if (finij4)
+                    {
+                        break;
+                    }
+                    jeu->addWidget(j4, y, x);
+                    j4->update();
+                    jeu->update();
+                    event->accept();
+                    break;
+                }
+                }
+            }
+            else
+            {
+                QMessageBox::critical(this, "Erreur", "Case injouable (probablement eau)");
+            }
         }
     }
     else
@@ -201,37 +320,57 @@ void ToutEnUn::Score(int i)
     {
     case 1:
     {
+        if (finij1)
+        {
+            break;
+        }
         afficheScorej1->setValue(++pointj1);
-        if (pointj1 >= 14)
+        if (pointj1 > 14)
         {
             QMessageBox::information(this, "Perdu", "Le joueur 1 a perdu");
+            finij1 = true;
         }
         break;
     }
     case 2:
     {
+        if (finij2)
+        {
+            break;
+        }
         afficheScorej2->setValue(++pointj2);
-        if (pointj2 >= 14)
+        if (pointj2 > 14)
         {
             QMessageBox::information(this, "Perdu", "Le joueur 2 a perdu");
+            finij2 = true;
         }
         break;
     }
     case 3:
     {
+        if (finij3)
+        {
+            break;
+        }
         afficheScorej3->setValue(++pointj3);
-        if (pointj3 >= 14)
+        if (pointj3 > 14)
         {
             QMessageBox::information(this, "Perdu", "Le joueur 3 a perdu");
+            finij3 = true;
         }
         break;
     }
     case 4:
     {
+        if (finij4)
+        {
+            break;
+        }
         afficheScorej4->setValue(++pointj4);
-        if (pointj4 >= 14)
+        if (pointj4 > 14)
         {
             QMessageBox::information(this, "Perdu", "Le joueur 4 a perdu");
+            finij4 = true;
         }
         break;
     }

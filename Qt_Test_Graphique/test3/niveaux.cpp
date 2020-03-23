@@ -2,6 +2,7 @@
 
 Niveaux::Niveaux()
 {
+    setFixedSize(500, 300);
     QPalette fond;
     fond.setBrush(backgroundRole(),QBrush(QColor(131, 156, 114)));
     setPalette(fond);
@@ -75,8 +76,11 @@ Niveaux::Niveaux()
     niv18 = new QPushButton("Niveau 18");
     menu->addWidget(niv18, 4, 2);
     connect(niv18, SIGNAL(clicked()), this, SLOT(niveau18()));
-    menuComplet->addLayout(menu);
+    nivAleatoire = new QPushButton("Niveau Aléatoire");
+    menu->addWidget(nivAleatoire, 5, 1, 1, 2);
+    connect(nivAleatoire, SIGNAL(clicked()), this, SLOT(nivAlea()));
 
+    menuComplet->addLayout(menu);
     setLayout(menuComplet);
 }
 
@@ -202,6 +206,13 @@ void Niveaux::niveau17()
 void Niveaux::niveau18()
 {
     ToutEnUn *jeu = new ToutEnUn(0070, joueur->value(), ia->value());
+    jeu->show();
+    this->close();
+}
+
+void Niveaux::nivAlea()
+{
+    ToutEnUn *jeu = new ToutEnUn(-1, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
