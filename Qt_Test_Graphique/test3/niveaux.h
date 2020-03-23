@@ -36,7 +36,12 @@ public slots:
 
 
 private:
+
+    QVBoxLayout *menuComplet;
     QGridLayout *menu;
+    QFormLayout *jetia;
+    QSpinBox *joueur;
+    QSpinBox *ia;
 
     QPushButton *niv1;
     QPushButton *niv2;

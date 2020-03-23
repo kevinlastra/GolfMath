@@ -1,6 +1,6 @@
 #include "toutenun.h"
 
-ToutEnUn::ToutEnUn(int seed, QWidget *parent) : QWidget(parent)
+ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(parent)
 {
     QPalette fond;
     fond.setBrush(backgroundRole(),QBrush(QColor(131, 156, 114)));
@@ -10,12 +10,57 @@ ToutEnUn::ToutEnUn(int seed, QWidget *parent) : QWidget(parent)
     jeu = new QGridLayout;
     jeu->setSpacing(0);
     j1 = new QLabel;
+    j2 = new QLabel;
+    j3 = new QLabel;
+    j4 = new QLabel;
     j1->setPixmap(QPixmap("../image/v2/j1.png"));
+    j2->setPixmap(QPixmap("../image/v2/j2.png"));
+    j3->setPixmap(QPixmap("../image/v2/j3.png"));
+    j4->setPixmap(QPixmap("../image/v2/j4.png"));
+
+    nombreJoueur = joueur;
+    nombreIA = ia;
 
     score = new QFormLayout;
-    afficheScore = new QSpinBox;
-    afficheScore->setReadOnly(true);
-    score->addRow("Score :", afficheScore);
+
+    for (int i = 1; i <= nombreJoueur; i++)
+    {
+
+        QString scorejoueur = "Score j";
+        scorejoueur += QString::number(i);
+        scorejoueur += " : ";
+        switch (i)
+        {
+        case 1:
+        {
+            afficheScorej1 = new QSpinBox;
+            afficheScorej1->setReadOnly(true);
+            score->addRow(scorejoueur, afficheScorej1);
+            break;
+        }
+        case 2:
+        {
+            afficheScorej2 = new QSpinBox;
+            afficheScorej2->setReadOnly(true);
+            score->addRow(scorejoueur, afficheScorej2);
+            break;
+        }
+        case 3:
+        {
+            afficheScorej3 = new QSpinBox;
+            afficheScorej3->setReadOnly(true);
+            score->addRow(scorejoueur, afficheScorej3);
+            break;
+        }
+        case 4:
+        {
+            afficheScorej4 = new QSpinBox;
+            afficheScorej4->setReadOnly(true);
+            score->addRow(scorejoueur, afficheScorej4);
+            break;
+        }
+        }
+    }
 
     std::string chemin = "/home/e20150002138/Bureau/GolfMath/testmap.txt";
     //GenererTerrain(chemin);
@@ -24,8 +69,11 @@ ToutEnUn::ToutEnUn(int seed, QWidget *parent) : QWidget(parent)
     //NombreJoueur();
     //Interagir();
 
+
     principal->addLayout(jeu);
     principal->addLayout(score);
+
+    scroll(10,10);
 
     setLayout(principal);
 }
@@ -72,27 +120,67 @@ void ToutEnUn::AjouterJoueur(PlayerController::TypeJ t)
 
 void ToutEnUn::mousePressEvent(QMouseEvent *event)
 {
-    afficheScore->setValue(++point);
+    if (i > nombreJoueur)
+    {
+        i = 1;
+    }
+    Score(i);
     x = (event->pos().x() - 8)/16;
     y = (event->pos().y() - 8)/16;
     Vector w(y, x);
+
     if (!(x <= -1 || x >= T->getLar()) &&
             !(y <= -1 || y >= T->getLon()))
     {
         if (T->getNode(w)->getType() == Node::end)
         {
-            QMessageBox::information(this, "GAGNER!!", "Vous avez gagné!\nVous avez mis "+ QString::number(point) +" coups! Bravo!");
+            QMessageBox::information(this, "GAGNER!!", "Vous avez gagné!\nVous avez mis "+ QString::number(pointj1) +" coups! Bravo!");
             Niveaux *niv = new Niveaux;
             niv->show();
             this->close();
         }
         else if (T->getNode(w)->getType() != Node::eau &&
-                T->getNode(w)->getType() != Node::NONE)
+                 T->getNode(w)->getType() != Node::NONE)
         {
-            jeu->addWidget(j1, y, x);
-            j1->update();
-            jeu->update();
-            event->accept();
+            switch (i)
+            {
+            case 1:
+            {
+                i++;
+                jeu->addWidget(j1, y, x);
+                j1->update();
+                jeu->update();
+                event->accept();
+                break;
+            }
+            case 2:
+            {
+                i++;
+                jeu->addWidget(j2, y, x);
+                j2->update();
+                jeu->update();
+                event->accept();
+                break;
+            }
+            case 3:
+            {
+                i++;
+                jeu->addWidget(j3, y, x);
+                j3->update();
+                jeu->update();
+                event->accept();
+                break;
+            }
+            case 4:
+            {
+                i++;
+                jeu->addWidget(j4, y, x);
+                j4->update();
+                jeu->update();
+                event->accept();
+                break;
+            }
+            }
         }
         else
         {
@@ -103,8 +191,53 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
     {
         QMessageBox::critical(this, "Erreur", "En dehors de la grille!");
     }
+
 }
 
+
+void ToutEnUn::Score(int i)
+{
+    switch (i)
+    {
+    case 1:
+    {
+        afficheScorej1->setValue(++pointj1);
+        if (pointj1 >= 14)
+        {
+            QMessageBox::information(this, "Perdu", "Le joueur 1 a perdu");
+        }
+        break;
+    }
+    case 2:
+    {
+        afficheScorej2->setValue(++pointj2);
+        if (pointj2 >= 14)
+        {
+            QMessageBox::information(this, "Perdu", "Le joueur 2 a perdu");
+        }
+        break;
+    }
+    case 3:
+    {
+        afficheScorej3->setValue(++pointj3);
+        if (pointj3 >= 14)
+        {
+            QMessageBox::information(this, "Perdu", "Le joueur 3 a perdu");
+        }
+        break;
+    }
+    case 4:
+    {
+        afficheScorej4->setValue(++pointj4);
+        if (pointj4 >= 14)
+        {
+            QMessageBox::information(this, "Perdu", "Le joueur 4 a perdu");
+        }
+        break;
+    }
+    }
+
+}
 
 
 void ToutEnUn::Afficher()

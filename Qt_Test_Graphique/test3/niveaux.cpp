@@ -2,7 +2,25 @@
 
 Niveaux::Niveaux()
 {
+    QPalette fond;
+    fond.setBrush(backgroundRole(),QBrush(QColor(131, 156, 114)));
+    setPalette(fond);
+
+    menuComplet = new QVBoxLayout;
     menu = new QGridLayout;
+
+    jetia = new QFormLayout;
+    joueur = new QSpinBox;
+    ia = new QSpinBox;
+    joueur->setMinimum(1);
+    joueur->setMaximum(4);
+    ia->setMinimum(0);
+    ia->setMaximum(4);
+    jetia->addRow("Nombre de joueur : ", joueur);
+    jetia->addRow("Nombre d'IA : ", ia);
+
+    menuComplet->addLayout(jetia);
+
     niv1 = new QPushButton("Niveau 1");
     menu->addWidget(niv1, 0, 0);
     connect(niv1, SIGNAL(clicked()), this, SLOT(niveau1()));
@@ -57,131 +75,133 @@ Niveaux::Niveaux()
     niv18 = new QPushButton("Niveau 18");
     menu->addWidget(niv18, 4, 2);
     connect(niv18, SIGNAL(clicked()), this, SLOT(niveau18()));
-    setLayout(menu);
+    menuComplet->addLayout(menu);
+
+    setLayout(menuComplet);
 }
 
 void Niveaux::niveau1()
 {
-    ToutEnUn *jeu = new ToutEnUn(1345);
+    ToutEnUn *jeu = new ToutEnUn(1345, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau2()
 {
-    ToutEnUn *jeu = new ToutEnUn(5641);
+    ToutEnUn *jeu = new ToutEnUn(5641, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau3()
 {
-    ToutEnUn *jeu = new ToutEnUn(4698);
+    ToutEnUn *jeu = new ToutEnUn(4698, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau4()
 {
-    ToutEnUn *jeu = new ToutEnUn(1974);
+    ToutEnUn *jeu = new ToutEnUn(1974, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau5()
 {
-    ToutEnUn *jeu = new ToutEnUn(8979);
+    ToutEnUn *jeu = new ToutEnUn(8979, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau6()
 {
-    ToutEnUn *jeu = new ToutEnUn(9412);
+    ToutEnUn *jeu = new ToutEnUn(9412, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau7()
 {
-    ToutEnUn *jeu = new ToutEnUn(4894);
+    ToutEnUn *jeu = new ToutEnUn(4894, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau8()
 {
-    ToutEnUn *jeu = new ToutEnUn(5808);
+    ToutEnUn *jeu = new ToutEnUn(5808, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau9()
 {
-    ToutEnUn *jeu = new ToutEnUn(2908);
+    ToutEnUn *jeu = new ToutEnUn(2908, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau10()
 {
-    ToutEnUn *jeu = new ToutEnUn(2209);
+    ToutEnUn *jeu = new ToutEnUn(2209, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau11()
 {
-    ToutEnUn *jeu = new ToutEnUn(1111);
+    ToutEnUn *jeu = new ToutEnUn(1111, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau12()
 {
-    ToutEnUn *jeu = new ToutEnUn(8975);
+    ToutEnUn *jeu = new ToutEnUn(8975, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau13()
 {
-    ToutEnUn *jeu = new ToutEnUn(9531);
+    ToutEnUn *jeu = new ToutEnUn(9531, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau14()
 {
-    ToutEnUn *jeu = new ToutEnUn(1798);
+    ToutEnUn *jeu = new ToutEnUn(1798, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau15()
 {
-    ToutEnUn *jeu = new ToutEnUn(1515);
+    ToutEnUn *jeu = new ToutEnUn(1515, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau16()
 {
-    ToutEnUn *jeu = new ToutEnUn(4989);
+    ToutEnUn *jeu = new ToutEnUn(4989, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau17()
 {
-    ToutEnUn *jeu = new ToutEnUn(7897);
+    ToutEnUn *jeu = new ToutEnUn(7897, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }
 
 void Niveaux::niveau18()
 {
-    ToutEnUn *jeu = new ToutEnUn(0070);
+    ToutEnUn *jeu = new ToutEnUn(0070, joueur->value(), ia->value());
     jeu->show();
     this->close();
 }

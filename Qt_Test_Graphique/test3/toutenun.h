@@ -15,6 +15,8 @@
 #include <stdlib.h>
 #include <string>
 #include <QMouseEvent>
+#include <QKeyEvent>
+#include <QScrollArea>
 #include <QLCDNumber>
 
 #include "Terrain.h"
@@ -30,7 +32,7 @@ class ToutEnUn : public QWidget
     Q_OBJECT
 
 public:
-    explicit ToutEnUn(int seed, QWidget *parent = 0);
+    explicit ToutEnUn(int seed, int joueur, int ia, QWidget *parent = 0);
 
     void GenererTerrain(std::string&);
     void GenererTerrain(Vector, int, int, int);
@@ -41,6 +43,7 @@ public:
     void NombreJoueur();
     bool PositionJoueur(Vector&);
     int getValeur();
+    void Score(int);
 
 
 protected:
@@ -52,9 +55,18 @@ private:
     int nombreJ = 0;
     int x = 0;
     int y = 0;
-    int point = 0;
+    int i = 1;
+    int nombreJoueur;
+    int nombreIA;
+    int pointj1 = 0;
+    int pointj2 = 0;
+    int pointj3 = 0;
+    int pointj4 = 0;
 
     QLabel *j1;
+    QLabel *j2;
+    QLabel *j3;
+    QLabel *j4;
     QSpinBox *valeur;
     QHBoxLayout *principal;
     QGridLayout *jeu;
@@ -62,7 +74,10 @@ private:
     QFormLayout *choix;
     QPushButton *valide;
     QFormLayout *score;
-    QSpinBox *afficheScore;
+    QSpinBox *afficheScorej1;
+    QSpinBox *afficheScorej2;
+    QSpinBox *afficheScorej3;
+    QSpinBox *afficheScorej4;
 
 };
 
