@@ -67,6 +67,10 @@ private:
     bool finij2 = false;
     bool finij3 = false;
     bool finij4 = false;
+    Vector posj1;
+    Vector posj2;
+    Vector posj3;
+    Vector posj4;
 
     QLabel *j1;
     QLabel *j2;

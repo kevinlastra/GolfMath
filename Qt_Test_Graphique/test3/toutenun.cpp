@@ -35,6 +35,7 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
         {
             afficheScorej1 = new QSpinBox;
             afficheScorej1->setReadOnly(true);
+            afficheScorej1->setPalette(QColor(200, 0, 0));
             score->addRow(scorejoueur, afficheScorej1);
             break;
         }
@@ -42,6 +43,7 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
         {
             afficheScorej2 = new QSpinBox;
             afficheScorej2->setReadOnly(true);
+            afficheScorej2->setPalette(QColor(0, 200, 0));
             score->addRow(scorejoueur, afficheScorej2);
             break;
         }
@@ -49,6 +51,7 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
         {
             afficheScorej3 = new QSpinBox;
             afficheScorej3->setReadOnly(true);
+            afficheScorej3->setPalette(QColor(0, 200, 200));
             score->addRow(scorejoueur, afficheScorej3);
             break;
         }
@@ -56,6 +59,7 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
         {
             afficheScorej4 = new QSpinBox;
             afficheScorej4->setReadOnly(true);
+            afficheScorej4->setPalette(QColor(200, 200, 0));
             score->addRow(scorejoueur, afficheScorej4);
             break;
         }
@@ -186,6 +190,8 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                     {
                         break;
                     }
+                    posj1.x = w.x;
+                    posj1.y = w.y;
                     jeu->addWidget(j1, y, x);
                     j1->update();
                     jeu->update();
@@ -199,6 +205,8 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                     {
                         break;
                     }
+                    posj2.x = w.x;
+                    posj2.y = w.y;
                     jeu->addWidget(j2, y, x);
                     j2->update();
                     jeu->update();
@@ -212,6 +220,8 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                     {
                         break;
                     }
+                    posj3.x = w.x;
+                    posj3.y = w.y;
                     jeu->addWidget(j3, y, x);
                     j3->update();
                     jeu->update();
@@ -225,6 +235,8 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                     {
                         break;
                     }
+                    posj4.x = w.x;
+                    posj4.y = w.y;
                     jeu->addWidget(j4, y, x);
                     j4->update();
                     jeu->update();
@@ -242,7 +254,27 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
         {
             Score(i);
             if (T->getNode(w)->getType() != Node::eau &&
-                    T->getNode(w)->getType() != Node::NONE)
+                    T->getNode(w)->getType() != Node::NONE &&
+                    ((w.x >= posj1.x - T->getNode(posj1)->getPorter() &&
+                      w.x <= posj1.x + T->getNode(posj1)->getPorter() &&
+                      w.y >= posj1.y - T->getNode(posj1)->getPorter() &&
+                      w.y <= posj1.y + T->getNode(posj1)->getPorter() &&
+                      i == 1) ||
+                     (w.x >= posj2.x - T->getNode(posj2)->getPorter() &&
+                      w.x <= posj2.x + T->getNode(posj2)->getPorter() &&
+                      w.y >= posj2.y - T->getNode(posj2)->getPorter() &&
+                      w.y <= posj2.y + T->getNode(posj2)->getPorter() &&
+                      i == 2) ||
+                     (w.x >= posj3.x - T->getNode(posj3)->getPorter() &&
+                      w.x <= posj3.x + T->getNode(posj3)->getPorter() &&
+                      w.y >= posj3.y - T->getNode(posj3)->getPorter() &&
+                      w.y <= posj3.y + T->getNode(posj3)->getPorter() &&
+                      i == 3) ||
+                     (w.x >= posj4.x - T->getNode(posj4)->getPorter() &&
+                      w.x <= posj4.x + T->getNode(posj4)->getPorter() &&
+                      w.y >= posj4.y - T->getNode(posj4)->getPorter() &&
+                      w.y <= posj4.y + T->getNode(posj4)->getPorter() &&
+                      i == 4)))
             {
                 switch (i)
                 {
@@ -253,6 +285,8 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                     {
                         break;
                     }
+                    posj1.x = w.x;
+                    posj1.y = w.y;
                     jeu->addWidget(j1, y, x);
                     j1->update();
                     jeu->update();
@@ -266,6 +300,8 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                     {
                         break;
                     }
+                    posj2.x = w.x;
+                    posj2.y = w.y;
                     jeu->addWidget(j2, y, x);
                     j2->update();
                     jeu->update();
@@ -279,6 +315,8 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                     {
                         break;
                     }
+                    posj3.x = w.x;
+                    posj3.y = w.y;
                     jeu->addWidget(j3, y, x);
                     j3->update();
                     jeu->update();
@@ -292,6 +330,8 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                     {
                         break;
                     }
+                    posj4.x = w.x;
+                    posj4.y = w.y;
                     jeu->addWidget(j4, y, x);
                     j4->update();
                     jeu->update();
