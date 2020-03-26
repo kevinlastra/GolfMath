@@ -76,6 +76,7 @@ private:
     QLabel *j2;
     QLabel *j3;
     QLabel *j4;
+    QLabel *tourduj;
     QSpinBox *valeur;
     QHBoxLayout *principal;
     QGridLayout *jeu;

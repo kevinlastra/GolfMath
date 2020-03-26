@@ -66,6 +66,10 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
         }
     }
 
+    tourduj = new QLabel;
+    tourduj->setText("C'est au joueur 1");
+    score->addWidget(tourduj);
+
     std::string chemin = "/home/e20150002138/Bureau/GolfMath/testmap.txt";
     //GenererTerrain(chemin);
     GenererTerrain(Vector(40, 40), 10, 5, seed);
@@ -124,11 +128,6 @@ void ToutEnUn::AjouterJoueur(PlayerController::TypeJ t)
 
 void ToutEnUn::mousePressEvent(QMouseEvent *event)
 {
-    if (i > nombreJoueur)
-    {
-        i = 1;
-        tour++;
-    }
     x = (event->pos().x() - 8)/16;
     y = (event->pos().y() - 8)/16;
     Vector w(y, x);
@@ -350,6 +349,15 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
     {
         QMessageBox::critical(this, "Erreur", "En dehors de la grille!");
     }
+    if (i > nombreJoueur)
+    {
+        i = 1;
+        tour++;
+    }
+    QString tj = "C'est au joueur ";
+    tj += QString::number(i);
+    tourduj->setText(tj);
+    tourduj->update();
 
 }
 
