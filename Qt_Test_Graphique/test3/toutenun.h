@@ -67,11 +67,16 @@ private:
     bool finij2 = false;
     bool finij3 = false;
     bool finij4 = false;
+    Vector posj1;
+    Vector posj2;
+    Vector posj3;
+    Vector posj4;
 
     QLabel *j1;
     QLabel *j2;
     QLabel *j3;
     QLabel *j4;
+    QLabel *tourduj;
     QSpinBox *valeur;
     QHBoxLayout *principal;
     QGridLayout *jeu;
