@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.10.10)  2 MAR 2020 12:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.23)  29 MAR 2020 14:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **GolfMath.tex
 (./GolfMath.tex
 LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 5 language(s) loaded.
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -722,37 +722,84 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 tex
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
 \arrowsize=\dimen151
-)) (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count106
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\algocf@hangindent=\skip43
+
+(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count107
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip44
+\skiplinenumber=\skip45
+\skiprule=\skip46
+\skiphlne=\skip47
+\skiptext=\skip48
+\skiplength=\skip49
+\algomargin=\skip50
+\skipalgocfslide=\skip51
+\algowidth=\dimen152
+\inoutsize=\dimen153
+\inoutindent=\dimen154
+\interspacetitleruled=\dimen155
+\interspacealgoruled=\dimen156
+\interspacetitleboxruled=\dimen157
+\algocf@ruledwidth=\skip52
+\algocf@inoutbox=\box57
+\algocf@inputbox=\box58
+\AlCapSkip=\skip53
+\AlCapHSkip=\skip54
+\algoskipindent=\skip55
+\algocf@nlbox=\box59
+\algocf@hangingbox=\box60
+\algocf@untilbox=\box61
+\algocf@skipuntil=\skip56
+\algocf@capbox=\box62
+\algocf@lcaptionbox=\skip57
+\algoheightruledefault=\skip58
+\algoheightrule=\skip59
+\algotitleheightruledefault=\skip60
+\algotitleheightrule=\skip61
+\c@algocfline=\count108
+\c@algocfproc=\count109
+\c@algocf=\count110
+\algocf@algoframe=\box63
+\algocf@algobox=\box64
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
-\c@tracingmulticols=\count106
-\mult@box=\box57
-\multicol@leftmargin=\dimen152
-\c@unbalance=\count107
-\c@collectmore=\count108
-\doublecol@number=\count109
-\multicoltolerance=\count110
-\multicolpretolerance=\count111
-\full@width=\dimen153
-\page@free=\dimen154
-\premulticols=\dimen155
-\postmulticols=\dimen156
-\multicolsep=\skip43
-\multicolbaselineskip=\skip44
-\partial@page=\box58
-\last@line=\box59
-\maxbalancingoverflow=\dimen157
-\mult@rightbox=\box60
-\mult@grightbox=\box61
-\mult@gfirstbox=\box62
-\mult@firstbox=\box63
-\@tempa=\box64
-\@tempa=\box65
-\@tempa=\box66
-\@tempa=\box67
-\@tempa=\box68
-\@tempa=\box69
-\@tempa=\box70
-\@tempa=\box71
+\c@tracingmulticols=\count111
+\mult@box=\box65
+\multicol@leftmargin=\dimen158
+\c@unbalance=\count112
+\c@collectmore=\count113
+\doublecol@number=\count114
+\multicoltolerance=\count115
+\multicolpretolerance=\count116
+\full@width=\dimen159
+\page@free=\dimen160
+\premulticols=\dimen161
+\postmulticols=\dimen162
+\multicolsep=\skip62
+\multicolbaselineskip=\skip63
+\partial@page=\box66
+\last@line=\box67
+\maxbalancingoverflow=\dimen163
+\mult@rightbox=\box68
+\mult@grightbox=\box69
+\mult@gfirstbox=\box70
+\mult@firstbox=\box71
 \@tempa=\box72
 \@tempa=\box73
 \@tempa=\box74
@@ -762,54 +809,62 @@ Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
 \@tempa=\box78
 \@tempa=\box79
 \@tempa=\box80
-\c@columnbadness=\count112
-\c@finalcolumnbadness=\count113
-\last@try=\dimen158
-\multicolovershoot=\dimen159
-\multicolundershoot=\dimen160
-\mult@nat@firstbox=\box81
-\colbreak@box=\box82
-\mc@col@check@num=\count114
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\c@columnbadness=\count117
+\c@finalcolumnbadness=\count118
+\last@try=\dimen164
+\multicolovershoot=\dimen165
+\multicolundershoot=\dimen166
+\mult@nat@firstbox=\box89
+\colbreak@box=\box90
+\mc@col@check@num=\count119
 )
 (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
-\ttl@box=\box83
-\beforetitleunit=\skip45
-\aftertitleunit=\skip46
-\ttl@plus=\dimen161
-\ttl@minus=\dimen162
+\ttl@box=\box91
+\beforetitleunit=\skip64
+\aftertitleunit=\skip65
+\ttl@plus=\dimen167
+\ttl@minus=\dimen168
 \ttl@toksa=\toks29
-\titlewidth=\dimen163
-\titlewidthlast=\dimen164
-\titlewidthfirst=\dimen165
+\titlewidth=\dimen169
+\titlewidthlast=\dimen170
+\titlewidthfirst=\dimen171
 ) (./GolfMath.aux)
 \openout1 = `GolfMath.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
  ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count115
-\scratchdimen=\dimen166
-\scratchbox=\box84
-\nofMPsegments=\count116
-\nofMParguments=\count117
+\scratchcounter=\count120
+\scratchdimen=\dimen172
+\scratchbox=\box92
+\nofMPsegments=\count121
+\nofMParguments=\count122
 \everyMPshowfont=\toks30
-\MPscratchCnt=\count118
-\MPscratchDim=\dimen167
-\MPnumerator=\count119
-\makeMPintoPDFobject=\count120
+\MPscratchCnt=\count123
+\MPscratchDim=\dimen173
+\MPnumerator=\count124
+\makeMPintoPDFobject=\count125
 \everyMPtoPDFconversion=\toks31
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -880,93 +935,159 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 
 [1]
-Underfull \hbox (badness 10000) in paragraph at lines 48--50
+Underfull \hbox (badness 10000) in paragraph at lines 53--55
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--50
+Underfull \hbox (badness 10000) in paragraph at lines 53--55
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 55--74
+Underfull \hbox (badness 10000) in paragraph at lines 60--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--74
+Underfull \hbox (badness 10000) in paragraph at lines 60--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--74
+Underfull \hbox (badness 10000) in paragraph at lines 60--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--74
+Underfull \hbox (badness 10000) in paragraph at lines 60--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--74
+Underfull \hbox (badness 10000) in paragraph at lines 60--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--74
+Underfull \hbox (badness 10000) in paragraph at lines 60--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--74
+Underfull \hbox (badness 10000) in paragraph at lines 60--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--74
+Underfull \hbox (badness 10000) in paragraph at lines 60--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--74
+Underfull \hbox (badness 10000) in paragraph at lines 60--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--74
+Underfull \hbox (badness 10000) in paragraph at lines 60--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--74
+Underfull \hbox (badness 10000) in paragraph at lines 60--79
 
  []
 
-[3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 85--89
+
+Overfull \hbox (16.34914pt too wide) in paragraph at lines 129--129
+ [][] 
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 142--146
 
  []
 
-[5] [6] [7] (./GolfMath.aux) ) 
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 159--194
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--194
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 200.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 200.
+ [5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 224--228
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--241
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 242--273
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
+
+ []
+
+[8] [9]
+<Images/Geogebraimg1.png, id=50, 539.76656pt x 231.86626pt>
+File: Images/Geogebraimg1.png Graphic file (type png)
+<use Images/Geogebraimg1.png>
+Package pdftex.def Info: Images/Geogebraimg1.png  used on input line 322.
+(pdftex.def)             Requested size: 269.88261pt x 115.93283pt.
+ [10 <./Images/Geogebraimg1.png>] [11] [12] [13] (./GolfMath.aux) ) 
 Here is how much of TeX's memory you used:
- 14443 strings out of 494894
- 309267 string characters out of 6179472
- 363031 words of memory out of 5000000
- 17505 multiletter control sequences out of 15000+600000
- 6678 words of font info for 24 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 55i,6n,67p,419b,605s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-Output written on GolfMath.pdf (8 pages, 78577 bytes).
+ 15623 strings out of 492982
+ 328123 string characters out of 6134896
+ 397368 words of memory out of 5000000
+ 18900 multiletter control sequences out of 15000+600000
+ 7497 words of font info for 27 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 55i,20n,67p,419b,1173s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on GolfMath.pdf (14 pages, 216171 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
- 38 compressed objects within 1 object stream
+ 108 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
