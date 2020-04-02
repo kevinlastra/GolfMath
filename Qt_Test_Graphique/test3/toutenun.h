@@ -36,13 +36,7 @@ public:
 
     void GenererTerrain(std::string&);
     void GenererTerrain(Vector, int, int, int);
-    void AjouterJoueur(PlayerController::TypeJ);
     void Afficher();
-    void Interagir();
-    void Mouvement(int);
-    void NombreJoueur();
-    bool PositionJoueur(Vector&);
-    int getValeur();
     void Score(int);
 
 
