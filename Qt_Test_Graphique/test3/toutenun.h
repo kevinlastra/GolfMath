@@ -38,6 +38,7 @@ public:
     void GenererTerrain(Vector, int, int, int);
     void Afficher();
     void Score(int);
+    bool Mouvement(Vector, Vector);
 
 
 protected:
