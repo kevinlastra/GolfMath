@@ -18,6 +18,25 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
     j3->setPixmap(QPixmap("../image/v2/j3.png"));
     j4->setPixmap(QPixmap("../image/v2/j4.png"));
 
+
+    QString cp = "../image/v2/cp.png";
+    possibleCoup1 = new QLabel;
+    possibleCoup2 = new QLabel;
+    possibleCoup3 = new QLabel;
+    possibleCoup4 = new QLabel;
+    possibleCoup5 = new QLabel;
+    possibleCoup6 = new QLabel;
+    possibleCoup7 = new QLabel;
+    possibleCoup8 = new QLabel;
+    possibleCoup1->setPixmap(QPixmap(cp));
+    possibleCoup2->setPixmap(QPixmap(cp));
+    possibleCoup3->setPixmap(QPixmap(cp));
+    possibleCoup4->setPixmap(QPixmap(cp));
+    possibleCoup5->setPixmap(QPixmap(cp));
+    possibleCoup6->setPixmap(QPixmap(cp));
+    possibleCoup7->setPixmap(QPixmap(cp));
+    possibleCoup8->setPixmap(QPixmap(cp));
+
     nombreJoueur = joueur;
     nombreIA = ia;
 
@@ -43,7 +62,7 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
         {
             afficheScorej2 = new QSpinBox;
             afficheScorej2->setReadOnly(true);
-            afficheScorej2->setPalette(QColor(0, 200, 0));
+            afficheScorej2->setPalette(QColor(0, 200, 200));
             score->addRow(scorejoueur, afficheScorej2);
             break;
         }
@@ -51,7 +70,7 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
         {
             afficheScorej3 = new QSpinBox;
             afficheScorej3->setReadOnly(true);
-            afficheScorej3->setPalette(QColor(0, 200, 200));
+            afficheScorej3->setPalette(QColor(200, 200, 0));
             score->addRow(scorejoueur, afficheScorej3);
             break;
         }
@@ -59,7 +78,7 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
         {
             afficheScorej4 = new QSpinBox;
             afficheScorej4->setReadOnly(true);
-            afficheScorej4->setPalette(QColor(200, 200, 0));
+            afficheScorej4->setPalette(QColor(0, 200, 0));
             score->addRow(scorejoueur, afficheScorej4);
             break;
         }
@@ -313,11 +332,62 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
         i = 1;
         tour++;
     }
+    if (finij1 && i == 1) i++;
+    if (finij2 && i == 2) i++;
+    if (finij3 && i == 3) i++;
+    if (finij4 && i == 4) i++;
+    ProchainCoup();
     QString tj = "C'est au joueur ";
     tj += QString::number(i);
     tourduj->setText(tj);
     tourduj->update();
 
+}
+
+void ToutEnUn::ProchainCoup()
+{
+    if(tour > 1)
+    {
+        switch (i)
+        {
+        case 1:
+        {
+            Coup(posj1);
+            jeu->update();
+            break;
+        }
+        case 2:
+        {
+            Coup(posj2);
+            jeu->update();
+            break;
+        }
+        case 3:
+        {
+            Coup(posj3);
+            jeu->update();
+            break;
+        }
+        case 4:
+        {
+            Coup(posj4);
+            jeu->update();
+            break;
+        }
+        }
+    }
+}
+
+void ToutEnUn::Coup(Vector position)
+{
+    jeu->addWidget(possibleCoup1, position.x - T->getNode(position)->getPorter(), position.y - T->getNode(position)->getPorter());
+    jeu->addWidget(possibleCoup2, position.x - T->getNode(position)->getPorter(), position.y);
+    jeu->addWidget(possibleCoup3, position.x, position.y - T->getNode(position)->getPorter());
+    jeu->addWidget(possibleCoup4, position.x + T->getNode(position)->getPorter(), position.y + T->getNode(position)->getPorter());
+    jeu->addWidget(possibleCoup5, position.x + T->getNode(position)->getPorter(), position.y);
+    jeu->addWidget(possibleCoup6, position.x, position.y + T->getNode(position)->getPorter());
+    jeu->addWidget(possibleCoup7, position.x + T->getNode(position)->getPorter(), position.y - T->getNode(position)->getPorter());
+    jeu->addWidget(possibleCoup8, position.x - T->getNode(position)->getPorter(), position.y + T->getNode(position)->getPorter());
 }
 
 

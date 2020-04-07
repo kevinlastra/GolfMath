@@ -38,6 +38,8 @@ public:
     void GenererTerrain(Vector, int, int, int);
     void Afficher();
     void Score(int);
+    void ProchainCoup();
+    void Coup(Vector);
     bool Mouvement(Vector, Vector);
 
 
@@ -72,6 +74,14 @@ private:
     QLabel *j3;
     QLabel *j4;
     QLabel *tourduj;
+    QLabel *possibleCoup1;
+    QLabel *possibleCoup2;
+    QLabel *possibleCoup3;
+    QLabel *possibleCoup4;
+    QLabel *possibleCoup5;
+    QLabel *possibleCoup6;
+    QLabel *possibleCoup7;
+    QLabel *possibleCoup8;
     QSpinBox *valeur;
     QHBoxLayout *principal;
     QGridLayout *jeu;

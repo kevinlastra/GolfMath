@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     quitter->move(320, 340);
 
     connect(jouer, SIGNAL(clicked()), this, SLOT(lancer()));
+    connect(jouer, SIGNAL(clicked()), this, SLOT(close()));
     connect(quitter, SIGNAL(clicked()), qApp, SLOT(quit()));
 }
 
