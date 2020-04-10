@@ -2,6 +2,9 @@
 
 ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(parent)
 {
+    setWindowIcon(QIcon("./image/ballegolf.png"));
+    setWindowTitle("Golf Mathématique");
+
     QPalette fond;
     fond.setBrush(backgroundRole(),QBrush(QColor(131, 156, 114)));
     setPalette(fond);
@@ -13,13 +16,13 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
     j2 = new QLabel;
     j3 = new QLabel;
     j4 = new QLabel;
-    j1->setPixmap(QPixmap("../image/v2/j1.png"));
-    j2->setPixmap(QPixmap("../image/v2/j2.png"));
-    j3->setPixmap(QPixmap("../image/v2/j3.png"));
-    j4->setPixmap(QPixmap("../image/v2/j4.png"));
+    j1->setPixmap(QPixmap("./image/v2/j1.png"));
+    j2->setPixmap(QPixmap("./image/v2/j2.png"));
+    j3->setPixmap(QPixmap("./image/v2/j3.png"));
+    j4->setPixmap(QPixmap("./image/v2/j4.png"));
 
 
-    QString cp = "../image/v2/cp.png";
+    QString cp = "./image/v2/cp.png";
     possibleCoup1 = new QLabel;
     possibleCoup2 = new QLabel;
     possibleCoup3 = new QLabel;
@@ -481,7 +484,7 @@ void ToutEnUn::Afficher()
             {
             case Node::herbe:
             {
-                QString path = "../image/v2/green_";
+                QString path = "./image/v2/green_";
                 path += QString::number(T->getNode(v)->getPorter());
                 path += ".jpg";
                 QLabel *herbe = new QLabel();
@@ -491,7 +494,7 @@ void ToutEnUn::Afficher()
             }
             case Node::start:
             {
-                QString path = "../image/v2/start_";
+                QString path = "./image/v2/start_";
                 path += QString::number(T->getNode(v)->getPorter());
                 path += ".jpg";
                 QLabel *start = new QLabel();
@@ -502,13 +505,13 @@ void ToutEnUn::Afficher()
             case Node::end:
             {
                 QLabel *trou = new QLabel();
-                trou->setPixmap(QPixmap("../image/v2/hole.jpg"));
+                trou->setPixmap(QPixmap("./image/v2/hole.jpg"));
                 jeu->addWidget(trou, i, j);
                 break;
             }
             case Node::sable:
             {
-                QString path = "../image/v2/green_";
+                QString path = "./image/v2/green_";
                 path += QString::number(T->getNode(v)->getPorter());
                 path += ".jpg";
                 QLabel *sable = new QLabel();
@@ -519,7 +522,7 @@ void ToutEnUn::Afficher()
             default:
             {
                 QLabel *eau = new QLabel();
-                eau->setPixmap(QPixmap("../image/v2/water.jpg"));
+                eau->setPixmap(QPixmap("./image/v2/water.jpg"));
                 jeu->addWidget(eau, i, j);
                 break;
             }

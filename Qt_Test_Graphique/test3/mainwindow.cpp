@@ -2,9 +2,11 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
+    setWindowIcon(QIcon("./image/ballegolf.png"));
+    setWindowTitle("Golf Mathématique");
     setFixedSize(800, 600);
     QPalette fond;
-    fond.setBrush(backgroundRole(), QBrush(QPixmap("../image/v2/background.jpg")));
+    fond.setBrush(backgroundRole(), QBrush(QPixmap("./image/v2/background.jpg")));
     setPalette(fond);
 
     jouer = new QPushButton("Jouer", this);

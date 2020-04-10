@@ -2,6 +2,9 @@
 
 Niveaux::Niveaux()
 {
+    setWindowIcon(QIcon("./image/ballegolf.png"));
+    setWindowTitle("Golf Mathématique");
+
     setFixedSize(500, 300);
     QPalette fond;
     fond.setBrush(backgroundRole(),QBrush(QColor(131, 156, 114)));
