@@ -20,7 +20,7 @@ class GameMaster
   void Start();
   
   void Interactuer();
-  void RequeteMovement(int);
+  void RequeteMovement(int,int);
   
   void RequeteNBJouers();
   

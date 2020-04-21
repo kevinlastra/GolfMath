@@ -77,13 +77,6 @@ void GameMaster::Start()
   else
     GenerateTerrain(Vector(40,40),10,5,-1);
   RequeteNBJouers();
-  /*std::cout<<"("<<T->getStartPos().x<<" "<<T->getStartPos().y<<")"<<std::endl;
-  std::cout<<"("<<T->getNode(T->getStartPos())->getPos().x<<" "<<T->getNode(T->getStartPos())->getPos().y<<")"<<std::endl;
-  std::cout<<"("<<T->getTargetPos().x<<" "<<T->getTargetPos().y<<")"<<std::endl;
-  std::cout<<"("<<T->getNode(T->getTargetPos())->getPos().x<<" "<<T->getNode(T->getTargetPos())->getPos().y<<")"<<std::endl;
-  std::cout<<(T->getNode(T->getStartPos())->getPos().x == T->getStartPos().x)<<std::endl;*/
-  NoeudA noeud = cheminPlusCourt(T,T->getNode(T->getStartPos()),T->getNode(T->getTargetPos()));
-  //remonter(noeud);
   Interactuer();
 }
 void GameMaster::Interactuer()
@@ -91,10 +84,11 @@ void GameMaster::Interactuer()
   bool stop = false;
   int nbcoup = 0;
   int Player = 0;
+  int tour=0;
   while(!stop)
   {
     PrintMap();
-    RequeteMovement(Player);
+    RequeteMovement(Player,tour/2);
     
     if(Players[Player].GetPos() == T->getTargetPos())
     {
@@ -106,9 +100,10 @@ void GameMaster::Interactuer()
     Player++;
     if(Player == nbplayers)
       Player = 0;
+    tour++;
   }
 }
-void GameMaster::RequeteMovement(int i)
+void GameMaster::RequeteMovement(int i,int tour)
 {
   char ctr;
   if (Players[i].GetTypeJ()==PlayerController::H)
@@ -117,7 +112,10 @@ void GameMaster::RequeteMovement(int i)
   }
   else if (Players[i].GetTypeJ()==PlayerController::IA)
   {
-    ctr = Players[i].iaJouer(T,T->getTargetPos());
+    Node* noeud = new Node[100];
+    noeud = cheminPlusCourt(T,T->getNode(T->getStartPos()),T->getNode(T->getTargetPos()));
+    int oui=0;
+    ctr = Players[i].iaBest(T,noeud,tour);
   }
   Vector npos(Players[i].GetPos());
   int porter = T->getNode(Vector(npos.x,npos.y))->getPorter();

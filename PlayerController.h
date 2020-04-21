@@ -20,6 +20,7 @@ class PlayerController
   void SetPosAtTerrain(Vector&);
   void ResetPos();
   char iaJouer(Terrain*&,Vector&);
+  char iaBest(Terrain*&,Node*,int);
 
   void PPoints(int);
   void PCoup();

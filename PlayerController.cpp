@@ -193,3 +193,51 @@ char PlayerController::iaJouer(Terrain *&T,Vector &v)
   }
   return res;
 }
+
+char PlayerController::iaBest(Terrain *&T,Node* noeud,int k){
+  std::cout<<"debut fonction"<<std::endl;
+  char res;
+  Vector u = pos;
+  int porter = T->getNode(Vector(u.x,u.y))->getPorter();
+  Vector w = noeud[k].getPos();
+  int i=0;
+  while(noeud[i].getType() != Node::NONE){
+    std::cout<<noeud[i].getPos().x<<" "<<noeud[i].getPos().y<<std::endl;
+    i++;
+  }
+  std::cout<<"je suis en : "<<u.x<<" "<<u.y<<std::endl;
+  std::cout<<"je veux aller en : "<<noeud[k].getPos().x<<" "<<noeud[k].getPos().y<<std::endl;
+  if(w.x == u.x+porter && w.y == u.y+porter){
+    res = '3';
+    std::cout<<"3"<<std::endl;
+  } 
+  else if(w.x == u.x+porter && w.y == u.y-porter){
+    res = '9';
+    std::cout<<"9"<<std::endl;
+  } 
+  else if(w.x == u.x-porter && w.y == u.y+porter){
+    res = '1';
+    std::cout<<"1"<<std::endl;
+  } 
+  else if(w.x == u.x-porter && w.y == u.y-porter){
+    res = '7';
+    std::cout<<"7"<<std::endl;
+  } 
+  else if(w.x == u.x+porter){
+    res = '6';
+    std::cout<<"6"<<std::endl;
+  } 
+  else if(w.x == u.x-porter){
+    res = '4';
+    std::cout<<"4"<<std::endl;
+  } 
+  else if(w.y == u.y+porter){
+    res = '2';
+    std::cout<<"2"<<std::endl;
+  } 
+  else if(w.y == u.y-porter){
+    res = '8';
+    std::cout<<"8"<<std::endl;
+  } 
+  return res;
+}

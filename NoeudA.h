@@ -17,6 +17,6 @@ class NoeudA
 	void operator=(NoeudA);
 };
 void remonter(NoeudA);
-NoeudA cheminPlusCourt(Terrain*,Node*,Node*);
+Node* cheminPlusCourt(Terrain*,Node*,Node*);
 
 #endif

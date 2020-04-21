@@ -58,7 +58,7 @@ bool appartienClosed(NoeudA noeud, queue<NoeudA> list){
 	}
 }
 
-NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
+Node* cheminPlusCourt(Terrain* T,Node* d,Node* o){
 	queue<NoeudA> closedList;
 	priority_queue<NoeudA, vector<NoeudA>, Compare> openList;
 	Vector oPos = o->getPos();
@@ -67,19 +67,20 @@ NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
 	openList.push(depart);
 	NoeudA last = NoeudA();
 	bool stop = false;
-	cout<<"("<<d->getPos().x<<" "<<d->getPos().y<<")"<<endl;
-	cout<<"("<<o->getPos().x<<" "<<o->getPos().y<<")"<<endl;
+	NoeudA stock[1000];
+	Node chemin[100] = {Node()};
+	for(int i=0;i<100;i++){
+
+	}
+	int index=0;
+	int indexChemin=0;
+	Node* vrai = new Node[100];
 	while (!openList.empty() && !stop)
 	{	
-		NoeudA u = openList.top();
+		stock[index] = openList.top();
 		openList.pop();
-		cout<<"("<<u.node->getPos().x<<" "<<u.node->getPos().y<<")"<<endl;
-		if (u.node->getPos() == objectif.node->getPos()){
-			/*cout<<u.pere<<endl;
-			cout<<u.pere->pere<<endl;
-			cout<<&u<<endl;*/
-			//cout<<"ouiIF"<<endl;
-			last = u;
+		if (stock[index].node->getPos() == objectif.node->getPos()){
+			last = stock[index];
 			stop = true;
 			break;
 		}
@@ -87,19 +88,16 @@ NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
 		{
 			if (i != 5){
 			NoeudA v = NoeudA();
-			int porter = T->getNode(Vector(u.node->getPos().x,u.node->getPos().y))->getPorter();
-			//cout<<"ouiFor"<<endl;
-			//cout<<"("<<u.node->getPos().x<<" "<<u.node->getPos().y<<")"<<endl;
+			int porter = T->getNode(Vector(stock[index].node->getPos().x,stock[index].node->getPos().y))->getPorter();
 			switch(i)
 		  {
 		  case 8:
-		    if(T->getNode(Vector(u.node->getPos().x,u.node->getPos().y-porter)) != NULL){
-		      NoeudA z = u;
-		      v.node = T->getNode(Vector(u.node->getPos().x,u.node->getPos().y-porter));
-		  	  v.cout = u.cout+1;
+		    if(T->getNode(Vector(stock[index].node->getPos().x,stock[index].node->getPos().y-porter)) != NULL){
+		      v.node = T->getNode(Vector(stock[index].node->getPos().x,stock[index].node->getPos().y-porter));
+		  	  v.cout = stock[index].cout+1;
 		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
-		  	  v.pere = &z;}
-		    if (T->getNode(Vector(u.node->getPos().x,u.node->getPos().y-porter)) != NULL && T->getNode(Vector(u.node->getPos().x,u.node->getPos().y-porter))->getType() != Node::NONE  
+		  	  v.pere = &stock[index];}
+		    if (T->getNode(Vector(stock[index].node->getPos().x,stock[index].node->getPos().y-porter)) != NULL && T->getNode(Vector(stock[index].node->getPos().x,stock[index].node->getPos().y-porter))->getType() != Node::NONE  
 		    	&& !appartienClosed(v,closedList) && !appartientOpen(v,openList))
 		    {
 		      
@@ -107,13 +105,12 @@ NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
 		    }
 		    break;
 		  case 2:
-		    if(T->getNode(Vector(u.node->getPos().x,u.node->getPos().y+porter)) != NULL){
-		      NoeudA z = u;
-		      v.node = T->getNode(Vector(u.node->getPos().x,u.node->getPos().y+porter));
-		  	  v.cout = u.cout+1;
+		    if(T->getNode(Vector(stock[index].node->getPos().x,stock[index].node->getPos().y+porter)) != NULL){
+		      v.node = T->getNode(Vector(stock[index].node->getPos().x,stock[index].node->getPos().y+porter));
+		  	  v.cout = stock[index].cout+1;
 		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
-		  	  v.pere = &z;}
-		    if(T->getNode(Vector(u.node->getPos().x,u.node->getPos().y+porter)) != NULL && T->getNode(Vector(u.node->getPos().x,u.node->getPos().y+porter))->getType() != Node::NONE  
+		  	  v.pere = &stock[index];}
+		    if(T->getNode(Vector(stock[index].node->getPos().x,stock[index].node->getPos().y+porter)) != NULL && T->getNode(Vector(stock[index].node->getPos().x,stock[index].node->getPos().y+porter))->getType() != Node::NONE  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		    {
@@ -122,13 +119,12 @@ NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
 		    }
 		    break;
 		  case 6:
-		    if(T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y)) != NULL){
-		      NoeudA z = u;
-		  	  v.node = T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y));
-		  	  v.cout = u.cout+1;
+		    if(T->getNode(Vector(stock[index].node->getPos().x+porter,stock[index].node->getPos().y)) != NULL){
+		  	  v.node = T->getNode(Vector(stock[index].node->getPos().x+porter,stock[index].node->getPos().y));
+		  	  v.cout = stock[index].cout+1;
 		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
-		  	  v.pere = &z;}
-		    if(T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y)) != NULL && T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y))->getType() != Node::NONE  
+		  	  v.pere = &stock[index];}
+		    if(T->getNode(Vector(stock[index].node->getPos().x+porter,stock[index].node->getPos().y)) != NULL && T->getNode(Vector(stock[index].node->getPos().x+porter,stock[index].node->getPos().y))->getType() != Node::NONE  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		    {
@@ -137,13 +133,12 @@ NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
 		    }
 		    break;
 		  case 4:
-		    if(T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y)) != NULL){
-		      NoeudA z = u;
-		  	  v.node = T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y));
-		  	  v.cout = u.cout+1;
+		    if(T->getNode(Vector(stock[index].node->getPos().x-porter,stock[index].node->getPos().y)) != NULL){
+		  	  v.node = T->getNode(Vector(stock[index].node->getPos().x-porter,stock[index].node->getPos().y));
+		  	  v.cout = stock[index].cout+1;
 		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
-		  	  v.pere = &z;}
-		    if(T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y)) != NULL && T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y))->getType() != Node::NONE  
+		  	  v.pere = &stock[index];}
+		    if(T->getNode(Vector(stock[index].node->getPos().x-porter,stock[index].node->getPos().y)) != NULL && T->getNode(Vector(stock[index].node->getPos().x-porter,stock[index].node->getPos().y))->getType() != Node::NONE  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		    {
@@ -152,13 +147,12 @@ NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
 		    }
 		    break;
 		  case 7:
-		    if(T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y-porter)) != NULL){
-		      NoeudA z = u;
-		  	  v.node = T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y-porter));
-		  	  v.cout = u.cout+1;
+		    if(T->getNode(Vector(stock[index].node->getPos().x-porter,stock[index].node->getPos().y-porter)) != NULL){
+		  	  v.node = T->getNode(Vector(stock[index].node->getPos().x-porter,stock[index].node->getPos().y-porter));
+		  	  v.cout = stock[index].cout+1;
 		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
-		  	  v.pere = &z;}
-		    if(T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y-porter)) != NULL && T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y-porter))->getType() != Node::NONE  
+		  	  v.pere = &stock[index];}
+		    if(T->getNode(Vector(stock[index].node->getPos().x-porter,stock[index].node->getPos().y-porter)) != NULL && T->getNode(Vector(stock[index].node->getPos().x-porter,stock[index].node->getPos().y-porter))->getType() != Node::NONE  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		    {
@@ -167,13 +161,12 @@ NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
 		    }
 		    break;
 		  case 9:
-		    if(T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y-porter)) != NULL){
-		      NoeudA z = u;
-		  	  v.node = T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y-porter));
-		  	  v.cout = u.cout+1;
+		    if(T->getNode(Vector(stock[index].node->getPos().x+porter,stock[index].node->getPos().y-porter)) != NULL){
+		  	  v.node = T->getNode(Vector(stock[index].node->getPos().x+porter,stock[index].node->getPos().y-porter));
+		  	  v.cout = stock[index].cout+1;
 		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
-		  	  v.pere = &z;}
-		    if(T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y-porter)) != NULL && T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y-porter))->getType() != Node::NONE  
+		  	  v.pere = &stock[index];}
+		    if(T->getNode(Vector(stock[index].node->getPos().x+porter,stock[index].node->getPos().y-porter)) != NULL && T->getNode(Vector(stock[index].node->getPos().x+porter,stock[index].node->getPos().y-porter))->getType() != Node::NONE  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		    {
@@ -182,13 +175,12 @@ NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
 		    }
 		    break;
 		  case 1:
-		    if(T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y+porter)) != NULL){
-		      NoeudA z = u;
-		  	  v.node = T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y+porter));
-		  	  v.cout = u.cout+1;
+		    if(T->getNode(Vector(stock[index].node->getPos().x-porter,stock[index].node->getPos().y+porter)) != NULL){
+		  	  v.node = T->getNode(Vector(stock[index].node->getPos().x-porter,stock[index].node->getPos().y+porter));
+		  	  v.cout = stock[index].cout+1;
 		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
-		  	  v.pere = &z;}
-		    if(T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y+porter)) != NULL && T->getNode(Vector(u.node->getPos().x-porter,u.node->getPos().y+porter))->getType() != Node::NONE  
+		  	  v.pere = &stock[index];}
+		    if(T->getNode(Vector(stock[index].node->getPos().x-porter,stock[index].node->getPos().y+porter)) != NULL && T->getNode(Vector(stock[index].node->getPos().x-porter,stock[index].node->getPos().y+porter))->getType() != Node::NONE  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		    {
@@ -197,13 +189,12 @@ NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
 		    }
 		    break;
 		    case 3:
-		    if(T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y+porter)) != NULL){
-		      NoeudA z = u;
-		  	  v.node = T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y+porter));
-		  	  v.cout = u.cout+1;
+		    if(T->getNode(Vector(stock[index].node->getPos().x+porter,stock[index].node->getPos().y+porter)) != NULL){
+		  	  v.node = T->getNode(Vector(stock[index].node->getPos().x+porter,stock[index].node->getPos().y+porter));
+		  	  v.cout = stock[index].cout+1;
 		  	  v.heuristique =v.cout + v.node->getPos().distance(oPos);
-		  	  v.pere = &z;}
-		      if(T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y+porter)) != NULL && T->getNode(Vector(u.node->getPos().x+porter,u.node->getPos().y+porter))->getType() != Node::NONE  
+		  	  v.pere = &stock[index];}
+		      if(T->getNode(Vector(stock[index].node->getPos().x+porter,stock[index].node->getPos().y+porter)) != NULL && T->getNode(Vector(stock[index].node->getPos().x+porter,stock[index].node->getPos().y+porter))->getType() != Node::NONE  
 		    	&& !appartienClosed(v,closedList) 
 		    	&& !appartientOpen(v,openList))
 		      {
@@ -212,13 +203,26 @@ NoeudA cheminPlusCourt(Terrain* T,Node* d,Node* o){
 		      }      
 		      break;
 		  }		  
-		  //cout<<"pos de v : ("<<v.node->getPos().x<<" "<<v.node->getPos().y<<")"<<endl; 		 
-		  //cout<<"pos du pere : ("<<v.pere->node->getPos().x<<" "<<v.pere->node->getPos().y<<")"<<endl; 
 		}
 		}
-		closedList.push(u);
+		closedList.push(stock[index]);
+		index++;
 	}
-	return last;
+	while (last.pere != NULL){
+		chemin[indexChemin]=*last.node;
+		last.node=last.pere->node;
+		last.cout=last.pere->cout;
+		last.heuristique=last.pere->heuristique;
+		last.pere=last.pere->pere;
+		indexChemin++;
+	}
+	int k = indexChemin-1;
+	for(int i=0;i<indexChemin;i++){
+		vrai[i]=chemin[k];
+		k--;
+	}
+	int oui = 0;
+	return vrai;
 }
 
 void remonter(NoeudA n){
