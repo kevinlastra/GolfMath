@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.23)  29 MAR 2020 14:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.14)  23 APR 2020 18:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **GolfMath.tex
 (./GolfMath.tex
 LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+Babel <3.18> and hyphenation patterns for 9 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -837,35 +837,61 @@ Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \titlewidth=\dimen169
 \titlewidthlast=\dimen170
 \titlewidthfirst=\dimen171
-) (./GolfMath.aux)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count120
+\lst@gtempboxa=\box92
+\lst@token=\toks30
+\lst@length=\count121
+\lst@currlwidth=\dimen172
+\lst@column=\count122
+\lst@pos=\count123
+\lst@lostspace=\dimen173
+\lst@width=\dimen174
+\lst@newlines=\count124
+\lst@lineno=\count125
+\lst@maxwidth=\dimen175
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count126
+\lst@skipnumbers=\count127
+\lst@framebox=\box93
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(./GolfMath.aux)
 \openout1 = `GolfMath.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
  ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count120
-\scratchdimen=\dimen172
-\scratchbox=\box92
-\nofMPsegments=\count121
-\nofMParguments=\count122
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count123
-\MPscratchDim=\dimen173
-\MPnumerator=\count124
-\makeMPintoPDFobject=\count125
-\everyMPtoPDFconversion=\toks31
+\scratchcounter=\count128
+\scratchdimen=\dimen176
+\scratchbox=\box94
+\nofMPsegments=\count129
+\nofMParguments=\count130
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count131
+\MPscratchDim=\dimen177
+\MPnumerator=\count132
+\makeMPintoPDFobject=\count133
+\everyMPtoPDFconversion=\toks32
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -922,6 +948,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+\c@lstlisting=\count134
+
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./GolfMath.toc
@@ -935,142 +963,369 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 
 [1]
-Underfull \hbox (badness 10000) in paragraph at lines 53--55
+Underfull \hbox (badness 10000) in paragraph at lines 54--56
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 53--55
+Underfull \hbox (badness 10000) in paragraph at lines 54--56
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 60--79
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--79
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--79
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--79
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--79
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--79
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--79
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--79
+Overfull \hbox (2.63948pt too wide) in paragraph at lines 61--84
+\OT1/cmr/m/n/10 Pour la par-tie graphique, le but est d'apprendre ^^Ra utiliser
+ une in-ter-face graphique. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--79
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--79
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--79
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
 
  []
 
 
-Overfull \hbox (16.34914pt too wide) in paragraph at lines 129--129
- [][] 
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--84
+
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 142--146
+Underfull \hbox (badness 10000) in paragraph at lines 86--94
 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--94
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--94
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--94
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--94
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--94
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--94
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--94
+
+ []
+
+
+Overfull \hbox (16.34914pt too wide) in paragraph at lines 136--136
+ [][] 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 159--194
+Underfull \hbox (badness 10000) in paragraph at lines 142--145
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--194
+Underfull \hbox (badness 10000) in paragraph at lines 150--155
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 200.
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--155
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--155
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--162
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 169--204
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--204
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 206--211
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--211
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 212.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 200.
- [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 224--228
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 212.
+ [7]
+<Images/logoSDL.png, id=37, 768.8725pt x 400.49625pt>
+File: Images/logoSDL.png Graphic file (type png)
+<use Images/logoSDL.png>
+Package pdftex.def Info: Images/logoSDL.png  used on input line 233.
+(pdftex.def)             Requested size: 153.77177pt x 80.09782pt.
+<Images/green_1.jpg, id=39, 24.09pt x 24.09pt>
+File: Images/green_1.jpg Graphic file (type jpg)
+<use Images/green_1.jpg>
+Package pdftex.def Info: Images/green_1.jpg  used on input line 244.
+(pdftex.def)             Requested size: 24.08992pt x 24.08992pt.
+<Images/start_1.jpg, id=40, 24.09pt x 24.09pt>
+File: Images/start_1.jpg Graphic file (type jpg)
+<use Images/start_1.jpg>
+Package pdftex.def Info: Images/start_1.jpg  used on input line 245.
+(pdftex.def)             Requested size: 24.08992pt x 24.08992pt.
+<Images/terrain.jpg, id=41, 834.11626pt x 468.75125pt>
+File: Images/terrain.jpg Graphic file (type jpg)
+<use Images/terrain.jpg>
+Package pdftex.def Info: Images/terrain.jpg  used on input line 248.
+(pdftex.def)             Requested size: 250.2368pt x 140.62645pt.
+<Images/green.jpg, id=42, 16.06pt x 16.06pt>
+File: Images/green.jpg Graphic file (type jpg)
+<use Images/green.jpg>
+Package pdftex.def Info: Images/green.jpg  used on input line 255.
+(pdftex.def)             Requested size: 32.1199pt x 32.1199pt.
+<Images/water.jpg, id=43, 16.06pt x 16.06pt>
+File: Images/water.jpg Graphic file (type jpg)
+<use Images/water.jpg>
+Package pdftex.def Info: Images/water.jpg  used on input line 256.
+(pdftex.def)             Requested size: 32.1199pt x 32.1199pt.
+<Images/hole.jpg, id=44, 16.06pt x 16.06pt>
+File: Images/hole.jpg Graphic file (type jpg)
+<use Images/hole.jpg>
+Package pdftex.def Info: Images/hole.jpg  used on input line 257.
+(pdftex.def)             Requested size: 32.1199pt x 32.1199pt.
+<Images/start.jpg, id=45, 16.06pt x 16.06pt>
+File: Images/start.jpg Graphic file (type jpg)
+<use Images/start.jpg>
+Package pdftex.def Info: Images/start.jpg  used on input line 258.
+(pdftex.def)             Requested size: 32.1199pt x 32.1199pt.
+<Images/terrain2.jpg, id=46, 539.01375pt x 468.75125pt>
+File: Images/terrain2.jpg Graphic file (type jpg)
+<use Images/terrain2.jpg>
+Package pdftex.def Info: Images/terrain2.jpg  used on input line 261.
+(pdftex.def)             Requested size: 269.50621pt x 234.37505pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 236--241
+Underfull \hbox (badness 10000) in paragraph at lines 226--264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 236--241
-
- []
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 242--273
+Underfull \hbox (badness 10000) in paragraph at lines 226--264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
+Underfull \hbox (badness 10000) in paragraph at lines 226--264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
+Underfull \hbox (badness 10000) in paragraph at lines 226--264
 
  []
 
-[8] [9]
-<Images/Geogebraimg1.png, id=50, 539.76656pt x 231.86626pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--264
+
+ []
+
+[8 <./Images/logoSDL.png> <./Images/green_1.jpg> <./Images/start_1.jpg> <./Imag
+es/terrain.jpg (PNG copy)>] [9 <./Images/green.jpg> <./Images/water.jpg> <./Ima
+ges/hole.jpg> <./Images/start.jpg> <./Images/terrain2.jpg>]
+<Images/Qt_logo.png, id=55, 1284.8pt x 942.52126pt>
+File: Images/Qt_logo.png Graphic file (type png)
+<use Images/Qt_logo.png>
+Package pdftex.def Info: Images/Qt_logo.png  used on input line 267.
+(pdftex.def)             Requested size: 64.24376pt x 47.12881pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--275
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--275
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--275
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 290--291
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--298
+
+ []
+
+<Images/accueil.png, id=56, 805.0075pt x 627.34375pt>
+File: Images/accueil.png Graphic file (type png)
+<use Images/accueil.png>
+Package pdftex.def Info: Images/accueil.png  used on input line 305.
+(pdftex.def)             Requested size: 241.50412pt x 188.20457pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--310
+
+ []
+
+[10 <./Images/Qt_logo.png>]
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 340--340
+[]    \OT1/cmtt/m/n/10 fond.setBrush(backgroundRole(), QBrush(QPixmap("./image/
+v2/background.jpg")));[] 
+ []
+
+[11 <./Images/accueil.png>]
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 350--350
+[]    \OT1/cmtt/m/n/10 fond.setBrush(backgroundRole(), QBrush(QPixmap("./image/
+v2/background.jpg")));[] 
+ []
+
+<Images/niveaux.png, id=66, 503.8825pt x 326.21875pt>
+File: Images/niveaux.png Graphic file (type png)
+<use Images/niveaux.png>
+Package pdftex.def Info: Images/niveaux.png  used on input line 377.
+(pdftex.def)             Requested size: 251.94063pt x 163.10896pt.
+<Images/niveau1.png, id=67, 827.09pt x 689.57625pt>
+File: Images/niveau1.png Graphic file (type png)
+<use Images/niveau1.png>
+Package pdftex.def Info: Images/niveau1.png  used on input line 383.
+(pdftex.def)             Requested size: 248.1289pt x 206.87447pt.
+[12] [13 <./Images/niveaux.png> <./Images/niveau1.png>] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 397--401
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--414
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--414
+
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 415--446
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
+
+ []
+
+[16] [17]
+<Images/Geogebraimg1.png, id=95, 539.76656pt x 231.86626pt>
 File: Images/Geogebraimg1.png Graphic file (type png)
 <use Images/Geogebraimg1.png>
-Package pdftex.def Info: Images/Geogebraimg1.png  used on input line 322.
+Package pdftex.def Info: Images/Geogebraimg1.png  used on input line 495.
 (pdftex.def)             Requested size: 269.88261pt x 115.93283pt.
- [10 <./Images/Geogebraimg1.png>] [11] [12] [13] (./GolfMath.aux) ) 
+ [18 <./Images/Geogebraimg1.png>] [19] [20] [21] (./GolfMath.aux) ) 
 Here is how much of TeX's memory you used:
- 15623 strings out of 492982
- 328123 string characters out of 6134896
- 397368 words of memory out of 5000000
- 18900 multiletter control sequences out of 15000+600000
+ 17028 strings out of 494805
+ 348406 string characters out of 6178000
+ 412268 words of memory out of 5000000
+ 20045 multiletter control sequences out of 15000+600000
  7497 words of font info for 27 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 55i,20n,67p,419b,1173s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 81 hyphenation exceptions out of 8191
+ 55i,20n,67p,419b,1169s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texm
@@ -1084,10 +1339,10 @@ msfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on GolfMath.pdf (14 pages, 216171 bytes).
+Output written on GolfMath.pdf (22 pages, 1834338 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 152 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 83 words of extra memory for PDF output out of 10000 (max. 10000000)
 

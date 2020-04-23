@@ -8,6 +8,7 @@
 \renewcommand{\contentsname}{{\Huge Table de Matières}}
 \usepackage{titlesec}
 \usepackage{xcolor}
+\usepackage{listings}
 \usepackage{graphicx}
 \titleformat{\section}{\huge\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\LARGE\bfseries}{\thesubsection}{1em}{}
@@ -40,7 +41,7 @@ PROJET INFORMATIQUE HLIN405\\
 \columnbreak
 \begin{flushright}
 \textbf{Encadrante:}\\
-~~Mm. Annie Chateau
+~~Mme. Annie Chateau
 \end{flushright}
 \end{multicols}
 \newpage
@@ -51,22 +52,26 @@ PROJET INFORMATIQUE HLIN405\\
 \newpage
 %introduction
 {\textbf{\Huge Introduction}}\\~\\~\\
-~~Sous la direction de Mm. Annie Chateau, notre groupe composé de Mike Germain, Benjamin Baska et Kevin Lastra à travaillé sur le développement du jeux "Golf Mathématique" comme projet du module HLIN405.
+~~Sous la direction de Mme. Annie Chateau, notre groupe, composé de Mike Germain, Benjamin Baska, Kevin Lastra, a travaillé sur le développement du jeu "Golf Mathématique" comme projet du module HLIN405.
 
 \newpage
 %cahier de charges
 \section{Organisation du projet}
 \subsection{Objectifs et cahier des charges}
 ~\\~\\
-wtf
+Le but est de créer un jeu de golf, version mathématique.
 \\~\\
 \textbf{\large Base et Règles}
 \\~\\
-aucune idée 
+Les règles sont simple:
+\\~\\
+- Partir du point de départ et aller jusqu'au trou en faisant le moins de coup.
+\\~\\
+- Pour se déplacer, on ne peut que de la portée indiqué sur notre case, dans 8 positions différentes, haut, bas, droite, gauche, ainsi que, haut droite, haut gauche, bas droite, bas gauche.
 \\~\\
 \textbf{\large Interface Graphique}
 \\~\\
-pire
+Pour la partie graphique, le but est d'apprendre à utiliser une interface graphique.
 \\~\\
 \textbf{\large Génération automatique de la carte}
 \\~\\
@@ -76,7 +81,9 @@ x2
 \\~\\
 au secours
 \\~\\
+\newpage
 \subsection{Division du travail}
+~\\~\\~\\~\\~\\~\\~\\~\\
 \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, fill=blue!20, 
@@ -100,7 +107,7 @@ au secours
     		};
     	}
     };
-    \node [double] (B) at (0,2){Graphic
+    \node [double] (B) at (0,2){Graphique
     	\nodepart{second}
     	Benjamin Baska
     };
@@ -132,23 +139,26 @@ au secours
 \end{figure}
 \newpage
 \subsection{Outils de travail}
+~\\~\\
 \textbf{\large Langage de programmation}\\
-Le langage qu'on à choisi pour le développement du jeux, est le C++ pour 2 raisons principales:
+Le langage qu'on a choisi pour le développement du jeu, est le C++ pour 2 raisons principales:
 
 \begin{enumerate}
 \item Ce langage est un langage de "programmation orienté aux objets" (POO).
-\item Grace aux modules de HLIN202 et HLIN302 on a une base de connaissance avec laquelle on peut travailler de manière très confortable.
+\item Grâce aux modules de HLIN202 et HLIN302, on a une base de connaissance avec laquelle on peut travailler de manière confortable.
 \end{enumerate}
-\textbf{\large Software de programmation graphique}\\
-On a choisit la librairie QT pour les différents avantages qu'elle nous apporte. Cette librairie dispose d'une bonne documentation, elle é adapté au langage C++ et elle dispose aussi d'un outil de travail très intéressant appelé "QT Creator", qui rend le travail plus facile.\\~\\
+~\\~\\
+\textbf{\large Outil de modélisation graphique}\\
+On a choisi la librairie QT pour les différents avantages qu'elle nous apporte. Cette librairie dispose d'une bonne documentation, elle est adapté au langage C++ et elle dispose aussi d'un outil de travail intéressant appelé "QT Creator", qui rend le travail plus facile.\\~\\~\\
 \textbf{\large Travail collaboratif}\\
 Nous avons utilisé de multiples programmes:
 \begin{enumerate}
-\item GitHub. Ce logiciel nous permet de partager les avancements du travail réalisé par chacun depuis différents ordinateurs et aussi de sauvegarder plusieurs versions du travail, ce qui est très rassurant en cas de perte.
-\item Discord. Ce logiciel nous permet le partage d'écran, la communication orale et écrit, ce qui est très utile pour le développement du jeux.
+\item GitHub. Ce logiciel nous permet de partager les avancements du travail réalisé par chacun depuis différents ordinateurs et aussi de sauvegarder plusieurs versions du travail, ce qui est rassurant en cas de perte.
+\item Discord. Celui-ci nous permet le partage d'écran, la communication orale et écrit, ce qui est utile pour le développement du jeux.
 \end{enumerate}
+~\\~\\
 \textbf{\large Éditeur de texte}\\
-La production du projet est réalise grâce a plusieurs éditeur de text:
+La production du projet est réalisé grâce à plusieurs éditeur de texte:
 \begin{enumerate}
 \item Éditeur de code -
 Emacs, sublime et QTCreator.
@@ -156,8 +166,8 @@ Emacs, sublime et QTCreator.
 \end{enumerate} 
 \newpage
 \section{Conception}
-De la premier réunion, utilisant l'image proportionnée dans le sujet du projet, on à travaillé dans une architecture, pour le quel ce jeux s'adapterait mieux.\\~\\
-La premier chose qu'on à définit est la structure du terrain de jeux, Terrain de NxM Node, après la classe Terrain crée on a structuré une classe qui manipulerait tout les entre/sortie ("GameMaster") et finalement les joueur avec une classe "PlayerController".\\~\\
+Dès la première réunion, en utilisant l'image qui nous a été donné dans notre sujet de projet, on a cherché une architecture de programmation pour laquelle ce jeu s'adapterait au mieux.\\~\\
+La première chose qu'on a défini est la forme du terrain de jeu, Terrain de NxM cases, après la classe Terrain crée on a structuré une classe qui manipulerait toutes les entrées/sorties ("ToutEnUn") et finalement les joueurs avec une classe "PlayerController".\\~\\
 % Define block styles
 \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -171,11 +181,11 @@ La premier chose qu'on à définit est la structure du terrain de jeux, Terrain 
 \begin{tikzpicture}[node distance = 2cm, auto]
     % Place nodes
     \node [block] (OP) {Out Put};
-    \node [block, below of=OP] (GM) {Game Master};
+    \node [block, below of=OP] (GM) {ToutEnUn};
     \node [block, right of=GM, yshift=0cm, xshift=2cm] (Ter) {Terrain};
     \node [block, right of=Ter, yshift=0cm, xshift=2cm] (init) {Node};
-    \node [block, below of=GM] (PC) {Player Controller};
-    \node [block, below of=init] (IA) {Intelligence Artificial};
+    \node [cloud, below of=GM] (PC) {QEvent};
+    \node [block, below of=init] (IA) {Artificial Intelligence};
     \node [cloud, right of=PC, yshift=-0.5cm, xshift=1cm] (A) {if IA};
     % Draw edges
     \path [line] (init) -- node[near start]{1} node[near end]{[*..,*.]}(Ter);
@@ -191,26 +201,189 @@ La premier chose qu'on à définit est la structure du terrain de jeux, Terrain 
 \end{tikzpicture}~\\
 \caption{Représentation du flux du jeu.}
 \end{figure}
+\newpage
 \subsection{Base du jeu}
-Golf mathématique est un sous type du golf original, donc cela signifie qu'on doit modifier le jeu sont perd l'esprit du golf.
-Le Golf est un jeux de plusieurs joueur par tour, la personne qui gagner est celui qui a moins de points, etc...
-Donc pour définir les bases de notre jeu on doit utiliser les règles du jeu original et les objets qui lui entour.
-Dans un Terrain de golf, on a un:
+~\\~\\
+Golf mathématique est une autre version du golf traditionnel, donc cela signifie qu'on modifie ainsi le jeu sans perdre l'esprit du golf.\\
+Le golf est un jeu où plusieurs joueurs jouent tour par tour, la personne gagne si elle a fait le moins de coup, donc le moins de points.\\~\\
+Donc pour définir les bases de notre jeu on doit utiliser les règles du jeu original.
+Dans un Terrain de golf, on a:
 \begin{itemize}
-\item Départ(zone ou les jouer commence.)
-\item Cible(le trou)
-\item Obstacles(zone d'eau ou sable)
+\item Départ (zone où les joueurs commencent)
+\item Cible (le trou)
+\item Obstacles (zone d'eau)
 \end{itemize}
-Un joueur peut avoir plusieurs position et tape la balle avec une portée.
-Avec tous ça on trouve des éléments avec le quelle on peut travailler.
-Un terrain on l’interprétera comme un tableau d'entier les quelles la valeur sera la portée de la balle.
-Un terrain sera divise on 3 zones différents:
+~\\
+Et puis, le joueur se déplace et tape la balle avec une puissance, la portée.\\
+Avec tout ça, on a des éléments avec lesquels on peut travailler: un terrain que l'on interprétera comme un tableau d'entier, les valeurs étant la portée de la balle.\\
+Un terrain sera divisé en 2 zones différentes:
 \begin{itemize}
 \item Eau
-\item sable
 \item Herbe
 \end{itemize}
-\subsection{Graphic}
+\newpage
+\subsection{Graphique}
+~\\~\\
+\textbf{\large Choix de la librairie graphique}
+~\\
+Au début du projet, nous nous avions décidé d'utiliser la librairie graphique : 
+~\\
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.2]{Images/logoSDL.png}
+\end{figure}
+~\\
+Mais le fait qu'elle soit adapté au langage C, et donc pas prévu pour de l'orienté objet nous a posé quelque soucis.\\
+Après cela, nous avons chercher ainsi une autre librairie, celle ci adapté au C++.\\
+Nous nous sommes alors mis d'accord sur Qt. Cette librairie offre une grande documentation et un éditeur de texte adapté ("Qt Creator").
+~\\~\\
+Les premiers essais pour la partie graphique ont pu commencer, avec en premier les cases de jeu :
+~\\~\\
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=1]{Images/green_1.jpg}
+\includegraphics[scale=1]{Images/start_1.jpg}
+\caption{Première version des dessins}
+~\\
+\includegraphics[scale=0.3]{Images/terrain.jpg}
+\caption{Premier test de terrain}
+\end{figure}
+~\\~\\
+Le résultat étant trop sombre, on a refait les cases avec un rendu plus clair et plus lisible.\\~\\~\\
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=2]{Images/green.jpg}
+\includegraphics[scale=2]{Images/water.jpg}
+\includegraphics[scale=2]{Images/hole.jpg}
+\includegraphics[scale=2]{Images/start.jpg}
+\caption{Rendu deuxième version}
+~\\
+\includegraphics[scale=0.5]{Images/terrain2.jpg}
+\caption{Rendu final}
+\end{figure}
+\newpage
+\begin{figure}
+\centering
+\includegraphics[scale=0.05]{Images/Qt_logo.png}
+\end{figure}
+\subsection{Qt}
+~\\~\\
+\textbf{\large La création d'une interface}
+\\~\\
+Pour pouvoir créer une interface graphique, on utilise la librairie et les objets de Qt, tel que QApplication qui permet de gérer l'interface graphique de l'utilisateur (ou GUI en anglais), ainsi que de contrôler le flux d'entrée et de sortie et les paramètre principaux de notre interface.\\
+Voilà à quoi ressemble le code principal pour créer une fenêtre :\\
+\begin{verbatim}
+#include <QApplication>
+#include "toutenun.h"
+#include "mainwindow.h"
+
+int main(int argc, char *argv[])
+{
+    QApplication app(argc, argv);
+
+    MainWindow fen;
+    fen.show();
+
+    return app.exec();
+}
+\end{verbatim}
+~\\
+\begin{verbatim}
+QApplication app(argc, argv);
+return app.exec();
+\end{verbatim}
+~\\
+C'est cela qui va créer une première fenêtre.\\
+Ensuite les autres objets que nous appellerons, hériteront de la classe QObject, une autre classe importante de Qt qui permet l'affichage de widget.\\
+\begin{verbatim}
+MainWindow fen;
+fen.show();
+\end{verbatim}
+Cela appelle notre classe MainWindow qui est la fenêtre d'accueil de notre jeu.\\~\\
+\begin{figure}[!h]
+\centering 
+\includegraphics[scale=0.3]{Images/accueil.png}
+\caption{Accueil}
+\end{figure}
+~\\
+La classe de cette fenêtre est :
+\begin{verbatim}
+#include "mainwindow.h"
+
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
+{
+    setWindowIcon(QIcon("./image/ballegolf.png"));
+    setWindowTitle("Golf Mathématique");
+    setFixedSize(800, 600);
+    QPalette fond;
+    fond.setBrush(backgroundRole(), QBrush(QPixmap("./image/v2/background.jpg")));
+    setPalette(fond);
+
+    jouer = new QPushButton("Jouer", this);
+    quitter = new QPushButton("Quitter", this);
+    jouer->setFixedSize(200, 75);
+    quitter->setFixedSize(200, 75);
+    jouer->move(320, 240);
+    quitter->move(320, 340);
+
+    connect(jouer, SIGNAL(clicked()), this, SLOT(lancer()));
+    connect(jouer, SIGNAL(clicked()), this, SLOT(close()));
+    connect(quitter, SIGNAL(clicked()), qApp, SLOT(quit()));
+}
+
+
+void MainWindow::lancer()
+{
+    Niveaux *niv = new Niveaux;
+    niv->show();
+}
+\end{verbatim}
+~\\
+Ici nous pouvons voir plusieurs nouvel chose. 
+\begin{verbatim}
+	setWindowIcon(QIcon("./image/ballegolf.png"));
+    setWindowTitle("Golf Mathématique");
+    setFixedSize(800, 600);
+    QPalette fond;
+    fond.setBrush(backgroundRole(), QBrush(QPixmap("./image/v2/background.jpg")));
+    setPalette(fond);
+\end{verbatim}
+Toute cette partie s'occupe de l'apparence de la fenêtre, son nom et son icône.
+\begin{verbatim}
+    jouer = new QPushButton("Jouer", this);
+    quitter = new QPushButton("Quitter", this);
+    jouer->setFixedSize(200, 75);
+    quitter->setFixedSize(200, 75);
+    jouer->move(320, 240);
+    quitter->move(320, 340);
+\end{verbatim}
+Celle ci s'occupe des widgets comme les boutons.
+\begin{verbatim}
+    connect(jouer, SIGNAL(clicked()), this, SLOT(lancer()));
+    connect(jouer, SIGNAL(clicked()), this, SLOT(close()));
+    connect(quitter, SIGNAL(clicked()), qApp, SLOT(quit()));
+\end{verbatim}
+Ensuite, on attribut un effet à nos boutons.
+\begin{verbatim}
+void MainWindow::lancer()
+{
+    Niveaux *niv = new Niveaux;
+    niv->show();
+}
+\end{verbatim}
+Et enfin, cette méthode appelle notre nouvel fenêtre qui gère nos différents niveaux.\\
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Images/niveaux.png}
+\caption{Page des niveaux}
+\end{figure}
+Les niveaux lance alors différentes seeds (référence des niveaux). Prenons comme exemple le niveau 1 :
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{Images/niveau1.png}
+\caption{Niveau 1}
+\end{figure}
+\newpage
 \subsection{Intelligence Artificielle - IA}
 \newpage
 \subsection{Génération du Terrain}
