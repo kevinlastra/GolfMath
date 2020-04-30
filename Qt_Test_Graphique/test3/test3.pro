@@ -7,7 +7,8 @@ SOURCES += \
     Terrain.cpp \
     mainwindow.cpp \
     toutenun.cpp \
-    niveaux.cpp
+    niveaux.cpp  \
+    NoeudA.cpp
 
 QT += widgets
 
@@ -19,6 +20,7 @@ HEADERS += \
     Terrain.h \
     mainwindow.h \
     toutenun.h \
-    niveaux.h
+    niveaux.h \
+    NoeudA.h
 
 FORMS +=

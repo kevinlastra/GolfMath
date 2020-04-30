@@ -41,7 +41,11 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
     possibleCoup8->setPixmap(QPixmap(cp));
 
     nombreJoueur = joueur;
-    nombreIA = ia;
+    if (joueur < 4)
+    {
+        nombreJoueur += ia;
+        joueurIA = ia;
+    }
 
     score = new QFormLayout;
 
@@ -94,6 +98,7 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
 
     GenererTerrain(Vector(40, 40), 10, 5, seed);
     Afficher();
+    noeud = new Node[100];
 
     principal->addLayout(jeu);
     principal->addLayout(score);
@@ -108,6 +113,7 @@ ToutEnUn::ToutEnUn(int seed, int joueur, int ia, QWidget *parent) : QWidget(pare
 void ToutEnUn::GenererTerrain(std::string &s)
 {
     T = new Terrain(s);
+
 }
 
 
@@ -115,11 +121,13 @@ void ToutEnUn::GenererTerrain(std::string &s)
 void ToutEnUn::GenererTerrain(Vector dim,int nbMove,int marge,int seed)
 {
     T = new Terrain(seed,dim,nbMove,marge);
+
 }
 
 
 void ToutEnUn::mousePressEvent(QMouseEvent *event)
 {
+
     x = (event->pos().x() - 12)/16;
     y = (event->pos().y() - 12)/16;
     Vector w(y, x);
@@ -127,46 +135,7 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
     if (!(x <= -1 || x >= T->getLar()) &&
             !(y <= -1 || y >= T->getLon()))
     {
-        if (T->getNode(w)->getType() == Node::end)
-        {
-            switch (i)
-            {
-            case 1 :
-            {
-                finij1 = true;
-                QMessageBox::information(this, "Bravo !!", "Joueur 1 a terminé en " + QString::number(pointj1) + " coups.");
-                break;
-            }
-            case 2 :
-            {
-                finij2 = true;
-                QMessageBox::information(this, "Bravo !!", "Joueur 2 a terminé en " + QString::number(pointj2) + " coups.");
-                break;
-            }
-            case 3 :
-            {
-                finij3 = true;
-                QMessageBox::information(this, "Bravo !!", "Joueur 3 a terminé en " + QString::number(pointj3) + " coups.");
-                break;
-            }
-            case 4 :
-            {
-                finij4 = true;
-                QMessageBox::information(this, "Bravo !!", "Joueur 4 a terminé en " + QString::number(pointj4) + " coups.");
-                break;
-            }
-            }
-        }
-        if ((finij1 && nombreJoueur == 1) ||
-            (finij2 && finij1 && nombreJoueur == 2) ||
-            (finij3 && finij2 && finij1 && nombreJoueur == 3) ||
-            (finij4 && finij3 && finij2 && finij1 && nombreJoueur == 4))
-        {
-            QMessageBox::information(this, "FIN", "Belle partie c'était sympa!");
-            Niveaux *niv = new Niveaux;
-            niv->show();
-            this->close();
-        }
+
         if (tour == 1)
         {
             if (T->getNode(w)->getType() == Node::start)
@@ -196,8 +165,11 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                     {
                         break;
                     }
-                    posj2.x = w.x;
-                    posj2.y = w.y;
+                    if (joueurIA == 0 || nombreJoueur > 2)
+                    {
+                        posj2.x = w.x;
+                        posj2.y = w.y;
+                    }
                     jeu->addWidget(j2, y, x);
                     j2->update();
                     jeu->update();
@@ -211,8 +183,11 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                     {
                         break;
                     }
-                    posj3.x = w.x;
-                    posj3.y = w.y;
+                    if (joueurIA == 0 || nombreJoueur > 3)
+                    {
+                        posj3.x = w.x;
+                        posj3.y = w.y;
+                    }
                     jeu->addWidget(j3, y, x);
                     j3->update();
                     jeu->update();
@@ -226,8 +201,11 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                     {
                         break;
                     }
-                    posj4.x = w.x;
-                    posj4.y = w.y;
+                    if (joueurIA == 0 || nombreJoueur == 4)
+                    {
+                        posj4.x = w.x;
+                        posj4.y = w.y;
+                    }
                     jeu->addWidget(j4, y, x);
                     j4->update();
                     jeu->update();
@@ -252,6 +230,48 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                      (Mouvement(w, posj3) && i == 4)))
             {
 
+                if (T->getNode(w)->getType() == Node::end)
+                {
+                    switch (i)
+                    {
+                    case 1 :
+                    {
+                        finij1 = true;
+                        QMessageBox::information(this, "Bravo !!", "Joueur 1 a terminé en " + QString::number(pointj1) + " coups.");
+                        break;
+                    }
+                    case 2 :
+                    {
+                        finij2 = true;
+                        QMessageBox::information(this, "Bravo !!", "Joueur 2 a terminé en " + QString::number(pointj2) + " coups.");
+                        break;
+                    }
+                    case 3 :
+                    {
+                        finij3 = true;
+                        QMessageBox::information(this, "Bravo !!", "Joueur 3 a terminé en " + QString::number(pointj3) + " coups.");
+                        break;
+                    }
+                    case 4 :
+                    {
+                        finij4 = true;
+                        QMessageBox::information(this, "Bravo !!", "Joueur 4 a terminé en " + QString::number(pointj4) + " coups.");
+                        break;
+                    }
+                    }
+                }
+
+                if ((finij1 && nombreJoueur == 1) ||
+                        (finij2 && finij1 && nombreJoueur == 2) ||
+                        (finij3 && finij2 && finij1 && nombreJoueur == 3) ||
+                        (finij4 && finij3 && finij2 && finij1 && nombreJoueur == 4))
+                {
+                    QMessageBox::information(this, "FIN", "Belle partie c'était sympa!");
+                    Niveaux *niv = new Niveaux;
+                    niv->show();
+                    this->close();
+                }
+
                 switch (i)
                 {
                 case 1:
@@ -261,9 +281,9 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                         i++;
                         break;
                     }
-                    i++;
                     posj1.x = w.x;
                     posj1.y = w.y;
+                    i++;
                     jeu->addWidget(j1, y, x);
                     j1->update();
                     jeu->update();
@@ -277,9 +297,12 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                         i++;
                         break;
                     }
+                    if (joueurIA == 0 || nombreJoueur > 2)
+                    {
+                        posj2.x = w.x;
+                        posj2.y = w.y;
+                    }
                     i++;
-                    posj2.x = w.x;
-                    posj2.y = w.y;
                     jeu->addWidget(j2, y, x);
                     j2->update();
                     jeu->update();
@@ -293,9 +316,12 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                         i++;
                         break;
                     }
+                    if (joueurIA == 0 || nombreJoueur > 3)
+                    {
+                        posj3.x = w.x;
+                        posj3.y = w.y;
+                    }
                     i++;
-                    posj3.x = w.x;
-                    posj3.y = w.y;
                     jeu->addWidget(j3, y, x);
                     j3->update();
                     jeu->update();
@@ -309,9 +335,12 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                         i++;
                         break;
                     }
+                    if (joueurIA == 0 || nombreJoueur == 4)
+                    {
+                        posj4.x = w.x;
+                        posj4.y = w.y;
+                    }
                     i++;
-                    posj4.x = w.x;
-                    posj4.y = w.y;
                     jeu->addWidget(j4, y, x);
                     j4->update();
                     jeu->update();
@@ -330,6 +359,12 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
     {
         QMessageBox::critical(this, "Erreur", "En dehors de la grille!");
     }
+    if (joueurIA == 1)
+    {
+        DeplacementIA(nombreJoueur);
+        jeu->update();
+        i++;
+    }
     if (i > nombreJoueur)
     {
         i = 1;
@@ -345,6 +380,55 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
     tourduj->setText(tj);
     tourduj->update();
 
+}
+
+void ToutEnUn::DeplacementIA(int p)
+{
+    noeud = cheminPlusCourt(T, T->getNode(T->getStartPos()), T->getNode(T->getTargetPos()));
+    Score(i);
+    switch (p)
+    {
+    case 2:
+    {
+        IADeplacement(T, noeud, manche, posj2);
+        if (tour == 1)
+        {
+            posj2.y = posj1.y;
+            posj2.x = posj1.x;
+        }
+        jeu->addWidget(j2, posj2.x, posj2.y);
+        j2->update();
+        jeu->update();
+        break;
+    }
+    case 3:
+    {
+        IADeplacement(T, noeud, i, posj3);
+        if (tour == 1)
+        {
+            posj3.x = posj2.x;
+            posj3.y = posj2.y;
+        }
+        jeu->addWidget(j3, posj3.y, posj3.x);
+        j3->update();
+        jeu->update();
+        break;
+    }
+    case 4:
+    {
+        IADeplacement(T, noeud, i, posj4);
+        if (tour == 1)
+        {
+            posj4.x = posj3.x;
+            posj4.y = posj3.y;
+        }
+        jeu->addWidget(j4, posj4.y, posj4.x);
+        j4->update();
+        jeu->update();
+        break;
+    }
+    }
+    manche++;
 }
 
 void ToutEnUn::ProchainCoup()
@@ -530,5 +614,58 @@ void ToutEnUn::Afficher()
 
         }
     }
+
+}
+
+void ToutEnUn::IADeplacement(Terrain *&T, Node* noeud, int k, Vector & pjIA){
+    std::cout<<"debut fonction"<<std::endl;
+
+    int porter = T->getNode(pjIA)->getPorter();
+    Vector w = noeud[k].getPos();
+    int i=0;
+    while(noeud[i].getType() != Node::NONE){
+        std::cout<<noeud[i].getPos().x<<" "<<noeud[i].getPos().y<<std::endl;
+        i++;
+    }
+    std::cout<<"je suis en : "<<pjIA.x<<" "<<pjIA.y<<std::endl;
+    std::cout<<"je veux aller en : "<<noeud[k].getPos().x<<" "<<noeud[k].getPos().y<<std::endl;
+
+    if(w.x == pjIA.x+porter && w.y == pjIA.y+porter){
+        pjIA.x += porter;
+        pjIA.y += porter;
+        std::cout<<"3"<<std::endl;
+    }
+    else if(w.x == pjIA.x+porter && w.y == pjIA.y-porter){
+        pjIA.x += porter;
+        pjIA.y -= porter;
+        std::cout<<"9"<<std::endl;
+    }
+    else if(w.x == pjIA.x-porter && w.y == pjIA.y+porter){
+        pjIA.x -= porter;
+        pjIA.y += porter;
+        std::cout<<"1"<<std::endl;
+    }
+    else if(w.x == pjIA.x-porter && w.y == pjIA.y-porter){
+        pjIA.x -= porter;
+        pjIA.y -= porter;
+        std::cout<<"7"<<std::endl;
+    }
+    else if(w.x == pjIA.x+porter){
+        pjIA.x += porter;
+        std::cout<<"6"<<std::endl;
+    }
+    else if(w.x == pjIA.x-porter){
+        pjIA.x -= porter;
+        std::cout<<"4"<<std::endl;
+    }
+    else if(w.y == pjIA.y+porter){
+        pjIA.y += porter;
+        std::cout<<"2"<<std::endl;
+    }
+    else if(w.y == pjIA.y-porter){
+        pjIA.y -= porter;
+        std::cout<<"8"<<std::endl;
+    }
+
 }
 

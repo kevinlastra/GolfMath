@@ -19,6 +19,8 @@
 #include <QScrollArea>
 #include <QLCDNumber>
 
+#include <iostream>
+#include "NoeudA.h"
 #include "Terrain.h"
 #include "Erreur.h"
 #include "Node.h"
@@ -41,6 +43,8 @@ public:
     void ProchainCoup();
     void Coup(Vector);
     bool Mouvement(Vector, Vector);
+    void IADeplacement(Terrain *&T,Node* noeud,int k, Vector &);
+    void DeplacementIA(int);
 
 
 protected:
@@ -50,11 +54,12 @@ private:
     Terrain *T;
     PlayerController Joueurs[5];
     int nombreJ = 0;
+    int manche = 0;
     int x = 0;
     int y = 0;
     int i = 1;
     int nombreJoueur;
-    int nombreIA;
+    int joueurIA;
     int tour = 1;
     int pointj1 = 0;
     int pointj2 = 0;
@@ -68,6 +73,7 @@ private:
     Vector posj2;
     Vector posj3;
     Vector posj4;
+    Node* noeud;
 
     QLabel *j1;
     QLabel *j2;

@@ -200,6 +200,7 @@ char PlayerController::iaBest(Terrain *&T,Node* noeud,int k){
   Vector u = pos;
   int porter = T->getNode(Vector(u.x,u.y))->getPorter();
   Vector w = noeud[k].getPos();
+  
   int i=0;
   while(noeud[i].getType() != Node::NONE){
     std::cout<<noeud[i].getPos().x<<" "<<noeud[i].getPos().y<<std::endl;
