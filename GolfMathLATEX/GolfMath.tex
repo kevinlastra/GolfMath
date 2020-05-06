@@ -385,10 +385,36 @@ Les niveaux lance alors différentes seeds (référence des niveaux). Prenons co
 \end{figure}
 \newpage
 \subsection{Intelligence Artificielle - IA}
+\subsubsection{Une IA pas très futée}
+La première idée pour faire l'ia était de faire une ia des plus basiques qui avance tout droit vers le trou sans réfléchir. l'idée était de, a chaque coup calculer simplement le coup qui rapprochait le plus du trou avec une boucle for très simple.\\
+Un problème en est ressorti, c'est très peu efficace. J'ai donc décidé de reprendre du début.\\
+\subsubsection{Une IA un peu plus complexe}
+Et donc après avoir cherché des algorithme de pathfinding sur internet un algo en particulier ressortais assez souvent : A* (ou A star)\\
+C'est un algorithme de pathfinding très connu qui ressemble a ceci :
+\begin{verbatim}
+Fonction cheminPlusCourt(g:Graphe, objectif:Nœud, depart:Nœud)
+       closedList = File()
+       openList = FilePrioritaire(comparateur=compare2Noeuds)
+       openList.ajouter(depart)
+       tant que openList n'est pas vide
+           u = openList.depiler()
+           si u.x == objectif.x et u.y == objectif.y
+               reconstituerChemin(u)
+               terminer le programme
+           pour chaque voisin v de u dans g
+               si non(v existe dans closedList ou si v existe dans openList avec un cout inférieur)
+                    v.cout = u.cout +1 
+                    v.heuristique = v.cout + distance([v.x, v.y], [objectif.x, objectif.y])
+                    openList.ajouter(v)
+           closedList.ajouter(u)
+       terminer le programme (avec erreur)
+\end{verbatim}
+J'ai ensuite du évidemment adapter l'algo a notre projet, pour se faire j'ai d'abord du créer une classe qui a une node associe un cout (le nombre de coups jusqu'ici), une heuristique (la distance "a vol d'oiseau" jusqu'à l'arrivée) et un père, pour a la fois pouvoir recréer le chemin après le pathfinding mais aussi tout simplement pour le bon fonctionnement de l'algo. \\
+Et après moult complications cette IA était enfin terminée et fonctionelle. A savoir que, bien que l'IA trouve le meilleur chemin a chaque fois, elle n'est pas invincible, il n'est pas compliqué de faire égalité ou même de la battre car j'ai fais en sorte qu'elle ne choisisse pas son point de départ de manière optimale.
 \newpage
 \subsection{Génération du Terrain}
 \subsubsection{Génération Automatique}
-Pour générait un terrain de manière automatique on doit place des règles:
+Pour générer un terrain de manière automatique on doit place des règles:
 \begin{itemize}
 \item Le Terrain doit être connexe ou au moins cheminable.
 \item La génération des portée doit être presque linéal.
