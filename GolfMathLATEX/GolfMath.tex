@@ -111,7 +111,7 @@ au secours
     	\nodepart{second}
     	Benjamin Baska
     };
-    \node [double] (C) at (0,0){Algorithmic
+    \node [double] (C) at (0,0){Algorithmique
     	\nodepart{second}
     	\tikz{
     		\node[double]{Mike Germain
@@ -154,7 +154,7 @@ On a choisi la librairie QT pour les différents avantages qu'elle nous apporte.
 Nous avons utilisé de multiples programmes:
 \begin{enumerate}
 \item GitHub. Ce logiciel nous permet de partager les avancements du travail réalisé par chacun depuis différents ordinateurs et aussi de sauvegarder plusieurs versions du travail, ce qui est rassurant en cas de perte.
-\item Discord. Celui-ci nous permet le partage d'écran, la communication orale et écrit, ce qui est utile pour le développement du jeux.
+\item Discord. Celui-ci nous permet le partage d'écran, la communication orale et écrit, ce qui est utile pour le développement du jeu.
 \end{enumerate}
 ~\\~\\
 \textbf{\large Éditeur de texte}\\
@@ -167,7 +167,7 @@ Emacs, sublime et QTCreator.
 \newpage
 \section{Conception}
 Dès la première réunion, en utilisant l'image qui nous a été donné dans notre sujet de projet, on a cherché une architecture de programmation pour laquelle ce jeu s'adapterait au mieux.\\~\\
-La première chose qu'on a défini est la forme du terrain de jeu, Terrain de NxM cases, après la classe Terrain crée on a structuré une classe qui manipulerait toutes les entrées/sorties ("ToutEnUn") et finalement les joueurs avec une classe "PlayerController".\\~\\
+La première chose qu'on a défini est la forme du terrain de jeu, Terrain de NxM cases, après la classe Terrain crée on a structuré une classe qui manipulerait toutes les entrées/sorties ("ToutEnUn") et finalement les joueurs avec une méthode "QEvent".\\~\\
 % Define block styles
 \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -216,10 +216,12 @@ Dans un Terrain de golf, on a:
 ~\\
 Et puis, le joueur se déplace et tape la balle avec une puissance, la portée.\\
 Avec tout ça, on a des éléments avec lesquels on peut travailler: un terrain que l'on interprétera comme un tableau d'entier, les valeurs étant la portée de la balle.\\
-Un terrain sera divisé en 2 zones différentes:
+Un terrain sera divisé en 4 zones différentes:
 \begin{itemize}
+\item Départ
 \item Eau
 \item Herbe
+\item Trou
 \end{itemize}
 \newpage
 \subsection{Graphique}
@@ -386,10 +388,10 @@ Les niveaux lance alors différentes seeds (référence des niveaux). Prenons co
 \newpage
 \subsection{Intelligence Artificielle - IA}
 \subsubsection{Une IA pas très futée}
-La première idée pour faire l'ia était de faire une ia des plus basiques qui avance tout droit vers le trou sans réfléchir. l'idée était de, a chaque coup calculer simplement le coup qui rapprochait le plus du trou avec une boucle for très simple.\\
-Un problème en est ressorti, c'est très peu efficace. J'ai donc décidé de reprendre du début.\\
+La première idée pour faire l'ia était de faire une basiques qui avance tout droit vers le trou sans réfléchir. Son objectif a chaque coup calculer simplement le coup qui se rapprochait le plus du trou avec une boucle 'for' très simple.\\
+Un problème en est ressorti, c'est peu efficace. J'ai donc décidé de reprendre du début.\\
 \subsubsection{Une IA un peu plus complexe}
-Et donc après avoir cherché des algorithme de pathfinding sur internet un algo en particulier ressortais assez souvent : A* (ou A star)\\
+Et donc après avoir recherché des algorithmes de pathfinding sur internet un algorithme en particulier en est ressortit assez souvent : A* (ou A star)\\
 C'est un algorithme de pathfinding très connu qui ressemble a ceci :
 \begin{verbatim}
 Fonction cheminPlusCourt(g:Graphe, objectif:Nœud, depart:Nœud)
@@ -402,41 +404,43 @@ Fonction cheminPlusCourt(g:Graphe, objectif:Nœud, depart:Nœud)
                reconstituerChemin(u)
                terminer le programme
            pour chaque voisin v de u dans g
-               si non(v existe dans closedList ou si v existe dans openList avec un cout inférieur)
+               si non(v existe dans closedList ou si v existe
+                dans openList avec un cout inférieur)
                     v.cout = u.cout +1 
-                    v.heuristique = v.cout + distance([v.x, v.y], [objectif.x, objectif.y])
+                    v.heuristique = v.cout + distance([v.x, v.y], 
+                    [objectif.x, objectif.y])
                     openList.ajouter(v)
            closedList.ajouter(u)
        terminer le programme (avec erreur)
 \end{verbatim}
-J'ai ensuite du évidemment adapter l'algo a notre projet, pour se faire j'ai d'abord du créer une classe qui a une node associe un cout (le nombre de coups jusqu'ici), une heuristique (la distance "a vol d'oiseau" jusqu'à l'arrivée) et un père, pour a la fois pouvoir recréer le chemin après le pathfinding mais aussi tout simplement pour le bon fonctionnement de l'algo. \\
-Et après moult complications cette IA était enfin terminée et fonctionelle. A savoir que, bien que l'IA trouve le meilleur chemin a chaque fois, elle n'est pas invincible, il n'est pas compliqué de faire égalité ou même de la battre car j'ai fais en sorte qu'elle ne choisisse pas son point de départ de manière optimale.
+J'ai ensuite du évidemment adapter l'algorithme à notre projet, pour se faire j'ai d'abord du créer une classe qui a une 'node' associe un 'cout' (le nombre de coups jusqu'ici), une heuristique (la distance "a vol d'oiseau" jusqu'à l'arrivée) et un père, pour à la fois pouvoir recréer le chemin après le pathfinding mais aussi tout simplement pour le bon fonctionnement de l'algorithme. \\
+Et après plusieurs complications cette IA était enfin terminée et fonctionnelle. A savoir que, bien que l'IA trouve le meilleur chemin à chaque fois, elle n'est pas invincible, il n'est pas compliqué de faire égalité ou même de la battre car j'ai fais en sorte qu'elle ne choisisse pas son point de départ de manière optimale.
 \newpage
 \subsection{Génération du Terrain}
 \subsubsection{Génération Automatique}
-Pour générer un terrain de manière automatique on doit place des règles:
+Pour générer un terrain de manière automatique on doit placer des règles:
 \begin{itemize}
 \item Le Terrain doit être connexe ou au moins cheminable.
 \item La génération des portée doit être presque linéal.
 
 \end{itemize}
-Après avoir testé différents idées, nous avons trouvé une solution très convenable pour construire un terrain. Pour générait notre terrain on va produire un chemin est sur celui la on va faire apparente la surface.\\
+Après avoir testé différentes idées, nous avons trouvé une solution très convenable pour construire un terrain. Pour générait notre terrain on va produire un chemin est sur celui la on va faire apparaître la surface jouable.\\
 Cette algorithme est divise en deux passage sur une grille:\\~\\
 \textbf{\Large{Premier Passage}}\\
 On produit un premier point de manière aléatoire ($P_{x,y}$), et à partir de ce point on génère n-1 autres points ($P_{x,y}$,...,$Pn_{x_n,y_n}$).
 \begin{center}
 	$k\leq$ n et $k>0, P_{k} = P_{k-1} + \lambda(a, b)$
 \end{center}
-Telle que le vecteur (a, b)$\in$V, avec V l'ensemble des 7 différents directions valides représente avec des vecteurs.
+Telle que le vecteur (a, b)$\in$V, avec V l'ensemble des 7 différentes directions valides représenté avec des vecteurs.
 \begin{center}
 	V=\{(-1,-1),(-1,0),...,(1,1)\}\\
 	Et $\lambda = B_i$ avec B = \{n-1,n-1,n-2,n-3,...,4,3,2,2\}.
 \end{center}
-Avec cette algorithme ont trouverait que:\\~\\
+Avec cet algorithme on trouverait que:\\~\\
 X:"l'ensemble des terrains générés" \\
 Y:"l'ensemble des chemins possibles"\\
 \(\forall x \in X, \exists y \in Y\) telle que "y" est un chemin valide.\\~\\
-Avec cette phrase on pouvais générer le terrain sans avoir a penser aux possibles contraintes comme la connexité.
+Avec cette phrase on pouvait générer le terrain sans avoir à penser aux possibles contraintes comme la connexité.
 \newpage
 \textbf{\Large{Pseudo Code}}\\~\\
 \begin{algorithm}[H]
@@ -472,7 +476,7 @@ Avec cette phrase on pouvais générer le terrain sans avoir a penser aux possib
 \end{algorithm}
 ~\\~\\
 \newpage
-Cette algorithme va nous rendre un tableau d'entier, le quelle on peut représente avec un graph:\\
+Cet algorithme va nous renvoyer un tableau d'entier, le quelle on peut représente avec un graphe:\\
 GénérationTerrain(n,m,5);\\
 \begin{figure}[h]
 \centering
@@ -497,25 +501,25 @@ GénérationTerrain(n,m,5);\\
 \definecolor{color1}{RGB}{166,65,180}
 \definecolor{color2}{RGB}{55,91,3}
 \textbf{\Large{Deuxième Passage}}\\
-Déjà générait le chemin, on va passer case par case de notre grille et on va teste si la distance entre la case est un point du chemin est inférieur a un certain nombre.
+Le chemin ainsi généré, on va passer case par case de notre grille et on va teste si la distance entre la case est un point du chemin est inférieur à un certain nombre.
 \begin{center}
 On pose (x, y) une case.\\
 T l'ensemble des points du chemin.\\
 $\lambda$ le rayon.\\
 Si distance((x, y), $T_i$) $< \lambda$ alors la case est valide.
 \end{center}
-si une case est valide ça veut dire que cette case est partie de la surface de notre terrain, donc on doit lui donne une porté, cette porté est définit par la formule suivant:
+si une case est valide ça veut dire que cette case est partie de la surface de notre terrain, donc on doit lui donne une portée, cette portée est définit par la formule suivante:
 \begin{center}
-	porté = {\color{color1}$(2 + (\frac{dist*8}{sranyon}\%8))$} + 
+	portée = {\color{color1}$(2 + (\frac{dist*8}{sranyon}\%8))$} + 
 	{\color{color2}$(((rand()\%5)-2)\%2)$}
 \end{center}
-Cette formule est divisé on 2 partie, représente par les couleur:
+Cette formule est divisée en 2 partie, représenté par les couleurs:
 \begin{center}
 	1.~~~~~ $(2 + (\frac{dist*8}{sranyon}\%8))$
 \end{center}
 \textbf{dist} est la distance entre le dernier point du chemin et la case actuel.\\
 \textbf{srayon} est la distance entre le dernier point du chemin et le point valide le plus éloigner du dernier point du chemin.\\
-A l'aide de GeoGebra on peut représenter cette formule de manière plus graphic.\\
+A l'aide de GeoGebra on peut représenter cette formule de manière plus graphique.\\
 \begin{figure}[!h]
 \centering
  \includegraphics[scale=0.5]{Images/Geogebraimg1.png}\\
@@ -524,7 +528,7 @@ A l'aide de GeoGebra on peut représenter cette formule de manière plus graphic
 \begin{center}
 	2.~~~~~ $(((rand()\%5)-2)\%2)$\\
 \end{center}
-rand() un nombre aléatoire entre 0 et RAND{\_}MAX(un nombre très grand qui dépens du langage);
+rand() un nombre aléatoire entre 0 et RAND{\_}MAX(un nombre très grand qui dépend du langage);
 \begin{center}
  $rand()\%5 \leftarrow$ est un nombre entre 0 et 4\\
  $((rand()\%5)-2) \in\{-2,-1,0,1,2\}$\\~\\
@@ -583,5 +587,13 @@ figure 0: les zones noire représenter la surface jouable.Anexe 0.
 \end{center}
 \newpage
 \section{Bibliographie}
-\section{Annexes}
+
+Pour la partie graphique on a utilisé les sites suivants :
+\begin{itemize}
+\item wiki.libsdl.org/FrontPage
+\item openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c/17117-installation-de-la-sdl
+\item doc.qt.io/
+\item openclassrooms.com/fr/courses/1894236-programmez-avec-le-langage-c/1898935-initiez-vous-a-qt
+\item www.youtube.com/channel/UC6CdzK3QAxtr7giBwqk5eUA
+\end{itemize}
 \end{document}

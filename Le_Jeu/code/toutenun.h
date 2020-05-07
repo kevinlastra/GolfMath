@@ -44,6 +44,7 @@ public:
     bool Mouvement(Vector, Vector);
     void IADeplacement(Terrain *&T,Node* noeud,int k, Vector &);
     void DeplacementIA(int);
+    void Fin();
 
 
 protected:

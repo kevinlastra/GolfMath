@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.11.0, 2020-04-30T18:01:19. -->
+<!-- Written by QtCreator 4.11.0, 2020-05-01T14:09:12. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -285,8 +285,9 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/test3/test3.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/benjamin/Bureau/Projet/GolfMath/Qt_Test_Graphique/test3/test3.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">test32</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/benjamin/Bureau/GolfMath/Le_Jeu/code/test3.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/benjamin/Bureau/GolfMath/Le_Jeu/code/test3.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>

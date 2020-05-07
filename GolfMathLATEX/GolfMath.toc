@@ -7,7 +7,8 @@
 \contentsline {subsection}{\numberline {2.2}Graphique}{8}
 \contentsline {subsection}{\numberline {2.3}Qt}{10}
 \contentsline {subsection}{\numberline {2.4}Intelligence Artificielle - IA}{14}
+\contentsline {subsubsection}{\numberline {2.4.1}Une IA pas tr\IeC {\`e}s fut\IeC {\'e}e}{14}
+\contentsline {subsubsection}{\numberline {2.4.2}Une IA un peu plus complexe}{14}
 \contentsline {subsection}{\numberline {2.5}G\IeC {\'e}n\IeC {\'e}ration du Terrain}{15}
 \contentsline {subsubsection}{\numberline {2.5.1}G\IeC {\'e}n\IeC {\'e}ration Automatique}{15}
 \contentsline {section}{\numberline {3}Bibliographie}{21}
-\contentsline {section}{\numberline {4}Annexes}{21}

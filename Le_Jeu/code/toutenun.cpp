@@ -123,6 +123,11 @@ void ToutEnUn::GenererTerrain(Vector dim,int nbMove,int marge,int seed)
 void ToutEnUn::mousePressEvent(QMouseEvent *event)
 {
 
+    if (finij1 && i == 1) i++;
+    if (finij2 && i == 2) i++;
+    if (finij3 && i == 3) i++;
+    if (finij4 && i == 4) i++;
+
     x = (event->pos().x() - 12)/16;
     y = (event->pos().y() - 12)/16;
     Vector w(y, x);
@@ -247,17 +252,6 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
                     }
                 }
 
-                if ((finij1 && nombreJoueur == 1) ||
-                        (finij2 && finij1 && nombreJoueur == 2) ||
-                        (finij3 && finij2 && finij1 && nombreJoueur == 3) ||
-                        (finij4 && finij3 && finij2 && finij1 && nombreJoueur == 4))
-                {
-                    QMessageBox::information(this, "FIN", "Belle partie c'était sympa!");
-                    Niveaux *niv = new Niveaux;
-                    niv->show();
-                    this->close();
-                }
-
                 switch (i)
                 {
                 case 1:
@@ -350,15 +344,12 @@ void ToutEnUn::mousePressEvent(QMouseEvent *event)
         i = 1;
         tour++;
     }
-    if (finij1 && i == 1) i++;
-    if (finij2 && i == 2) i++;
-    if (finij3 && i == 3) i++;
-    if (finij4 && i == 4) i++;
     ProchainCoup();
     QString tj = "C'est au joueur ";
     tj += QString::number(i);
     tourduj->setText(tj);
     tourduj->update();
+    Fin();
 
 }
 
@@ -423,6 +414,20 @@ void ToutEnUn::DeplacementIA(int p)
     }
     }
     manche++;
+}
+
+void ToutEnUn::Fin()
+{
+    if ((finij1 && nombreJoueur == 1) ||
+            (finij2 && finij1 && nombreJoueur == 2) ||
+            (finij3 && finij2 && finij1 && nombreJoueur == 3) ||
+            (finij4 && finij3 && finij2 && finij1 && nombreJoueur == 4))
+    {
+        QMessageBox::information(this, "FIN", "Belle partie c'était sympa!");
+        Niveaux *niv = new Niveaux;
+        niv->show();
+        this->close();
+    }
 }
 
 void ToutEnUn::ProchainCoup()
