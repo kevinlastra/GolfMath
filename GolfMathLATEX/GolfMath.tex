@@ -75,7 +75,7 @@ Pour la partie graphique, le but est d'apprendre à utiliser une interface graph
 \\~\\
 \textbf{\large Génération automatique de la carte}
 \\~\\
-x2
+A part d'avoir une infiniter de cartes pour le jeux, générait la carte de façons automatique est un defi algorithmique qu'on pouvait laisser passer.
 \\~\\
 \textbf{\large Intelligence Artificielle}
 \\~\\
@@ -197,7 +197,7 @@ La première chose qu'on a défini est la forme du terrain de jeu, Terrain de Nx
     \draw [line,dashed] (A) -- (IA);
     \draw [line,dashed] (IA) -- node[above]{send request}(PC);
     \draw [line,dashed] (A) -- node[near start]{else} ++ (-2,0) --++(0,4) -- (OP);
-    \draw [line,dashed] (OP) --++ (2.5,-1.2) --++ (0,-1.8) --++ (1,-0.5);
+    \draw [line,dashed] (OP) --++ (2.5,-1.2) --++ (0,-2.3) --++ (1,-0.5);
 \end{tikzpicture}~\\
 \caption{Représentation du flux du jeu.}
 \end{figure}
@@ -233,6 +233,7 @@ Au début du projet, nous nous avions décidé d'utiliser la librairie graphique
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.2]{Images/logoSDL.png}
+\caption{Librairy SDL.}
 \end{figure}
 ~\\
 Mais le fait qu'elle soit adapté au langage C, et donc pas prévu pour de l'orienté objet nous a posé quelque soucis.\\
@@ -240,7 +241,6 @@ Après cela, nous avons chercher ainsi une autre librairie, celle ci adapté au 
 Nous nous sommes alors mis d'accord sur Qt. Cette librairie offre une grande documentation et un éditeur de texte adapté ("Qt Creator").
 ~\\~\\
 Les premiers essais pour la partie graphique ont pu commencer, avec en premier les cases de jeu :
-~\\~\\
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=1]{Images/green_1.jpg}
@@ -272,7 +272,7 @@ Le résultat étant trop sombre, on a refait les cases avec un rendu plus clair 
 ~\\~\\
 \textbf{\large La création d'une interface}
 \\~\\
-Pour pouvoir créer une interface graphique, on utilise la librairie et les objets de Qt, tel que QApplication qui permet de gérer l'interface graphique de l'utilisateur (ou GUI en anglais), ainsi que de contrôler le flux d'entrée et de sortie et les paramètre principaux de notre interface.\\
+Pour pouvoir créer une interface graphique, on utilise la librairie et les objets de Qt, tel que QApplication qui permet de gérer l'interface graphique de l'utilisateur (ou GUI en anglais), ainsi que de contrôler le flux d'entrée et de sortie et les paramètres principaux de notre interface.\\
 Voilà à quoi ressemble le code principal pour créer une fenêtre :\\
 \begin{verbatim}
 #include <QApplication>
@@ -341,7 +341,7 @@ void MainWindow::lancer()
 }
 \end{verbatim}
 ~\\
-Ici nous pouvons voir plusieurs nouvel chose. 
+Ici nous pouvons voir plusieurs nouvelles choses. 
 \begin{verbatim}
 	setWindowIcon(QIcon("./image/ballegolf.png"));
     setWindowTitle("Golf Mathématique");
@@ -373,13 +373,13 @@ void MainWindow::lancer()
     niv->show();
 }
 \end{verbatim}
-Et enfin, cette méthode appelle notre nouvel fenêtre qui gère nos différents niveaux.\\
+Et enfin, cette méthode appelle notre nouvelle fenêtre qui gère nos différents niveaux.\\
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{Images/niveaux.png}
 \caption{Page des niveaux}
 \end{figure}
-Les niveaux lance alors différentes seeds (référence des niveaux). Prenons comme exemple le niveau 1 :
+Les niveaux lancent alors différentes seeds (référence des niveaux). Prenons comme exemple le niveau 1 :
 \begin{figure}
 \centering
 \includegraphics[scale=0.3]{Images/niveau1.png}
@@ -388,7 +388,7 @@ Les niveaux lance alors différentes seeds (référence des niveaux). Prenons co
 \newpage
 \subsection{Intelligence Artificielle - IA}
 \subsubsection{Une IA pas très futée}
-La première idée pour faire l'ia était de faire une basiques qui avance tout droit vers le trou sans réfléchir. Son objectif a chaque coup calculer simplement le coup qui se rapprochait le plus du trou avec une boucle 'for' très simple.\\
+La première idée pour faire l'IA était de faire une basiques qui avance tout droit vers le trou sans réfléchir. Son objectif a chaque coup calculer simplement le coup qui se rapprochait le plus du trou avec une boucle 'for' très simple.\\
 Un problème en est ressorti, c'est peu efficace. J'ai donc décidé de reprendre du début.\\
 \subsubsection{Une IA un peu plus complexe}
 Et donc après avoir recherché des algorithmes de pathfinding sur internet un algorithme en particulier en est ressortit assez souvent : A* (ou A star)\\
@@ -421,17 +421,17 @@ Et après plusieurs complications cette IA était enfin terminée et fonctionnel
 Pour générer un terrain de manière automatique on doit placer des règles:
 \begin{itemize}
 \item Le Terrain doit être connexe ou au moins cheminable.
-\item La génération des portée doit être presque linéal.
+\item La génération des portées doit être presque linéal.
 
 \end{itemize}
-Après avoir testé différentes idées, nous avons trouvé une solution très convenable pour construire un terrain. Pour générait notre terrain on va produire un chemin est sur celui la on va faire apparaître la surface jouable.\\
-Cette algorithme est divise en deux passage sur une grille:\\~\\
+Après avoir testé différentes idées, nous avons trouvé une solution très convenable pour construire un terrain. Pour générer notre terrain on va produire un chemin est sur celui la on va faire apparaître la surface jouable.\\
+Cette algorithme est divisé en deux passages sur une grille:\\~\\
 \textbf{\Large{Premier Passage}}\\
 On produit un premier point de manière aléatoire ($P_{x,y}$), et à partir de ce point on génère n-1 autres points ($P_{x,y}$,...,$Pn_{x_n,y_n}$).
 \begin{center}
 	$k\leq$ n et $k>0, P_{k} = P_{k-1} + \lambda(a, b)$
 \end{center}
-Telle que le vecteur (a, b)$\in$V, avec V l'ensemble des 7 différentes directions valides représenté avec des vecteurs.
+Telle que le vecteur (a, b)$\in$V, avec V l'ensemble des 8 différentes directions valides représenté avec des vecteurs.
 \begin{center}
 	V=\{(-1,-1),(-1,0),...,(1,1)\}\\
 	Et $\lambda = B_i$ avec B = \{n-1,n-1,n-2,n-3,...,4,3,2,2\}.
@@ -452,7 +452,7 @@ Avec cette phrase on pouvait générer le terrain sans avoir à penser aux possi
 	\SetKwData{V}{v}
 	\SetKwArray{TAB}{Tab}\SetKwData{N}{n}
 	\SetKwFunction{Random}{random}\SetKwFunction{GDIR}{getdirection}
-	\SetKwFunction{NPOS}{nouvelPosition}	
+	\SetKwFunction{NPOS}{nouvellePosition}	
 	\Parameter{Tab: tableau d'entier bidimensionnel de taille n*m.\\
 	i: entier.\\
 	v: structure vecteur contenant une paire d'entier\\ "x" et "y".}
@@ -465,8 +465,8 @@ Avec cette phrase on pouvait générer le terrain sans avoir à penser aux possi
 	\TAB{\Va}$[$\Vb$]$ $\leftarrow$ 1\;
 	\While{\I $<$ \N}
 	{
-		\DIR $\leftarrow$ \GDIR{}\;\tcp{renvoi un nombre entre {0-7} aléatoirement, qui représente les 8 diffèrent directions}
-		\V $\leftarrow$ \NPOS{\V ,\DIR}\;\tcp{renvoi un vecteur qui représente la nouvel position $v_{n+1}$ par rapport a la direction et la position $v_{n}$;}
+		\DIR $\leftarrow$ \GDIR{}\;\tcp{renvoi un nombre entre {0-7} aléatoirement, qui représente les 8 différentes directions}
+		\V $\leftarrow$ \NPOS{\V ,\DIR}\;\tcp{renvoi un vecteur qui représente la nouvelle position $v_{n+1}$ par rapport à la direction et la position $v_{n}$;}
 		\If{\V est valide $\&\&$ \TAB{\Va}$[$\Vb$]$ $==$ 0}
 		{
 			\TAB{\Va}$[$\Vb$]$ $\leftarrow 1$\;
@@ -476,7 +476,7 @@ Avec cette phrase on pouvait générer le terrain sans avoir à penser aux possi
 \end{algorithm}
 ~\\~\\
 \newpage
-Cet algorithme va nous renvoyer un tableau d'entier, le quelle on peut représente avec un graphe:\\
+Cet algorithme va nous renvoyer un tableau d'entier, lequel on peut représenter avec un graphe:\\
 GénérationTerrain(n,m,5);\\
 \begin{figure}[h]
 \centering
@@ -495,7 +495,7 @@ GénérationTerrain(n,m,5);\\
 \end{tikzpicture}
 };
 \end{tikzpicture}~\\
-\caption{les cercles représente la zone ou le Terrain va ce générait.Anexe 0.}
+\caption{les cercles représente la zone ou le Terrain va se générer.}
 \end{figure}
 \newpage
 \definecolor{color1}{RGB}{166,65,180}
@@ -587,7 +587,10 @@ figure 0: les zones noire représenter la surface jouable.Anexe 0.
 \end{center}
 \newpage
 \section{Bibliographie}
-
+En general:
+\begin{itemize}
+\item www.cplusplus.com/reference
+\end{itemize}
 Pour la partie graphique on a utilisé les sites suivants :
 \begin{itemize}
 \item wiki.libsdl.org/FrontPage
@@ -596,4 +599,5 @@ Pour la partie graphique on a utilisé les sites suivants :
 \item openclassrooms.com/fr/courses/1894236-programmez-avec-le-langage-c/1898935-initiez-vous-a-qt
 \item www.youtube.com/channel/UC6CdzK3QAxtr7giBwqk5eUA
 \end{itemize}
+
 \end{document}

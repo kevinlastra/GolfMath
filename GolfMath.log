@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.23)  7 MAY 2020 14:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.23)  7 MAY 2020 12:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1141,232 +1141,381 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 212.
  [7]
-<Images/logoSDL.png, id=37, 768.8725pt x 400.49625pt>
-File: Images/logoSDL.png Graphic file (type png)
-<use Images/logoSDL.png>
-Package pdftex.def Info: Images/logoSDL.png  used on input line 235.
-(pdftex.def)             Requested size: 153.77177pt x 80.09782pt.
-<Images/green_1.jpg, id=39, 24.09pt x 24.09pt>
-File: Images/green_1.jpg Graphic file (type jpg)
-<use Images/green_1.jpg>
-Package pdftex.def Info: Images/green_1.jpg  used on input line 246.
-(pdftex.def)             Requested size: 24.08992pt x 24.08992pt.
-<Images/start_1.jpg, id=40, 24.09pt x 24.09pt>
-File: Images/start_1.jpg Graphic file (type jpg)
-<use Images/start_1.jpg>
-Package pdftex.def Info: Images/start_1.jpg  used on input line 247.
-(pdftex.def)             Requested size: 24.08992pt x 24.08992pt.
-<Images/terrain.jpg, id=41, 834.11626pt x 468.75125pt>
-File: Images/terrain.jpg Graphic file (type jpg)
-<use Images/terrain.jpg>
-Package pdftex.def Info: Images/terrain.jpg  used on input line 250.
-(pdftex.def)             Requested size: 250.2368pt x 140.62645pt.
-<Images/green.jpg, id=42, 16.06pt x 16.06pt>
-File: Images/green.jpg Graphic file (type jpg)
-<use Images/green.jpg>
-Package pdftex.def Info: Images/green.jpg  used on input line 257.
-(pdftex.def)             Requested size: 32.1199pt x 32.1199pt.
-<Images/water.jpg, id=43, 16.06pt x 16.06pt>
-File: Images/water.jpg Graphic file (type jpg)
-<use Images/water.jpg>
-Package pdftex.def Info: Images/water.jpg  used on input line 258.
-(pdftex.def)             Requested size: 32.1199pt x 32.1199pt.
-<Images/hole.jpg, id=44, 16.06pt x 16.06pt>
-File: Images/hole.jpg Graphic file (type jpg)
-<use Images/hole.jpg>
-Package pdftex.def Info: Images/hole.jpg  used on input line 259.
-(pdftex.def)             Requested size: 32.1199pt x 32.1199pt.
-<Images/start.jpg, id=45, 16.06pt x 16.06pt>
-File: Images/start.jpg Graphic file (type jpg)
-<use Images/start.jpg>
-Package pdftex.def Info: Images/start.jpg  used on input line 260.
-(pdftex.def)             Requested size: 32.1199pt x 32.1199pt.
-<Images/terrain2.jpg, id=46, 539.01375pt x 468.75125pt>
-File: Images/terrain2.jpg Graphic file (type jpg)
-<use Images/terrain2.jpg>
-Package pdftex.def Info: Images/terrain2.jpg  used on input line 263.
-(pdftex.def)             Requested size: 269.50621pt x 234.37505pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--266
+LaTeX Warning: File `Images/logoSDL.png' not found on input line 233.
+
+
+! Package pdftex.def Error: File `Images/logoSDL.png' not found: using draft se
+tting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.233 ...degraphics[scale=0.2]{Images/logoSDL.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/green_1.jpg' not found on input line 244.
+
+
+! Package pdftex.def Error: File `Images/green_1.jpg' not found: using draft se
+tting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.244 ...ludegraphics[scale=1]{Images/green_1.jpg}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/start_1.jpg' not found on input line 245.
+
+
+! Package pdftex.def Error: File `Images/start_1.jpg' not found: using draft se
+tting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.245 ...ludegraphics[scale=1]{Images/start_1.jpg}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/terrain.jpg' not found on input line 248.
+
+
+! Package pdftex.def Error: File `Images/terrain.jpg' not found: using draft se
+tting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.248 ...degraphics[scale=0.3]{Images/terrain.jpg}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/green.jpg' not found on input line 255.
+
+
+! Package pdftex.def Error: File `Images/green.jpg' not found: using draft sett
+ing.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.255 \includegraphics[scale=2]{Images/green.jpg}
+                                                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/water.jpg' not found on input line 256.
+
+
+! Package pdftex.def Error: File `Images/water.jpg' not found: using draft sett
+ing.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.256 \includegraphics[scale=2]{Images/water.jpg}
+                                                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/hole.jpg' not found on input line 257.
+
+
+! Package pdftex.def Error: File `Images/hole.jpg' not found: using draft setti
+ng.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.257 \includegraphics[scale=2]{Images/hole.jpg}
+                                                
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/start.jpg' not found on input line 258.
+
+
+! Package pdftex.def Error: File `Images/start.jpg' not found: using draft sett
+ing.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.258 \includegraphics[scale=2]{Images/start.jpg}
+                                                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/terrain2.jpg' not found on input line 261.
+
+
+! Package pdftex.def Error: File `Images/terrain2.jpg' not found: using draft s
+etting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.261 ...egraphics[scale=0.5]{Images/terrain2.jpg}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--266
+Underfull \hbox (badness 10000) in paragraph at lines 226--264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--266
+Underfull \hbox (badness 10000) in paragraph at lines 226--264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--266
+Underfull \hbox (badness 10000) in paragraph at lines 226--264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--266
-
- []
-
-[8 <./Images/logoSDL.png> <./Images/green_1.jpg> <./Images/start_1.jpg> <./Imag
-es/terrain.jpg (PNG copy)>] [9 <./Images/green.jpg> <./Images/water.jpg> <./Ima
-ges/hole.jpg> <./Images/start.jpg> <./Images/terrain2.jpg>]
-<Images/Qt_logo.png, id=55, 1284.8pt x 942.52126pt>
-File: Images/Qt_logo.png Graphic file (type png)
-<use Images/Qt_logo.png>
-Package pdftex.def Info: Images/Qt_logo.png  used on input line 269.
-(pdftex.def)             Requested size: 64.24376pt x 47.12881pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 272--277
+Underfull \hbox (badness 10000) in paragraph at lines 226--264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--277
+Underfull \hbox (badness 10000) in paragraph at lines 226--264
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--277
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8]
+
+LaTeX Warning: File `Images/Qt_logo.png' not found on input line 267.
+
+
+! Package pdftex.def Error: File `Images/Qt_logo.png' not found: using draft se
+tting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.267 ...egraphics[scale=0.05]{Images/Qt_logo.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--275
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--293
+Underfull \hbox (badness 10000) in paragraph at lines 270--275
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--300
+Underfull \hbox (badness 10000) in paragraph at lines 270--275
 
  []
 
-<Images/accueil.png, id=56, 805.0075pt x 627.34375pt>
-File: Images/accueil.png Graphic file (type png)
-<use Images/accueil.png>
-Package pdftex.def Info: Images/accueil.png  used on input line 307.
-(pdftex.def)             Requested size: 241.50412pt x 188.20457pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 304--312
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 290--291
 
  []
 
-[10 <./Images/Qt_logo.png>]
-Overfull \hbox (85.49625pt too wide) in paragraph at lines 342--342
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--298
+
+ []
+
+
+LaTeX Warning: File `Images/accueil.png' not found on input line 305.
+
+
+! Package pdftex.def Error: File `Images/accueil.png' not found: using draft se
+tting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.305 ...degraphics[scale=0.3]{Images/accueil.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--310
+
+ []
+
+
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 340--340
 []    \OT1/cmtt/m/n/10 fond.setBrush(backgroundRole(), QBrush(QPixmap("./image/
 v2/background.jpg")));[] 
  []
 
-[11 <./Images/accueil.png>]
-Overfull \hbox (85.49625pt too wide) in paragraph at lines 352--352
+[10]
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 350--350
 []    \OT1/cmtt/m/n/10 fond.setBrush(backgroundRole(), QBrush(QPixmap("./image/
 v2/background.jpg")));[] 
  []
 
-<Images/niveaux.png, id=66, 503.8825pt x 326.21875pt>
-File: Images/niveaux.png Graphic file (type png)
-<use Images/niveaux.png>
-Package pdftex.def Info: Images/niveaux.png  used on input line 379.
-(pdftex.def)             Requested size: 251.94063pt x 163.10896pt.
-<Images/niveau1.png, id=67, 827.09pt x 689.57625pt>
-File: Images/niveau1.png Graphic file (type png)
-<use Images/niveau1.png>
-Package pdftex.def Info: Images/niveau1.png  used on input line 385.
-(pdftex.def)             Requested size: 248.1289pt x 206.87447pt.
-[12] [13 <./Images/niveaux.png> <./Images/niveau1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 391--393
+[11]
+
+LaTeX Warning: File `Images/niveaux.png' not found on input line 377.
+
+
+! Package pdftex.def Error: File `Images/niveaux.png' not found: using draft se
+tting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.377 ...degraphics[scale=0.5]{Images/niveaux.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/niveau1.png' not found on input line 383.
+
+
+! Package pdftex.def Error: File `Images/niveau1.png' not found: using draft se
+tting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.383 ...degraphics[scale=0.3]{Images/niveau1.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 389--391
+
+ []
+
+
+Overfull \hbox (174.74547pt too wide) in paragraph at lines 411--411
+[]               \OT1/cmtt/m/n/10 si non(v existe dans closedList ou si v exist
+e dans openList avec un cout inf^^Serieur)[] 
+ []
+
+
+Overfull \hbox (132.74583pt too wide) in paragraph at lines 411--411
+[]                    \OT1/cmtt/m/n/10 v.heuristique = v.cout + distance([v.x, 
+v.y], [objectif.x, objectif.y])[] 
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 423--427
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 435--440
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 435--440
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 427--431
+Underfull \hbox (badness 10000) in paragraph at lines 441--472
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--444
+Underfull \hbox (badness 10000) in paragraph at lines 473--474
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--444
+Underfull \hbox (badness 10000) in paragraph at lines 473--474
 
  []
 
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 445--476
+[15] [16]
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--478
-
- []
+LaTeX Warning: File `Images/Geogebraimg1.png' not found on input line 521.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 477--478
+! Package pdftex.def Error: File `Images/Geogebraimg1.png' not found: using dra
+ft setting.
 
- []
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.521 ...phics[scale=0.5]{Images/Geogebraimg1.png}
+                                                  \\
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-[16]
-Overfull \hbox (6.36165pt too wide) in paragraph at lines 479--500
-[]\OT1/cmr/m/n/10 Cet al-go-rithme va nous ren-voyer un tableau d'entier, leque
-l on peut repr^^Sesenter
- []
-
-[17]
-<Images/Geogebraimg1.png, id=95, 539.76656pt x 231.86626pt>
-File: Images/Geogebraimg1.png Graphic file (type png)
-<use Images/Geogebraimg1.png>
-Package pdftex.def Info: Images/Geogebraimg1.png  used on input line 525.
-(pdftex.def)             Requested size: 269.88261pt x 115.93283pt.
-
-Overfull \hbox (7.11052pt too wide) in paragraph at lines 520--528
-\OT1/cmr/m/n/10 A l'aide de Ge-oGe-bra on peut repr^^Sesenter cette for-mule de
- mani^^Rere plus graphique. 
- []
-
-[18 <./Images/Geogebraimg1.png>] [19] [20]
-Overfull \hbox (7.9729pt too wide) in paragraph at lines 597--598
-[]\OT1/cmr/m/n/10 openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-
-c/17117-
- []
-
-
-Overfull \hbox (33.19519pt too wide) in paragraph at lines 599--600
-[]\OT1/cmr/m/n/10 openclassrooms.com/fr/courses/1894236-programmez-avec-le-lang
-age-c/1898935-
- []
-
-[21] (./GolfMath.aux) ) 
+[17] [18] [19] (./GolfMath.aux) ) 
 Here is how much of TeX's memory you used:
- 17030 strings out of 492982
- 348435 string characters out of 6134896
- 417803 words of memory out of 5000000
- 20281 multiletter control sequences out of 15000+600000
+ 16973 strings out of 492982
+ 347106 string characters out of 6134896
+ 418802 words of memory out of 5000000
+ 20224 multiletter control sequences out of 15000+600000
  7497 words of font info for 27 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,20n,67p,423b,1169s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmtt10.pfb>
-Output written on GolfMath.pdf (22 pages, 1836591 bytes).
+ 55i,20n,67p,419b,1169s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmtt10.pfb>
+Output written on GolfMath.pdf (20 pages, 186864 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
+ 124 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 83 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
