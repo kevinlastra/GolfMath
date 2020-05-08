@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.23)  7 MAY 2020 14:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.23)  8 MAY 2020 18:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1287,61 +1287,70 @@ Underfull \hbox (badness 10000) in paragraph at lines 427--431
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--444
+Underfull \hbox (badness 10000) in paragraph at lines 448--454
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--444
+Underfull \hbox (badness 10000) in paragraph at lines 448--454
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 445--476
+Underfull \hbox (badness 10000) in paragraph at lines 455--486
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 477--478
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 477--478
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
 
  []
 
 [16]
-Overfull \hbox (6.36165pt too wide) in paragraph at lines 479--500
-[]\OT1/cmr/m/n/10 Cet al-go-rithme va nous ren-voyer un tableau d'entier, leque
-l on peut repr^^Sesenter
+Overfull \hbox (10.30609pt too wide) in paragraph at lines 489--515
+[]\OT1/cmr/m/n/10 Cet al-go-rithme va nous ren-voyer un tableau d'entiers, lequ
+el on peut repr^^Sesenter
  []
 
-[17]
-<Images/Geogebraimg1.png, id=95, 539.76656pt x 231.86626pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 489--515
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 489--515
+
+ []
+
+<Images/Geogebraimg1.png, id=91, 539.76656pt x 231.86626pt>
 File: Images/Geogebraimg1.png Graphic file (type png)
 <use Images/Geogebraimg1.png>
-Package pdftex.def Info: Images/Geogebraimg1.png  used on input line 525.
+Package pdftex.def Info: Images/Geogebraimg1.png  used on input line 532.
 (pdftex.def)             Requested size: 269.88261pt x 115.93283pt.
 
-Overfull \hbox (7.11052pt too wide) in paragraph at lines 520--528
+Overfull \hbox (7.11052pt too wide) in paragraph at lines 527--535
 \OT1/cmr/m/n/10 A l'aide de Ge-oGe-bra on peut repr^^Sesenter cette for-mule de
  mani^^Rere plus graphique. 
  []
 
-[18 <./Images/Geogebraimg1.png>] [19] [20]
-Overfull \hbox (7.9729pt too wide) in paragraph at lines 597--598
+[17] [18 <./Images/Geogebraimg1.png>] [19]
+Overfull \hbox (7.9729pt too wide) in paragraph at lines 602--603
 []\OT1/cmr/m/n/10 openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-
 c/17117-
  []
 
 
-Overfull \hbox (33.19519pt too wide) in paragraph at lines 599--600
+Overfull \hbox (33.19519pt too wide) in paragraph at lines 604--605
 []\OT1/cmr/m/n/10 openclassrooms.com/fr/courses/1894236-programmez-avec-le-lang
 age-c/1898935-
  []
 
-[21] (./GolfMath.aux) ) 
+[20] (./GolfMath.aux) ) 
 Here is how much of TeX's memory you used:
  17030 strings out of 492982
  348435 string characters out of 6134896
@@ -1353,20 +1362,19 @@ Here is how much of TeX's memory you used:
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmtt10.pfb>
-Output written on GolfMath.pdf (22 pages, 1836591 bytes).
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmtt10.pfb>
+Output written on GolfMath.pdf (21 pages, 1829614 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
+ 145 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  83 words of extra memory for PDF output out of 10000 (max. 10000000)
 

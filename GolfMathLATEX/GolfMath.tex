@@ -421,26 +421,36 @@ Et après plusieurs complications cette IA était enfin terminée et fonctionnel
 Pour générer un terrain de manière automatique on doit placer des règles:
 \begin{itemize}
 \item Le Terrain doit être connexe ou au moins cheminable.
-\item La génération des portées doit être presque linéal.
+\item La génération des portées doit être presque linéaire.
 
 \end{itemize}
-Après avoir testé différentes idées, nous avons trouvé une solution très convenable pour construire un terrain. Pour générer notre terrain on va produire un chemin est sur celui la on va faire apparaître la surface jouable.\\
-Cette algorithme est divisé en deux passages sur une grille:\\~\\
+Après avoir testé différentes idées, nous avons trouvé une solution très convenable pour construire un terrain. Pour générer notre terrain on va produire un chemin autour duquel on va faire apparaître la surface jouable.\\
+Cette algorithme est divisé en deux passages sur une grille :\\~\\
 \textbf{\Large{Premier Passage}}\\
-On produit un premier point de manière aléatoire ($P_{x,y}$), et à partir de ce point on génère n-1 autres points ($P_{x,y}$,...,$Pn_{x_n,y_n}$).
+On produit un premier point de manière aléatoire $P_0$ = (x, y), et à partir de ce point on génère n-1 autres points ($P_0$,...,$P_n$).
 \begin{center}
-	$k\leq$ n et $k>0, P_{k} = P_{k-1} + \lambda(a, b)$
+	$P_{k} = P_{k-1} + B_k(a, b)$
 \end{center}
-Telle que le vecteur (a, b)$\in$V, avec V l'ensemble des 8 différentes directions valides représenté avec des vecteurs.
+Telle que $k\leq$ n, $k>0$, le vecteur (a , b) $\in$ V valide (V l'ensemble des 8 différentes directions valides représenté avec des vecteurs).
 \begin{center}
-	V=\{(-1,-1),(-1,0),...,(1,1)\}\\
-	Et $\lambda = B_i$ avec B = \{n-1,n-1,n-2,n-3,...,4,3,2,2\}.
+	V = \{(-1,-1),(-1,0),...,(1,1)\}
+\end{center}	
+Un vecteur (a , b) est valide uniquement si la distance entre $P_0$ et $P_{k-1}$ est inférieur a la distance entre $P_0$ et $P_k$.\\
+B est un tableau d'entier arbitrairement sélectionnée, par exemple :
+\begin{center}
+	B = \{8,8,7,6,5,4,3,2,2\}\\
 \end{center}
+dans ce cas B est un tableau de 9 entier avec les extrémités doubles, pour augmente la vitesse du jeux au début et éviter le nombre 0 a la fin, a cause du deuxième passage.
+\begin{center}
+	$B_n = B_{n-1}$ et $B_0 = B_1$.
+\end{center}
+
 Avec cet algorithme on trouverait que:\\~\\
 X:"l'ensemble des terrains générés" \\
 Y:"l'ensemble des chemins possibles"\\
 \(\forall x \in X, \exists y \in Y\) telle que "y" est un chemin valide.\\~\\
-Avec cette phrase on pouvait générer le terrain sans avoir à penser aux possibles contraintes comme la connexité.
+On définit un chemin valide, le chemin connexe et jouable dans 15 ou moins mouvement.\\
+Avec cette phrase on peut générer le terrain sans avoir à penser aux possibles contraintes comme la connexité.
 \newpage
 \textbf{\Large{Pseudo Code}}\\~\\
 \begin{algorithm}[H]
@@ -476,7 +486,7 @@ Avec cette phrase on pouvait générer le terrain sans avoir à penser aux possi
 \end{algorithm}
 ~\\~\\
 \newpage
-Cet algorithme va nous renvoyer un tableau d'entier, lequel on peut représenter avec un graphe:\\
+Cet algorithme va nous renvoyer un tableau d'entiers, lequel on peut représenter avec un graphe :\\
 GénérationTerrain(n,m,5);\\
 \begin{figure}[h]
 \centering
@@ -495,35 +505,32 @@ GénérationTerrain(n,m,5);\\
 \end{tikzpicture}
 };
 \end{tikzpicture}~\\
-\caption{les cercles représente la zone ou le Terrain va se générer.}
-\end{figure}
-\newpage
+\caption{les cercles représentent la zone ou le Terrain va se générer.}
+\end{figure}\\~\\~\\
 \definecolor{color1}{RGB}{166,65,180}
 \definecolor{color2}{RGB}{55,91,3}
 \textbf{\Large{Deuxième Passage}}\\
-Le chemin ainsi généré, on va passer case par case de notre grille et on va teste si la distance entre la case est un point du chemin est inférieur à un certain nombre.
+Le chemin ainsi généré, on va passer case par case dans notre grille et on va tester si la distance entre la case est un point du chemin est inférieur à un certain nombre.
+On pose (x, y) une case, T l'ensemble des points du chemin, $\lambda$ le rayon.
 \begin{center}
-On pose (x, y) une case.\\
-T l'ensemble des points du chemin.\\
-$\lambda$ le rayon.\\
 Si distance((x, y), $T_i$) $< \lambda$ alors la case est valide.
 \end{center}
-si une case est valide ça veut dire que cette case est partie de la surface de notre terrain, donc on doit lui donne une portée, cette portée est définit par la formule suivante:
+Si une case est valide ça veut dire que cette case fait partie de la surface de notre terrain, donc on doit lui donner une portée, cette portée est définie par la formule suivante:
 \begin{center}
 	portée = {\color{color1}$(2 + (\frac{dist*8}{sranyon}\%8))$} + 
 	{\color{color2}$(((rand()\%5)-2)\%2)$}
 \end{center}
-Cette formule est divisée en 2 partie, représenté par les couleurs:
+Cette formule est divisée en 2 parties, représentées par les couleurs:
 \begin{center}
 	1.~~~~~ $(2 + (\frac{dist*8}{sranyon}\%8))$
 \end{center}
-\textbf{dist} est la distance entre le dernier point du chemin et la case actuel.\\
-\textbf{srayon} est la distance entre le dernier point du chemin et le point valide le plus éloigner du dernier point du chemin.\\
+\textbf{dist} est la distance entre le dernier point du chemin et la case actuelle.\\
+\textbf{srayon} est la distance entre le dernier point du chemin et le point valide le plus éloigné du dernier point du chemin.\\
 A l'aide de GeoGebra on peut représenter cette formule de manière plus graphique.\\
 \begin{figure}[!h]
 \centering
  \includegraphics[scale=0.5]{Images/Geogebraimg1.png}\\
- \caption{srayon $=$ 20, 9 au lieu 8 et 1 au lieu 2. La portée d'un point est équivalent a l'axe z.}
+ \caption{srayon $=$ 20, 9 au lieu 8 et 1 au lieu 2. La portée d'un point est représentée sur l'axe z.}
 \end{figure} 
 \begin{center}
 	2.~~~~~ $(((rand()\%5)-2)\%2)$\\
@@ -538,6 +545,7 @@ rand() un nombre aléatoire entre 0 et RAND{\_}MAX(un nombre très grand qui dé
 ça veut dire qui est plus probable d'avoir 0 que 1 ou -1 donc 60$\%$ de probabilité de ne pas modifier et 40$\%$ pour modifier.
 
 \begin{center}
+\newpage
 \textbf{\Large{Pseudo Code}}
 \end{center}
 \begin{algorithm}[H]
@@ -553,7 +561,7 @@ rand() un nombre aléatoire entre 0 et RAND{\_}MAX(un nombre très grand qui dé
 	\Debut\\
 	\BlankLine
 	\EXT $\leftarrow$ \FEXTREM{\TAB}\;
-	\tcp{renvoi le point le plus éloigner du dernier point du chemin(Ch[n-1]).}
+	\tcp{renvoie le point le plus éloigné du dernier point du chemin(Ch[n-1]).}
 	\For{$\X \leftarrow 0$ \KwTo \LO}
 	{
 		\For{$\Y \leftarrow 0$ \KwTo \LA}
@@ -561,30 +569,27 @@ rand() un nombre aléatoire entre 0 et RAND{\_}MAX(un nombre très grand qui dé
 		\BlankLine
 			\If{\INRAD{\TAB{\X}$[$\Y$]$,\CH} et \TAB{\X}$[$\Y$]$ $\notin$ \CH}
 			{
-				\tcp{dansRayon renvoi vrai ou faux dépendant si un point (x, y) est dans le rayon d'un point du chemin.}
+				\tcp{dansRayon renvoie vrai ou faux dépendamment si un point (x, y) est dans le rayon d'un point du chemin.}
 				\TAB{\X}$[$\Y$]$ $\leftarrow$ \PORTEE{\EXT ,\CH{n-1},\TAB{\X}$[$\Y$]$}\;
-				\tcp{calcPortee renvoi la porte d'un point utilisant la formule vue avant.}
+				\tcp{calcPortee renvoie la portée d'un point utilisant la formule vue avant.}
 			}
 		}
 	}
 	\Return \TAB\;
 \end{algorithm}
-\begin{center}
-\begin{tikzpicture}
-%nodes
-\node [draw, rectangle,label = "Terrain"
-		,minimum size = 3cm] (map) 
-{
-\begin{tikzpicture}
-	\foreach \point [count=\i] in {(-5,4),(-4,5.2),(-3,4),(-2,2.5),(-3,1)}
-	{
-	\draw[black, fill] \point circle (1.5cm);
-	}
-\end{tikzpicture}
-};
-\end{tikzpicture}~\\
-figure 0: les zones noire représenter la surface jouable.Anexe 0.
-\end{center}
+\begin{figure}[!h]
+	\centering
+	\begin{tikzpicture}
+		%nodes
+		\node [draw, rectangle,label = "Terrain"
+			,minimum size = 3cm] (map) 
+			{\begin{tikzpicture}
+				\foreach \point [count=\i] in {(-5,4),(-4,5.2),(-3,4),(-2,2.5),(-3,1)}
+				{\draw[black, fill] \point circle (1.5cm);}
+			\end{tikzpicture}};
+	\end{tikzpicture}
+	\caption{les zones noires représentent la surface jouable.}
+\end{figure}
 \newpage
 \section{Bibliographie}
 En general:
