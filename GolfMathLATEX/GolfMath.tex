@@ -63,19 +63,26 @@ Le but est de créer un jeu de golf, version mathématique.
 \\~\\
 \textbf{\large Base et Règles}
 \\~\\
-Les règles sont simple:
+Les règles sont simples:
 \\~\\
-- Partir du point de départ et aller jusqu'au trou en faisant le moins de coup.
+- Partir du point de départ et aller jusqu'au trou en faisant le moins de coups.
 \\~\\
-- Pour se déplacer, on ne peut que de la portée indiqué sur notre case, dans 8 positions différentes, haut, bas, droite, gauche, ainsi que, haut droite, haut gauche, bas droite, bas gauche.
+- On ne peut que se déplacer de la portée indiquée sur notre case, dans 8 positions différentes, haut, bas, droite, gauche, ainsi que, haut droite, haut gauche, bas droite, bas gauche (case entouré en noir sur la figure ci-dessous).
 \\~\\
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.3]{Images/move.png}
+\caption{Exemple de déplacement}
+\end{figure}
+\\~\\
+\newpage
 \textbf{\large Interface Graphique}
 \\~\\
-Pour la partie graphique, le but est d'apprendre à utiliser une interface graphique.
+Pour la partie graphique, le but est d'apprendre à utiliser une interface graphique, et rendre plus fluide et convivial le jeu.
 \\~\\
 \textbf{\large Génération automatique de la carte}
 \\~\\
-A part d'avoir une infiniter de cartes pour le jeux, générait la carte de façons automatique est un defi algorithmique qu'on pouvait laisser passer.
+Pouvoir générer des nouveaux terrains pour le jeux et c'était aussi un défi algorithmique.
 \\~\\
 \textbf{\large Intelligence Artificielle}
 \\~\\
@@ -83,7 +90,16 @@ au secours
 \\~\\
 \newpage
 \subsection{Division du travail}
-~\\~\\~\\~\\~\\~\\~\\~\\
+~\\
+Nous avons tout d'abord, pris le temps de bien structurer le jeu, ce mettre tous d'accord sur comment on voyait le golf mathématiques.\\
+Puis, nous avons séparé le travail en fonction des affinités de chacun, Kevin pour la partie de création d'un algorithme de génération de terrain, Mike pour ce qui est de la création d'une intelligence artificielle et Benjamin pour la partie visuel du jeu et l'adaptation avec la librairie graphique.
+\\~\\
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.3]{Images/driagram.png}
+\caption{Diagramme de Gantt}
+\end{figure}
+~\\~\\~\\~\\~\\
 \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, fill=blue!20, 
@@ -144,21 +160,22 @@ au secours
 Le langage qu'on a choisi pour le développement du jeu, est le C++ pour 2 raisons principales:
 
 \begin{enumerate}
-\item Ce langage est un langage de "programmation orienté aux objets" (POO).
+\item Ce langage est un langage de "programmation orienté objets" (POO).
 \item Grâce aux modules de HLIN202 et HLIN302, on a une base de connaissance avec laquelle on peut travailler de manière confortable.
 \end{enumerate}
 ~\\~\\
 \textbf{\large Outil de modélisation graphique}\\
 On a choisi la librairie QT pour les différents avantages qu'elle nous apporte. Cette librairie dispose d'une bonne documentation, elle est adapté au langage C++ et elle dispose aussi d'un outil de travail intéressant appelé "QT Creator", qui rend le travail plus facile.\\~\\~\\
 \textbf{\large Travail collaboratif}\\
-Nous avons utilisé de multiples programmes:
+Nous avons utilisé plusieurs programmes:
 \begin{enumerate}
-\item GitHub. Ce logiciel nous permet de partager les avancements du travail réalisé par chacun depuis différents ordinateurs et aussi de sauvegarder plusieurs versions du travail, ce qui est rassurant en cas de perte.
+\item GitHub. Ce gestionnaire de version nous permet de partager les avancements du travail réalisé par chacun depuis différents ordinateurs et aussi de sauvegarder plusieurs versions du travail, ce qui est rassurant en cas de perte. 
+https://github.com/kevinlastra/GolfMath.git
 \item Discord. Celui-ci nous permet le partage d'écran, la communication orale et écrit, ce qui est utile pour le développement du jeu.
 \end{enumerate}
 ~\\~\\
 \textbf{\large Éditeur de texte}\\
-La production du projet est réalisé grâce à plusieurs éditeur de texte:
+La production du projet est réalisée grâce à plusieurs éditeur de texte:
 \begin{enumerate}
 \item Éditeur de code -
 Emacs, sublime et QTCreator.
@@ -166,8 +183,15 @@ Emacs, sublime et QTCreator.
 \end{enumerate} 
 \newpage
 \section{Conception}
-Dès la première réunion, en utilisant l'image qui nous a été donné dans notre sujet de projet, on a cherché une architecture de programmation pour laquelle ce jeu s'adapterait au mieux.\\~\\
-La première chose qu'on a défini est la forme du terrain de jeu, Terrain de NxM cases, après la classe Terrain crée on a structuré une classe qui manipulerait toutes les entrées/sorties ("ToutEnUn") et finalement les joueurs avec une méthode "QEvent".\\~\\
+Dès la première réunion, en utilisant l'image qui nous a été donné dans notre sujet de projet, on a cherché une architecture de programmation pour laquelle ce jeu s'adapterait au mieux. Nous avons opté pour une modélisation objet qui permet de bien délimiter chaque élément du jeu.\\
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.3]{Images/sujet.png}
+\caption{Image du sujet}
+\end{figure}
+\\
+La première chose qu'on a défini est la forme du terrain de jeu, Terrain de NxM cases, la forme rectangulaire est la plus adaptée pour gérer le terrain dans l'interface mais le "green" lui-même a sa forme propre à l'intérieur de ce rectangle.  La classe Terrain crée on a structuré une classe qui manipulerait toutes les entrées/sorties ("ToutEnUn") et finalement les joueurs avec une méthode "QEvent".\\
+\newpage
 % Define block styles
 \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -201,6 +225,9 @@ La première chose qu'on a défini est la forme du terrain de jeu, Terrain de Nx
 \end{tikzpicture}~\\
 \caption{Représentation du flux du jeu.}
 \end{figure}
+Quand le joueur lance le jeu, il appel la classe "ToutEnUn", qui crée un terrain avec la classe "Terrain", qui celui-ci appel plusieurs case de la classe "Node". Le terrain est ainsi généré.\\
+Ensuite quand le joueur clique, il envoie une requête, "send request", à "QEvent", et fait ainsi avancé le jeu, couleur rose du graphique.\\
+Si il y a une IA, "if IA", au moment de la requête, l'IA est donc appelé grâce à une méthode, et ainsi retourne à "QEvent" et le jeu continue.
 \newpage
 \subsection{Base du jeu}
 ~\\~\\
@@ -213,22 +240,24 @@ Dans un Terrain de golf, on a:
 \item Cible (le trou)
 \item Obstacles (zone d'eau)
 \end{itemize}
-~\\
+Ici pour des raisons de simplicité nous avons modélisé une seule sorte d'obstacles, mais il serait envisageable d'enrichir le jeu avec différents types (forêt, sable, pierre) qui entraîneraient différents comportements.
+\\~\\
 Et puis, le joueur se déplace et tape la balle avec une puissance, la portée.\\
-Avec tout ça, on a des éléments avec lesquels on peut travailler: un terrain que l'on interprétera comme un tableau d'entier, les valeurs étant la portée de la balle.\\
-Un terrain sera divisé en 4 zones différentes:
+Avec tout ça, on a des éléments avec lesquels on peut travailler: un terrain que l'on interprétera comme un tableau d'entiers, les valeurs étant la portée de la balle.\\
+Un terrain sera divisé en 4 zones différentes (voir aussi figure 9):
 \begin{itemize}
-\item Départ
-\item Eau
-\item Herbe
-\item Trou
+\item Départ, case jaune, c'est sur celle-ci que la partie commence mais elles ont les attributs d'une case herbe.
+\item Eau, case bleu, cette case nous fait perdre un tour si on y va dessus et nous renvoie à notre dernière position.
+\item Herbe, case verte, elles sont les briques de notre jeu, elles ont chacune une portée.
+\item Trou, case avec un rond noir, elle est unique et met fin à la partie.
 \end{itemize}
+Un dernier type "sable" avait été envisagé pour des cases de faibles portées, mais du au confinement cela a été enlevé.
 \newpage
 \subsection{Graphique}
-~\\~\\
+~\\
 \textbf{\large Choix de la librairie graphique}
 ~\\
-Au début du projet, nous nous avions décidé d'utiliser la librairie graphique : 
+Au début du projet, nous nous avions décidé d'utiliser la librairie graphique SDL\footnote{https://www.libsdl.org/} : 
 ~\\
 \begin{figure}[!h]
 \centering
@@ -237,20 +266,20 @@ Au début du projet, nous nous avions décidé d'utiliser la librairie graphique
 \end{figure}
 ~\\
 Mais le fait qu'elle soit adapté au langage C, et donc pas prévu pour de l'orienté objet nous a posé quelque soucis.\\
-Après cela, nous avons chercher ainsi une autre librairie, celle ci adapté au C++.\\
-Nous nous sommes alors mis d'accord sur Qt. Cette librairie offre une grande documentation et un éditeur de texte adapté ("Qt Creator").
-~\\~\\
-Les premiers essais pour la partie graphique ont pu commencer, avec en premier les cases de jeu :
+Après cela, nous avons cherché ainsi une autre librairie, celle ci adapté au C++.\\
+Nous nous sommes alors mis d'accord sur Qt \footnote{https://www.qt.io/}. Cette librairie offre une grande documentation et un éditeur de texte adapté ("Qt Creator").
+~\\
+Les premiers essais pour la partie graphique ont pu commencer, avec en premier les cases de jeu : 
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=1]{Images/green_1.jpg}
 \includegraphics[scale=1]{Images/start_1.jpg}
 \caption{Première version des dessins}
 ~\\
-\includegraphics[scale=0.3]{Images/terrain.jpg}
+\includegraphics[scale=0.2]{Images/terrain.jpg}
 \caption{Premier test de terrain}
 \end{figure}
-~\\~\\
+~\\~\\~\\
 Le résultat étant trop sombre, on a refait les cases avec un rendu plus clair et plus lisible.\\~\\~\\
 \begin{figure}[!h]
 \centering
@@ -263,11 +292,8 @@ Le résultat étant trop sombre, on a refait les cases avec un rendu plus clair 
 \includegraphics[scale=0.5]{Images/terrain2.jpg}
 \caption{Rendu final}
 \end{figure}
+~\\
 \newpage
-\begin{figure}
-\centering
-\includegraphics[scale=0.05]{Images/Qt_logo.png}
-\end{figure}
 \subsection{Qt}
 ~\\~\\
 \textbf{\large La création d'une interface}
@@ -373,13 +399,13 @@ void MainWindow::lancer()
     niv->show();
 }
 \end{verbatim}
-Et enfin, cette méthode appelle notre nouvelle fenêtre qui gère nos différents niveaux.\\
+Et enfin, cette méthode appelle notre nouvelle fenêtre qui gère nos différents niveaux (figure 12).\\
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{Images/niveaux.png}
 \caption{Page des niveaux}
 \end{figure}
-Les niveaux lancent alors différentes seeds (référence des niveaux). Prenons comme exemple le niveau 1 :
+Les niveaux lancent alors différentes seeds (référence des niveaux), ces seeds servent à générer à la volée de nouveaux terrains (figure 13).\\
 \begin{figure}
 \centering
 \includegraphics[scale=0.3]{Images/niveau1.png}
@@ -388,11 +414,11 @@ Les niveaux lancent alors différentes seeds (référence des niveaux). Prenons 
 \newpage
 \subsection{Intelligence Artificielle - IA}
 \subsubsection{Une IA pas très futée}
-La première idée pour faire l'IA était de faire une basiques qui avance tout droit vers le trou sans réfléchir. Son objectif a chaque coup calculer simplement le coup qui se rapprochait le plus du trou avec une boucle 'for' très simple.\\
-Un problème en est ressorti, c'est peu efficace. J'ai donc décidé de reprendre du début.\\
+La première idée pour faire l'IA était de faire une basique qui avance tout droit vers le trou sans réfléchir. Son objectif a chaque coup calculer simplement le coup qui se rapprochait le plus du trou avec une boucle 'for' très simple.\\
+Un problème en est ressorti, c'est peu efficace dans le sens où le nombre de coups était très élevé par rapport à ce que pouvaient faire les joueurs humains. Cela manque d'intérêt et il vaut mieux jouer contre un adversaire un peu plus fort. Nous avons donc décidé de reprendre du début.\\
 \subsubsection{Une IA un peu plus complexe}
-Et donc après avoir recherché des algorithmes de pathfinding sur internet un algorithme en particulier en est ressortit assez souvent : A* (ou A star)\\
-C'est un algorithme de pathfinding très connu qui ressemble a ceci :
+Après avoir recherché des algorithmes de recherche de chemins optimaux (pathfinding) sur internet, un algorithme en particulier en est ressorti assez souvent : A* (ou A star)\\
+C'est un algorithme de pathfinding très connu qui ressemble à ceci :
 \begin{verbatim}
 Fonction cheminPlusCourt(g:Graphe, objectif:Nœud, depart:Nœud)
        closedList = File()
@@ -413,8 +439,8 @@ Fonction cheminPlusCourt(g:Graphe, objectif:Nœud, depart:Nœud)
            closedList.ajouter(u)
        terminer le programme (avec erreur)
 \end{verbatim}
-J'ai ensuite du évidemment adapter l'algorithme à notre projet, pour se faire j'ai d'abord du créer une classe qui a une 'node' associe un 'cout' (le nombre de coups jusqu'ici), une heuristique (la distance "a vol d'oiseau" jusqu'à l'arrivée) et un père, pour à la fois pouvoir recréer le chemin après le pathfinding mais aussi tout simplement pour le bon fonctionnement de l'algorithme. \\
-Et après plusieurs complications cette IA était enfin terminée et fonctionnelle. A savoir que, bien que l'IA trouve le meilleur chemin à chaque fois, elle n'est pas invincible, il n'est pas compliqué de faire égalité ou même de la battre car j'ai fais en sorte qu'elle ne choisisse pas son point de départ de manière optimale.
+Nous avons ensuite du évidemment adapter l'algorithme à notre projet, pour se faire nous avons d'abord du créer une classe qui à une case associe un 'coût' (le nombre de coups jusqu'ici), une heuristique (la distance "à vol d'oiseau" jusqu'à l'arrivée ce qui permet de minorer la distance réelle à parcourir) et un père, pour à la fois pouvoir recréer le chemin après le pathfinding mais aussi tout simplement pour le bon fonctionnement de l'algorithme. \\~\\
+Et après plusieurs complications, cette IA était enfin terminée et fonctionnelle. A savoir que, bien que l'IA trouve le meilleur chemin à chaque fois, elle n'est pas invincible, il n'est pas compliqué de faire égalité ou même de la battre car nous avons fait en sorte qu'elle ne choisisse pas son point de départ de manière optimale.
 \newpage
 \subsection{Génération du Terrain}
 \subsubsection{Génération Automatique}
@@ -475,8 +501,8 @@ Avec cette phrase on peut générer le terrain sans avoir à penser aux possible
 	\TAB{\Va}$[$\Vb$]$ $\leftarrow$ 1\;
 	\While{\I $<$ \N}
 	{
-		\DIR $\leftarrow$ \GDIR{}\;\tcp{renvoi un nombre entre {0-7} aléatoirement, qui représente les 8 différentes directions}
-		\V $\leftarrow$ \NPOS{\V ,\DIR}\;\tcp{renvoi un vecteur qui représente la nouvelle position $v_{n+1}$ par rapport à la direction et la position $v_{n}$;}
+		\DIR $\leftarrow$ \GDIR{}\;\tcp{renvoie un nombre entre {0-7} aléatoirement, qui représente les 8 différentes directions}
+		\V $\leftarrow$ \NPOS{\V ,\DIR}\;\tcp{renvoie un vecteur qui représente la nouvelle position $v_{n+1}$ par rapport à la direction et la position $v_{n}$;}
 		\If{\V est valide $\&\&$ \TAB{\Va}$[$\Vb$]$ $==$ 0}
 		{
 			\TAB{\Va}$[$\Vb$]$ $\leftarrow 1$\;
@@ -486,7 +512,7 @@ Avec cette phrase on peut générer le terrain sans avoir à penser aux possible
 \end{algorithm}
 ~\\~\\
 \newpage
-Cet algorithme va nous renvoyer un tableau d'entiers, lequel on peut représenter avec un graphe :\\
+Cet algorithme va nous renvoyer un tableau d'entiers, que l'on peut représenter avec un graphe :\\
 GénérationTerrain(n,m,5);\\
 \begin{figure}[h]
 \centering
@@ -510,7 +536,7 @@ GénérationTerrain(n,m,5);\\
 \definecolor{color1}{RGB}{166,65,180}
 \definecolor{color2}{RGB}{55,91,3}
 \textbf{\Large{Deuxième Passage}}\\
-Le chemin ainsi généré, on va passer case par case dans notre grille et on va tester si la distance entre la case est un point du chemin est inférieur à un certain nombre.
+Le chemin ainsi généré, on va passer case par case dans notre grille et on va tester si la distance entre la case et un point du chemin est inférieure à un certain nombre.
 On pose (x, y) une case, T l'ensemble des points du chemin, $\lambda$ le rayon.
 \begin{center}
 Si distance((x, y), $T_i$) $< \lambda$ alors la case est valide.
@@ -590,6 +616,23 @@ rand() un nombre aléatoire entre 0 et RAND{\_}MAX(un nombre très grand qui dé
 	\end{tikzpicture}
 	\caption{les zones noires représentent la surface jouable.}
 \end{figure}
+\newpage
+\section{Résultat}
+\subsection{Le jeu}
+Le jeu est terminé, il est possible de jouer dans 3 mode, tout seul pour s'entraîner, avec d'autre personne jusqu'à 4 joueurs, ou alors avec une IA.\\
+Le joueur humain choisit son niveau entre 18 niveaux qui forment un parcours sans monter en difficulté, et un bouton de génération de niveau aléatoire.\\~\\
+Le jeu se déroule en cliquant sur le terrain, comme montrer sur la figure 1, chaque joueur à une couleur définie. Rouge pour le joueur 1, bleu pour le joueur 2, jaune pour le joueur 3 et enfin vert pour le joueur 4.
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.3]{Images/joueur.png}
+\caption{Les différents joueurs}
+\end{figure}
+\\
+Quand on ajoute une IA, on ne peut jouer que jusqu'à trois joueurs et l'IA prend la place du dernier joueur.
+\subsection{CONCLUSION}
+Pour ce qui est de la programmation, nous avons pu mettre en œuvre dans un projet concret ce que l'on a appris en cours. Nous avons amélioré nos compétences techniques personnelles mais aussi notre capacités à s'adapter dans un projet de groupe.\\
+Nous avons appris à gérer un projet en équipe avec les atouts de chacun, et aussi apprendre à combler les lacunes que chacun pouvaient avoir.\\~\\
+Cependant, en ce qui concerne le projet, nous pouvons imaginer comme amélioration de rajouter plusieurs niveaux d'IA, mettre une difficulté croissante pour les niveaux, on pourrait aussi rajouter de la diversité dans les obstacles du jeu comme des bancs de sable ou encore des arbres. En ce qui concerne l'interface, on pourrait y ajouter des "animations" pour les mouvements de la balles. Le dernier ajout pour rendre le jeu plus optimal serait d'ajouter une partie réseaux.
 \newpage
 \section{Bibliographie}
 En general:
