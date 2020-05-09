@@ -86,7 +86,7 @@ Pouvoir générer des nouveaux terrains pour le jeux et c'était aussi un défi 
 \\~\\
 \textbf{\large Intelligence Artificielle}
 \\~\\
-au secours
+Ici, "intelligence artificielle" est compris comme "joueur ordinateur", c'est a dire avoir un adversaire non humain, le travail est donc de créer ce joueur et de déterminer son comportement de manière a rendre le jeu plus intéressant et compétitif.
 \\~\\
 \newpage
 \subsection{Division du travail}
@@ -439,7 +439,7 @@ Fonction cheminPlusCourt(g:Graphe, objectif:Nœud, depart:Nœud)
            closedList.ajouter(u)
        terminer le programme (avec erreur)
 \end{verbatim}
-Nous avons ensuite du évidemment adapter l'algorithme à notre projet, pour se faire nous avons d'abord du créer une classe qui à une case associe un 'coût' (le nombre de coups jusqu'ici), une heuristique (la distance "à vol d'oiseau" jusqu'à l'arrivée ce qui permet de minorer la distance réelle à parcourir) et un père, pour à la fois pouvoir recréer le chemin après le pathfinding mais aussi tout simplement pour le bon fonctionnement de l'algorithme. \\~\\
+L'idée de cet algorithme est d'améliorer un chemin déjà trouvé en regardant les chemins voisins et ce jusqu'à ne plus pouvoir l'améliorer. Nous avons ensuite du évidemment adapter l'algorithme à notre projet, pour se faire nous avons d'abord du créer une classe qui à une case associe un 'coût' (le nombre de coups jusqu'ici), une heuristique (la distance "à vol d'oiseau" jusqu'à l'arrivée ce qui permet de minorer la distance réelle à parcourir) et un père, pour à la fois pouvoir recréer le chemin après le pathfinding mais aussi tout simplement pour le bon fonctionnement de l'algorithme. \\~\\
 Et après plusieurs complications, cette IA était enfin terminée et fonctionnelle. A savoir que, bien que l'IA trouve le meilleur chemin à chaque fois, elle n'est pas invincible, il n'est pas compliqué de faire égalité ou même de la battre car nous avons fait en sorte qu'elle ne choisisse pas son point de départ de manière optimale.
 \newpage
 \subsection{Génération du Terrain}
